@@ -194,15 +194,15 @@ footer {
         gap: 10em;
         display: flex;
         width: 1440px;
-
+        font-size: 18px;
         justify-content: center;
     }
 
     .foot-column {
         width: 200px;
 
-        p { color: $light_color }
-        .highlighted { font-weight: 600;}
+        p { color: $light_color; line-height: 30px;}
+        .highlighted { font-weight: 600; font-size: 20px;}
         a { color: $light_color; }
 
         .field { 
