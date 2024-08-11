@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+$font-stack: 'Poppins';
+$paragraph-text: 'Inter';
+
+$primary-color: #464646;
+$deviating-color: rgb(240, 240, 78);
+$deviating-light: rgb(252, 252, 168);
+
+$darker_color: darken($primary-color, 10%);
+$darkest_color: darken($primary-color, 14%);
+$lighter_color: lighten($primary-color, 10%);
+$light_color: lighten($primary-color, 100%);
+$detailcolor: lighten($primary-color, 30%);
+
+$border-style: 1px solid;
+
+@mixin width($width, $max) {
+    width: $width;
+    max-width: $max;
+}
+
+@mixin size($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin color($bkgd, $text) {
+    background-color: $bkgd;
+    color: $text;
+}
+
+@mixin align($display, $align, $justify) {
+    display: $display;
+    align-items: $align;
+    justify-content: $justify;
+}
+
+@mixin space($padding, $margin) {
+    padding: $padding;
+    margin: $margin;
+}
+
+@mixin border($border, $radius) {
+    border: $border;
+    border-radius: $radius;
+}
+
+@mixin boxspace($padding, $box) {
+    padding: $padding;
+    box-sizing: $box;
+}
+
+@mixin text($size, $color) {
+    font-size: $size;
+    color: $color;
+}
+
+@mixin placing($position, $top, $left) {
+    position: $position;
+    top: $top;
+    left: $left;
+}

@@ -1,0 +1,9 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 146 52" width="146" height="52">
+	<title>letterlogo_white</title>
+	<defs>
+		<image  width="146" height="52" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJIAAAA0CAMAAABW4JFPAAAAAXNSR0IB2cksfwAAADNQTFRF////////////////////////////////////////////////////////////////////5RDoRwAAABF0Uk5TAEAQIDD/gFDwoGCwwHDQ4JCX5ZVHAAACgUlEQVR4nM2Y2baDIAxFHYpDnfj/r722vZYTyEDXKtY8Cqbb7CqQqqJRh2i4i2m0VRKtOkoz3vgJEC5EzV1Mo0uTdOroHn2YMFwEaYT7+2sgDXD/eAmkniRouClnI40kwf0CSM1AEkwXQLpHGQxzZyBNUQbD3AlITZzBMGchzUkwz6gjxd4scxaS/kBZSLE3y1x5pMSbZa48UurNMFceKfXm3PJTJMabc+tPkThvzgnbqnOQZhZJM1caqYVcQKeZK420hKER9yiKOQspCW4RU5DWMNTjTk4xVxgJvA1k36SYK4yE3ujuUjZXGIl4q/LMlUWi3oi57UdI1Bs1J54xyyJF3og5/xOkVk6jmCuK5LVEormiSJuKJJmzkITbspBuKpForiSS7k00VxJJ9yaaK4hkeBPNfQUJPsqAZHmTzH0FCfZmgGR5E1pNWNxwkvkKkulNaBLiohOufooE80PbD7yRn/bs7BD80vwhEj5XsA/LGRGE1TsG2mAIm1FwKs5Bgi3YzM1HTloM+I8d5fPD+J+vwWSwp8pAqt18FARPamH/CvWP/jKMuQfH2u3hyTsBb6RT4/kPfuyENv/IQg5q4esneWPN0c7hEfjdykASPjrv55K9MeaETQzuhTOQ+EPsnOGNMVezyQbsr2Qg8UP2+8aa65JEjyCNMRuJL3UokuaN7H+fpeD6PVFfzEbquQGoNDbf0/4WnBKetVjjTHus9DYbiSv1AO8s/707Ams88b83RQ9iIzGl3oAIi8j1SrEsDbMaDsnB00ZKV/kRHwuJub5kZO7myYdpW9J7bKR2If7f68ErsBnIdm9jczvVvXu11f1d69Dp0fbd9EwydrU9W4k/Xq9OP/HDfzMAAAAASUVORK5CYII="/>
+	</defs>
+	<style>
+	</style>
+	<use id="Background" href="#img1" x="0" y="0"/>
+</svg>
