@@ -118,8 +118,10 @@ main {
             padding: 2em;
             border-radius: 1em;
 
-            p { width: 50%; font-size: 20px; }
+            p { width: 100%; font-size: 20px; }
             h2 { text-align: left; color: #F1B92A; }
+            .right { text-align: right;}
+            .smaller { font-size: 18px; margin: 1em 0 2em 0;}
         }
     }
 
