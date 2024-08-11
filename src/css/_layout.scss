@@ -181,20 +181,35 @@ main {
 
 footer { 
     display: flex;
-    padding: 3em;
+    padding: 10em 0 12em 0;
     box-sizing: border-box;
     width: 100%;
     background-color: #F1B92A;
     justify-content: center; 
     align-items: center; 
 
-    img { height: 100px; width: auto; }
+    img { height: 100px; width: auto; margin-bottom: 1.5em; }
 
     .wrapper { 
-        border: 1px solid black;
+        gap: 10em;
+        display: flex;
+        width: 1440px;
+
+        justify-content: center;
     }
 
     .foot-column {
-        border: 1px solid black;
+        width: 200px;
+
+        p { color: $light_color }
+        .highlighted { font-weight: 600;}
+        a { color: $light_color; }
+
+        .field { 
+            height: 25px; 
+            background-color: white; 
+            border: 2px solid rgb(129, 129, 129); 
+            border-radius: 0.2em; 
+            margin-bottom: 1.5em;}
     }
 }
