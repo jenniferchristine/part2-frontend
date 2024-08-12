@@ -13,7 +13,7 @@
 84C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\dish6_sqaure.3b9a644c.webp133679762033218024 0
 107C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@swc\helpers\_\_create_super\package.json133675268719518711 0
 111C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@swc\helpers\src\_interop_require_default.mjs133675268722114413 0
-57C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist133679762291116553 1
+57C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist133679764727646453 1
 103C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\posthtml\node_modules\posthtml-parser133675268700130487 1
 84C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\dish1-square.58890e2d.webp133679762033208053 0
 106C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@parcel\node-resolver-core\lib\_empty.js133675268697729843 0
@@ -81,7 +81,7 @@
 95C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\caniuse-lite\data\browsers.js133675268713413099 0
 89C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@parcel\core\src\public133675268717429955 1
 119C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\csso\node_modules\css-tree\cjs\syntax\atrule\page.cjs133675268713718016 0
-67C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\src\index.html133679756811645170 0
+67C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\src\index.html133679764725576294 0
 80C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\css-select\lib133675268714332720 1
 92C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\pasta-making4_sqaure.a2d36eda.webp133679762033613070 0
 95C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@parcel\optimizer-swc\LICENSE133675268696080749 0
@@ -153,7 +153,7 @@
 89C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\csso\lib\clean\utils.js133675268714532650 0
 96C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\css-what\lib\commonjs\parse.js133675268699810374 0
 100C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\css-tree\cjs\syntax\node\index.cjs133675268712753537 0
-76C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\index.8c1c22dc.css133679762291041443 0
+76C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\index.8c1c22dc.css133679763716728014 0
 99C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@parcel\config-default\index.json133675268699145315 0
 90C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\weak-lru-cache\README.md133675268701110347 0
 82C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\htmlnano\test.js133675268709536057 0
@@ -178,9 +178,8 @@
 117C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@parcel\transformer-react-refresh-wrap\package.json133675268701262272 0
 126C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\lightningcss-win32-x64-msvc\lightningcss.win32-x64-msvc.node133675268716441694 0
 97C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\caniuse-lite\data\regions\DZ.js133675268720676890 0
-68C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\index.html133679762034018508 0
 88C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\csso\lib\clean\Rule.js133675268713743256 0
-80C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\index.8c1c22dc.css.map133679762291106579 0
+80C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\index.8c1c22dc.css.map133679763716753665 0
 86C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\json5\dist\index.mjs133675268706503427 0
 86C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\stable\stable.min.js133675268699490255 0
 97C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\svgo\plugins\applyTransforms.js133675268710494232 0
@@ -230,7 +229,7 @@
 97C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\csso\cjs\replace\Percentage.cjs133675268708786525 0
 88C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\msgpackr\node-index.js133675268706698449 0
 105C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\caniuse-lite\data\features\dommatrix.js133675268720618578 0
-73C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\src\css\_layout.scss133679762289657134 0
+73C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\src\css\_layout.scss133679763716140375 0
 104C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\svgo\plugins\convertEllipseToCircle.js133675268711103447 0
 97C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\caniuse-lite\data\regions\ET.js133675268720972300 0
 107C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@swc\helpers\src\_to_consumable_array.mjs133675268722465557 0
@@ -6046,3 +6045,4 @@
 81C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\.bin\semver.ps1133675268729994432 0
 79C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\.bin\svgo.ps1133675268730004415 0
 97C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\.bin\update-browserslist-db.ps1133675268730004415 0
+68C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\index.html133679764727636489 0

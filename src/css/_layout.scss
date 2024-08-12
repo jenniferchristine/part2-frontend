@@ -66,6 +66,8 @@ nav {
     }
 
     li { margin-right: 30px; font-size: 20px;
+
+        a { text-decoration: none; color: $primary-color; }
         &:last-child { margin-right: 0; }}
 }
 
