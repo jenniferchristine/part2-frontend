@@ -73,10 +73,6 @@ async function addData() {
     // kombinerar tid och datum till ett iso
     const bookingDateTime = new Date(`${bookingDate}T${time}`);
 
-    /*console.log("Datum:", bookingDate);
-    console.log("Tid:", time);
-    console.log("Tid och datum:", bookingDateTime);*/
-
     // justera tidszon genom att lägga till förskjutning
     const offsetMinutes = bookingDateTime.getTimezoneOffset();
     bookingDateTime.setMinutes(bookingDateTime.getMinutes() - offsetMinutes);
@@ -113,9 +109,11 @@ async function addData() {
             body: JSON.stringify(booking)
         });
 
+        const data = await response.json();
+        console.log("Responsdata:", data.errors);
+
         if (!response.ok) {
-            const errorData = await response.json();
-            handleValidation(errorData.errors);
+            handleValidation(data.errors);
             throw new Error("Failed to add data");
         }
 
@@ -128,7 +126,6 @@ async function addData() {
         document.getElementById("time").value = "";
         document.getElementById("requests").value = "";
 
-        const data = await response.json();
         console.log("Data added", data);
 
     } catch (error) {
@@ -140,25 +137,25 @@ async function addData() {
 function handleValidation(errors) {
     if (errors) {
         if (errors["customer.name"]) {
-            document.getElementById("name").textContent = errors.customer.name;
+            document.getElementById("nameError").textContent = errors["customer.name"];
         }
         if (errors["customer.phoneNumber"]) {
-            document.getElementById("phoneNumber").textContent = errors.customer.phoneNumber;
+            document.getElementById("phoneNumberError").textContent = errors["customer.phoneNumber"];
         }
         if (errors["customer.email"]) {
-            document.getElementById("email").textContent = errors.customer.email;
+            document.getElementById("emailError").textContent = errors["customer.email"];
         }
         if (errors.guests) {
-            document.getElementById("guests").textContent = errors.guests;
+            document.getElementById("guestsError").textContent = errors.guests;
         }
         if (errors.bookingDate) {
-            document.getElementById("bookingDate").textContent = errors.bookingDate;
+            document.getElementById("bookingDateError").textContent = errors.bookingDate;
         }
         if (errors.bookingDate) {
-            document.getElementById("time").textContent = errors.bookingDate;
+            document.getElementById("timeError").textContent = errors.bookingDate;
         }
         if (errors.requests) {
-            document.getElementById("requests").textContent = errors.requests;
+            document.getElementById("requestsError").textContent = errors.requests;
         }
     }
 };

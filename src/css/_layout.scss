@@ -289,4 +289,10 @@ footer {
         border-radius: 0.3em;
         border: none;
     }
+
+    .error-message {
+        color: lighten($primary-color, 7%);
+        font-style: italic;
+        font-size: 12px;
+    }
 }
