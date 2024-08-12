@@ -1,6 +1,8 @@
 @use 'base' as *;
 @use 'animations' as *;
 
+html { scroll-behavior: smooth; }
+
 body {
     background-color: $light_color;
     color: $primary-color;

@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     displayData();
 
     const addBtn = document.getElementById("confirmBtn");
+
     if (addBtn) {
         addBtn.addEventListener('click', () => {
             addData();
@@ -28,6 +29,18 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
         console.error('Knappen eller overlay-elementet hittades inte.');
     }
+
+    // smooth scroll av navigering
+    const link = document.querySelector('nav ul li a[href="#result--dish"]');
+
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const targetEl = document.querySelector('#result--dish');
+        targetEl.scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
 });
 
     // hämtar data
