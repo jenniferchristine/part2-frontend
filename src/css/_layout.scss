@@ -184,26 +184,39 @@ main {
         div { display: flex; gap: 2em;
             img { height: 66px; width: 100%; }}
     }
+}
 
-    .button {
-        width: 250px;
-        height: 50px;
-        border: none; 
-        display: flex;
-        justify-content: center; 
-        align-items: center; 
-        text-align: center; 
-        cursor: pointer; 
-        font-size: 25px;
-        font-weight: 600;
-        border-radius: 0.2em;
-    }
+.button {
+    border: none; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+    cursor: pointer; 
+    font-size: 25px;
+    font-weight: 600;
+    border-radius: 0.2em;
+}
 
-    .button--primary {
-        color: $light_color;
-        background-color: #F1B92A;
-        margin: 80px 0 20px 0;
-    }
+.button--primary {
+    color: $light_color;
+    background-color: #F1B92A;
+    margin: 80px 0 20px 0;
+    width: 250px;
+    height: 50px;
+}
+
+.button--secondary {
+    width: 100%;
+    background-color: #F1B92A;
+    color: $light_color;
+    margin: 1em 0 0 0;    
+    height: 35px;
+}
+
+.btnDiv {
+    display: flex;
+    gap: 2em;
 }
 
 footer { 
@@ -238,5 +251,42 @@ footer {
             border: 2px solid rgb(129, 129, 129); 
             border-radius: 0.2em; 
             margin-bottom: 1.5em;}
+    }
+}
+
+#form--holder {
+    padding: 3em; 
+    border-radius: 1em;
+    background-color: #FFF9EA;
+
+    h1 { font-size: 22px; }
+    h2 { 
+        font: 100% $paragraph-text; 
+        font-size: 14px; 
+        text-align: left; 
+        margin: -0.5em 0 1em 0; }
+
+    input { 
+        padding: 0.5em; 
+        width: 95%;
+        font: 100% $paragraph-text;
+        font-size: 15px;
+        border-radius: 0.3em;
+        border: none;
+    }
+    select { 
+        padding: 0.5em;
+        width: 50%;
+        font: 100% $paragraph-text;
+        font-size: 15px;
+        border-radius: 0.3em;
+        border: none;
+    }
+
+    textarea { 
+        font: 100% $paragraph-text;
+        font-size: 15px;
+        border-radius: 0.3em;
+        border: none;
     }
 }

@@ -56,7 +56,7 @@
                 <p>
                     Vill du prata med en mänsklig varelse? Slå oss en pling eller kom förbi resturangen!
                 </p>
-                <button class="button button--primary">
+                <button id="bookingBtn" class="button button--primary">
                     BOKA BORD
                 </button>
                 <a href="#">Adress och kontakt</a>
@@ -134,5 +134,61 @@
     </div>
 
     </footer>
+
+    <div id="form--holder">
+    <form id="bookingForm" onsubmit="event.preventDefault(); addData();">
+        <h1>Snart har du bokat ditt bord!</h1>
+        <h2>Det sista steget är att fylla i uppgifterna nedan</h2>
+        <div>
+            <label for="name"></label><br>
+            <input type="text" name="name" id="name" placeholder="För- och efternamn">
+            <div id="nameError" class="error-message"></div>
+        </div>
+        <div>
+            <label for="phoneNumber"></label><br>
+            <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Telefonnummer">
+            <div id="phoneNumberError" class="error-message"></div>
+        </div>
+        <div>
+            <label for="email"></label><br>
+            <input type="text" name="email" id="email" placeholder="E-postadress">
+            <div id="emailError" class="error-message"></div>
+        </div>
+        <div>
+            <label for="guests"></label><br><br>
+            <select name="guests" id="guests">
+                <option value="">Välj antal gäster</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+            </select>
+            <div id="guestsError" class="error-message"></div>
+        </div>
+        <div>
+            <label for="bookingDate"></label><br>
+            <input type="date" name="bookingDate" id="bookingDate">
+            <div id="bookingDateError" class="error-message"></div>
+       </div>
+       <div>
+            <label for="time"></label><br>
+            <input type="time" name="time" id="time">
+            <div id="timeError" class="error-message"></div>
+        </div>
+        <div>
+            <label for="requests"></label><br><br>
+            <textarea typ="text" name="requests" id="requests" 
+            placeholder="Särskilda önskemål" rows="4" cols="50"></textarea>
+            <div id="requestsError" class="error-message"></div>
+        </div>
+        <div class="btnDiv">
+            <button id="confirmBtn" class="button button--secondary" type="button">BOKA</button>
+            <button id="cancelBtn" class="button button--secondary">AVBRYT</button>
+         </div>
+    </form>
+</div>
 
 </body>
