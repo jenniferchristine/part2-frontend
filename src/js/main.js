@@ -4,6 +4,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     displayData();
 
+    // scrolla till toppen-knapp
     const toTopBtn = document.getElementById("topBtn");
 
     window.addEventListener('scroll', () => {
@@ -21,29 +22,40 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     });
 
-    const addBtn = document.getElementById("confirmBtn");
-
-    if (addBtn) {
-        addBtn.addEventListener('click', () => {
-            addData();
-        })
-    }
-
-    // variabler och event för avbryt-knapp samt att komma till formulär
+    // variabler och event för knappar
     const overlay = document.getElementById('overlay');
-    const bookingBtn = document.getElementById('bookingBtn');
-    const cancelBtn = document.getElementById('cancelBtn');
 
-    if (bookingBtn && cancelBtn) {
+    const bookingForm = document.getElementById("booking-form");
+    const bookingBtn = document.getElementById('booking-btn');
+    const cancelBtn = document.getElementById('cancel-btn');
+    const addBtn = document.getElementById("confirm-btn");
+
+    const loginForm = document.getElementById("login-form");
+    const adminBtn = document.getElementById('admin-btn');
+    const loginBtn = document.getElementById('login-btn');
+
+    if (bookingBtn && cancelBtn && addBtn) {
         bookingBtn.addEventListener('click', () => {
-            overlay.style.display = 'flex'; // Visa overlay
+            overlay.style.display = 'flex'; // visa overlay
+            loginForm.style.display = 'none';
         });
 
         cancelBtn.addEventListener('click', () => {
-            overlay.style.display = 'none'; // Dölj overlay
+            overlay.style.display = 'none'; // dölj overlay
+            window.location.href = "/index.html";
         });
-    } else {
-        console.error('Knappen eller overlay-elementet hittades inte.');
+
+        addBtn.addEventListener('click', () => { addData(); });
+    }
+
+    if (adminBtn && loginBtn) {
+        adminBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            overlay.style.display = 'flex';
+            bookingForm.style.display = 'none';
+        });
+
+        loginBtn.addEventListener('click', () => { loginBtn(); });
     }
 
     // smooth scroll av navigering
@@ -60,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    const links = document.querySelector("nav ul li a");
+    const links = document.querySelectorAll(".scroll-link");
 
     links.forEach(link => {
         link.addEventListener('click', scrollToElement);

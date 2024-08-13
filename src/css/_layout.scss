@@ -35,7 +35,7 @@ body {
         margin: 1em 0 0 0;    
     }
     
-    .btnDiv { display: flex; gap: 2em; }
+    .btn-div { display: flex; gap: 2em; }
 
     .overlay {
         @include placing(fixed, 0, 0);
