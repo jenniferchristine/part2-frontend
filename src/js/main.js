@@ -4,8 +4,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     displayData();
 
-    // scrolla till toppen-knapp
-    const toTopBtn = document.getElementById("topBtn");
+    const toTopBtn = document.getElementById("topBtn"); // scrolla till toppen-knapp
 
     window.addEventListener('scroll', () => {
         if (window.scrollY > 100) {
@@ -50,12 +49,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (adminBtn && loginBtn) {
         adminBtn.addEventListener('click', (e) => {
-            e.preventDefault();
+            e.preventDefault(); // förhindra att sidan scrollas upp
             overlay.style.display = 'flex';
             bookingForm.style.display = 'none';
         });
 
-        loginBtn.addEventListener('click', () => { loginBtn(); });
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault(); logIn();
+        });
     }
 
     // smooth scroll av navigering
@@ -196,6 +197,46 @@ async function addData() {
     } catch (error) {
         console.error("Error when adding data", error);
     }
+};
+
+async function logIn() {
+    /*const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    document.getElementById("usernameError").textContent = "";
+    document.getElementById("passwordError").textContent = "";
+
+    try {
+        if (!username) {
+            document.getElementById("usernameError").textContent = "Vänligen ange ett användarnamn";
+        }
+        if (!password) {
+            document.getElementById("passwordError").textContent = "Skriv in ett lösenord";
+        }
+        const response = await fetch("https://pastaplace.onrender.com/login", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username, password})
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            localStorage.setItem("token", data.response.token); // lagra token
+            window.location.href = "admin.html"; // omdirigerar till säkrad sida
+        } else {
+            if (data.error === "Incorrect username or password") {
+                document.getElementById().textContent = "Felaktigt användarnamn eller lösenord";
+            } else {
+                console.error("Error", data.error);
+            }
+        }
+    } catch (error) {
+        console.error("Server error:", error);
+        document.getElementById("usernameError").textContent = "Ett fel uppstod vid inloggningen. Vänligen försök igen senare!"
+    }*/
 };
 
 // hantera validering
