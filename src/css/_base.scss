@@ -5,8 +5,8 @@ $font-stack: 'Poppins';
 $paragraph-text: 'Inter';
 
 $primary-color: #464646;
-$deviating-color: rgb(240, 240, 78);
-$deviating-light: rgb(252, 252, 168);
+$deviating-color: #F1B92A;
+$deviating-light: #FFF9EA;
 
 $darker_color: darken($primary-color, 10%);
 $darkest_color: darken($primary-color, 14%);
@@ -52,9 +52,9 @@ $border-style: 1px solid;
     box-sizing: $box;
 }
 
-@mixin text($size, $color) {
+@mixin text($size, $align) {
     font-size: $size;
-    color: $color;
+    text-align: $align;
 }
 
 @mixin placing($position, $top, $left) {

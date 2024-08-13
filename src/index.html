@@ -33,66 +33,120 @@
 
     <main>
         <div class="light-background">
-        <div class="block block--alignleft">
-            <h1>Stig in i PASTA PLACE</h1>
-            <p>
-                Här tar varje tugga dig på en smakresa genom Italiens soliga landskap! Vi på PASTA PLACE snurrar vi inte
-                bara gaffeln, utan även dina sinnen med våra himmelska pastarätter. Kom in och låt oss förvandla din
-                middag till en fest för smaklökarna!
-            </p>
+            <div class="block block--alignleft">
+                <h1>Stig in i PASTA PLACE</h1>
+                <p>
+                    Här tar varje tugga dig på en smakresa genom Italiens soliga landskap! Vi på PASTA PLACE snurrar vi
+                    inte
+                    bara gaffeln, utan även dina sinnen med våra himmelska pastarätter. Kom in och låt oss förvandla din
+                    middag till en fest för smaklökarna!
+                </p>
+            </div>
         </div>
-    </div>
 
         <div class="middle-background">
             <div id="booking-link" class="block block--imgbox">
-            <img src="images/dish2-square.webp" alt="">
-            <div>
-                <h1>Boka ditt bord!</h1>
-                <p>
-                    För att boka bord hos oss klickar du bara på knappen nedan och fyller i bokningsformuläret - lätt
-                    som en
-                    plätt!
-                </p>
-                <p>
-                    Vill du prata med en mänsklig varelse? Slå oss en pling eller kom förbi resturangen!
-                </p>
-                <button id="bookingBtn" class="button button--primary">
-                    BOKA BORD
-                </button>
-                <a href="#contact-link">Adress och kontakt</a>
+                <img src="images/dish2-square.webp" alt="">
+                <div>
+                    <h1>Boka ditt bord!</h1>
+                    <p>
+                        För att boka bord hos oss klickar du bara på knappen nedan och fyller i bokningsformuläret -
+                        lätt
+                        som en
+                        plätt!
+                    </p>
+                    <p>
+                        Vill du prata med en mänsklig varelse? Slå oss en pling eller kom förbi resturangen!
+                    </p>
+                    <button id="bookingBtn" class="button button--primary">
+                        BOKA BORD
+                    </button>
+                    <a href="#contact-link">Adress och kontakt</a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="light-background">
-        <div id="result--dish">
-        <div class="headline">
-            <img src="images/pasta-icon.png">
-            <h1>Meny</h1>
-        </div>
+        <div class="light-background">
+            <div id="result--dish">
+                <div class="headline">
+                    <img src="images/pasta-icon.png">
+                    <h1>Meny</h1>
+                </div>
 
             </div>
-    </div>
-
-    <div class="middle-background">
-        <div id="contact-link" class="block block--imgbox">
-            <div>
-                <h1>Om oss</h1>
-                <p>
-                    För att boka bord hos oss klickar du bara på knappen nedan och fyller i bokningsformuläret - lätt
-                    som en
-                    plätt!
-                </p>
-                <p>
-                    Vill du prata med en mänsklig varelse? Slå oss en pling eller kom förbi resturangen!
-                </p>
-                <button class="button button--primary">
-                    KONTAKT
-                </button>
-            </div>
-            <img src="images/dish1-square.webp" alt="">
         </div>
-    </div>
+
+        <div class="middle-background">
+            <div id="contact-link" class="block block--imgbox">
+                <div>
+                    <h1>Om oss</h1>
+                    <p>
+                        För att boka bord hos oss klickar du bara på knappen nedan och fyller i bokningsformuläret -
+                        lätt
+                        som en
+                        plätt!
+                    </p>
+                    <p>
+                        Vill du prata med en mänsklig varelse? Slå oss en pling eller kom förbi resturangen!
+                    </p>
+                    <button class="button button--primary">
+                        KONTAKT
+                    </button>
+                </div>
+                <img src="images/dish1-square.webp" alt="">
+            </div>
+        </div>
+
+        <div class="collage">
+            <img src="images/pasta-making1_sqaure.webp">
+            <img src="images/dish3_sqaure.webp">
+            <img src="images/pasta-making2_sqaure.webp">
+            <img src="images/pasta-making3_sqaure.webp">
+            <img src="images/dish6_sqaure.webp">
+            <img src="images/pasta-making4_sqaure.webp">
+            <div class="centered-overlay">
+                <div>
+                    <img src="images/instagram-icon.svg">
+                    <img src="images/logotext.svg">
+                </div>
+            </div>
+        </div>
+
+        <button id="topBtn" class="to-top">Till toppen</button>
+
+    </main>
+
+    <footer>
+
+        <div class="wrapper">
+            <div class="foot-column">
+                <img src="images/pasta1 vit.png">
+                <p>Adressgatan 23<br>
+                    657 43 Stockholm</p>
+            </div>
+            <div class="foot-column">
+                <p class="highlighted">SNABBLÄNKAR</p>
+                <a href="#">
+                    <p>Hitta hit</p>
+                </a>
+                <a href="#">
+                    <p>Information</p>
+                </a>
+                <a href="#">
+                    <p>Boka bord</p>
+                </a>
+                <a href="admin.html">
+                    <p>Admin</p>
+                </a>
+            </div>
+            <div class="foot-column">
+                <p class="highlighted">NYHETSBREV</p>
+                <div class="field"></div>
+                <p>Skriv ut dig för resturangens nyheter och erbjudanden</p>
+            </div>
+        </div>
+
+    </footer>
 
     <div id="overlay" class="overlay">
         <form id="bookingForm" onsubmit="event.preventDefault(); addData();">
@@ -131,66 +185,25 @@
                 <label for="bookingDate"></label><br>
                 <input type="date" name="bookingDate" id="bookingDate">
                 <div id="bookingDateError" class="error-message"></div>
-           </div>
-           <div>
+            </div>
+            <div>
                 <label for="time"></label><br>
                 <input type="time" name="time" id="time">
                 <div id="timeError" class="error-message"></div>
             </div>
             <div>
                 <label for="requests"></label><br><br>
-                <textarea typ="text" name="requests" id="requests" 
-                placeholder="Särskilda önskemål" rows="4" cols="50"></textarea>
+                <textarea typ="text" name="requests" id="requests" placeholder="Särskilda önskemål" rows="4"
+                    cols="50"></textarea>
                 <div id="requestsError" class="error-message"></div>
             </div>
             <div class="btnDiv">
                 <button id="confirmBtn" class="button button--secondary" type="button">BOKA</button>
                 <button id="cancelBtn" class="button button--secondary" type="button">AVBRYT</button>
-             </div>
+            </div>
         </form>
     </div>
 
-        <div class="collage">
-                <img src="images/pasta-making1_sqaure.webp">
-                <img src="images/dish3_sqaure.webp">
-                <img src="images/pasta-making2_sqaure.webp">
-                <img src="images/pasta-making3_sqaure.webp">
-                <img src="images/dish6_sqaure.webp">
-                <img src="images/pasta-making4_sqaure.webp">
-            <div class="centered-overlay">
-                <div>
-                <img src="images/instagram-icon.svg">
-                <img src="images/logotext.svg">
-                </div>
-            </div>
-        </div>
-
-        <button id="topBtn" class="to-top">Till toppen</button>
-
-    </main>
-
-    <footer>
-
-        <div class="wrapper">
-        <div class="foot-column">
-            <img src="images/pasta1 vit.png">
-            <p>Adressgatan 23<br>
-            657 43 Stockholm</p>
-        </div>
-        <div class="foot-column">
-            <p class="highlighted">SNABBLÄNKAR</p>
-            <a href="#"><p>Hitta hit</p></a>
-            <a href="#"><p>Information</p></a>
-            <a href="#"><p>Boka bord</p></a>
-            <a href="#"><p>Admin</p></a>
-        </div>
-        <div class="foot-column">
-            <p class="highlighted">NYHETSBREV</p>
-            <div class="field"></div>
-            <p>Skriv ut dig för resturangens nyheter och erbjudanden</p>
-        </div>
-    </div>
-
-    </footer>
-
 </body>
+
+</html>
