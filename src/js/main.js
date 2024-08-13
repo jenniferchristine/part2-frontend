@@ -200,7 +200,7 @@ async function addData() {
 };
 
 async function logIn() {
-    /*const username = document.getElementById("username").value;
+    const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
     document.getElementById("usernameError").textContent = "";
@@ -236,7 +236,7 @@ async function logIn() {
     } catch (error) {
         console.error("Server error:", error);
         document.getElementById("usernameError").textContent = "Ett fel uppstod vid inloggningen. Vänligen försök igen senare!"
-    }*/
+    }
 };
 
 // hantera validering
