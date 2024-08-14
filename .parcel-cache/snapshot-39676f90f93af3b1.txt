@@ -66,7 +66,7 @@
 126C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\csso\node_modules\css-tree\lib\definition-syntax\generate.js133675268717674885 0
 75C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@mischnic133680537427913585 1
 122C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\csso\node_modules\css-tree\cjs\parser\parse-selector.cjs133675268713878050 0
-67C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\src\admin.html133680682869036554 0
+67C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\src\admin.html133680686811127504 0
 92C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\js-yaml\lib\type\binary.js133675268697904730 0
 111C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@swc\helpers\_\_unsupported_iterable_to_array133680537478212679 1
 96C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\node-addon-api\tools\README.md133675268707703381 0
@@ -6041,15 +6041,15 @@
 79C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\admin.0e74c27c.js.map133680668551507543 0
 79C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\admin.6dd77f0d.js.map133680682211478961 0
 68C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\admin.html133680682869319643 0
-84C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\dish3_sqaure.d6f45f32.webp133680684165770263 0
-82C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\pastaplace1.b9f2d0b6.png133680684165780270 0
-81C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\pasta1 vit.d88f1ae5.png133680684165790250 0
 84C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\dish1-square.58890e2d.webp133680684165790250 0
-92C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\pasta-making4_sqaure.a2d36eda.webp133680684165790250 0
-82C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\empty-hero.1c4cce93.webp133680684165845390 0
-79C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\logotext.9caedcbd.svg133680684165845390 0
 84C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\dish2-square.167d4b66.webp133680684165875455 0
+84C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\dish3_sqaure.d6f45f32.webp133680684165770263 0
 84C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\dish6_sqaure.3b9a644c.webp133680684165875455 0
-68C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\index.html133680684866407577 0
+82C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\empty-hero.1c4cce93.webp133680684165845390 0
 75C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\index.aa69868b.js133680686202406338 0
 79C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\index.aa69868b.js.map133680686202416307 0
+68C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\index.html133680684866407577 0
+79C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\logotext.9caedcbd.svg133680684165845390 0
+92C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\pasta-making4_sqaure.a2d36eda.webp133680684165790250 0
+81C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\pasta1 vit.d88f1ae5.png133680684165790250 0
+82C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\pastaplace1.b9f2d0b6.png133680684165780270 0

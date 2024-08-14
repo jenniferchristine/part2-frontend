@@ -28,7 +28,7 @@ async function authorizeUser() {
         if (!response.ok) {
             throw new Error(`Something went wrong while accessing protected resource: ${response.statusText}`);
         }
-        console.log("You are now on protected route");
+        console.log("You are now on protected route", token);
 
     } catch (error) {
         console.error("Something went wrong while accessing protected resource:", error);
