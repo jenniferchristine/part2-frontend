@@ -246,6 +246,17 @@ main {
         p { line-height: 12px; }
         .line { border: $border-style $light_color; margin: 50px 0px 50px -20px; }
     }
+
+    #show--dish {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    #show--dish div {
+        padding: 2em;
+
+         h2 { text-align: left; }
+        &:nth-child(even) { background-color: darken($light_color, 1%); }
+    }
 }
 
 footer { 
