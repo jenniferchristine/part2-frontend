@@ -1,7 +1,15 @@
 "use strict";
 
+// säkerställer att koden körs
 document.addEventListener('DOMContentLoaded', () => {
-    displayData();
+
+    const cancelBtn = document.getElementById("cancel-btn");
+    cancelBtn.addEventListener('click', () => {
+        const overlay = document.getElementById("overlay");
+        overlay.style.display = "none";
+    });
+
+    displayData(); // anropar för att visa initial data
 });
 
 // hämtar data
@@ -25,6 +33,8 @@ async function fetchData() {
 // visar data
 async function displayData() {
     const resultDiv = document.getElementById("show--dishes"); // hämtar plats
+
+    resultDiv.innerHTML = "";
 
     try {
         const data = await fetchData();
@@ -50,6 +60,37 @@ async function displayData() {
             editIcon.textContent = "edit";
             editBtn.appendChild(editIcon);
 
+            editBtn.dataset.dishID = item._id;
+
+            editBtn.addEventListener('click', () => {
+                console.log(item._id);
+
+                const overlay = document.getElementById("overlay");
+                overlay.style.display = "flex";
+
+                document.getElementById("name").value = item.name;
+                document.getElementById("description").value = item.description;
+                document.getElementById("ingredients").value = item.ingredients;
+                document.getElementById("category").value = item.category;
+                document.getElementById("contains").value = item.contains;
+                document.getElementById("price").value = item.price;
+
+                document.getElementById("update-form").onsubmit = (e) => {
+                    e.preventDefault();
+
+                    const updatedDish = {
+                        name: document.getElementById("name").value,
+                        description: document.getElementById("description").value,
+                        ingredients: document.getElementById("ingredients").value,
+                        category: document.getElementById("category").value,
+                        contains: document.getElementById("contains").value,
+                        price: document.getElementById("price").value
+                    }
+
+                    updateData(item._id, updatedDish);
+                };
+            });
+
             const deleteBtn = document.createElement("button");
             deleteBtn.classList.add("delete-btn");
             const deleteIcon = document.createElement("span");
@@ -65,4 +106,28 @@ async function displayData() {
     } catch (error) {
         console.error("Fault occurred: ", error);
     }
-}
+};
+
+// uppdatera data
+async function updateData(id, update) {
+    try {
+        const response = await fetch(`https://pastaplace.onrender.com/dishes/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(update)
+        });
+
+        if (response.ok) {
+            console.log("Update successful");
+            const overlay = document.getElementById("overlay");
+            overlay.style.display = "none";
+
+        } else {
+            console.error("Error: Could not update data");
+        }
+    } catch (error) {
+        console.error("Error while updating", error);
+    }
+};

@@ -219,6 +219,8 @@ main {
         h1 { font-size: 26px; }
     }
 
+    .banner--third { display: none; }
+
     .main--right { margin-left: 280px; }
 
     .admin--holder { 
@@ -303,7 +305,8 @@ form {
     h2 { 
         @include text(14px, left);
         font: 100% $paragraph-text; 
-        margin: -0.5em 0 1em 0; }
+        margin: -0.5em 0 1em 0; 
+    }
 
     textarea { 
         @include border(none, 0.3em);
@@ -312,12 +315,23 @@ form {
         padding: 0.5em
     }
 
-    input { @extend textarea; width: 95%;}
+    input { @extend textarea; width: 95%; }
     select { @extend textarea; width: 50%; }
 
     .error-message {
         color: lighten($primary-color, 7%);
         font-style: italic;
         font-size: 12px;
+    }
+
+    .update-form-holder {
+        width: 400px;
+
+        .update-btns { text-align: right; margin: 2em 0 -0.5em 0; }
+        .update-btns button { @include border(none, 0.2em); font-size: 30px; color: $light_color; }
+        .update-btns > button:first-of-type { background-color: $confirm; margin-right: 0.2em; }
+        .update-btns > button:nth-of-type(2) { background-color: $error; }
+        div { margin: 1em 0; }
+
     }
 }
