@@ -23,7 +23,7 @@
 106C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\lightningcss-win32-x64-msvc\package.json133675268696585112 0
 107C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@swc\helpers\_\_create_super\package.json133675268719518711 0
 111C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@swc\helpers\src\_interop_require_default.mjs133675268722114413 0
-57C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist133680669340862287 1
+57C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist133680682211478961 1
 63C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\.gitignore133675270881075357 0
 98C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\css-what\lib\commonjs\index.d.ts133675268707048461 0
 95C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\css-select\lib\general.js.map133675268710636413 0
@@ -122,7 +122,7 @@
 122C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@parcel\optimizer-svgo\node_modules\csso\lib\restructure133680537442074826 1
 101C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\csso\lib\replace\property\border.js133675268712108580 0
 105C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\css-tree\lib\definition-syntax\index.js133675268718656481 0
-70C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\src\js\secured.js133680659514506854 0
+70C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\src\js\secured.js133680682211360804 0
 137C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\css-select\node_modules\entities\lib\esm\generated\encode-html.d.ts.map133675268709864330 0
 113C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@parcel\core\src\requests\WriteBundleRequest.js133675268718039144 0
 111C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\csso\node_modules\css-tree\cjs\data-patch.cjs133675268708418036 0
@@ -5142,7 +5142,7 @@
 134C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@parcel\optimizer-htmlnano\node_modules\csso\lib\clean\WhiteSpace.js133675268711418185 0
 115C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@parcel\runtime-js\src\helpers\node\css-loader.js133675268705682084 0
 118C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@parcel\runtime-js\src\helpers\browser\css-loader.js133675268704640778 0
-75C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\admin.6dd77f0d.js133680668551597516 0
+75C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\admin.6dd77f0d.js133680682211468955 0
 123C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@parcel\runtime-js\src\helpers\browser\import-polyfill.js133675268707758363 0
 123C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@parcel\runtime-js\src\helpers\browser\prefetch-loader.js133675268709585987 0
 122C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@parcel\runtime-js\src\helpers\browser\preload-loader.js133675268709894242 0
@@ -6047,9 +6047,9 @@
 84C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\dish3_sqaure.d6f45f32.webp133680668551507543 0
 82C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\pastaplace1.b9f2d0b6.png133680668551527544 0
 81C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\pasta1 vit.d88f1ae5.png133680668551527544 0
-79C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\admin.6dd77f0d.js.map133680668551607525 0
 84C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\dish2-square.167d4b66.webp133680668551669224 0
 84C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\dish6_sqaure.3b9a644c.webp133680668551679219 0
 68C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\admin.html133680668921439380 0
 75C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\index.aa69868b.js133680669340842227 0
 79C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\index.aa69868b.js.map133680669340862287 0
+79C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\admin.6dd77f0d.js.map133680682211478961 0
