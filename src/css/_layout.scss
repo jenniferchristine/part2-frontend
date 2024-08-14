@@ -97,7 +97,7 @@ header {
     ul { display: block; }
     a { color: $light_color; margin-left: 0.7em }
     img { width: 150px; margin: 30em 0 2em 12px; }
-    .material-symbols-outlined { color: $light_color; font-size: 24px; }
+    .material-symbols-outlined { color: $light_color; font-size: 24px; font-weight: 200; }
     .li-box { @include align(flex, center, left); margin: 0.5em 0 0 0; font-size: 16px; }
 }
 
@@ -250,6 +250,16 @@ main {
     #show--dish {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
+
+        .edit-div {
+        button { 
+            border: none;
+            border-radius: 0.2em;
+        }}
+
+        .edit-div > button:first-of-type { background-color: $confirm; }
+        .edit-div > button:nth-of-type(2) { background-color: $error; }
+
     }
     #show--dish div {
         padding: 2em;
