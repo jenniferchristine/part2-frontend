@@ -201,12 +201,25 @@ main {
 
     .banner { 
         @include align(flex, center, left);
-        height: 60px; 
-        background-color: $deviating-light; 
         padding: 0.5em 0;
         
+        h1 { margin-left: 20px; }
+    }
 
-        h1 { font-size: 26px; margin-left: 20px; }
+    .banner--first { 
+        height: 20px; 
+        background-color: $deviating-standout; 
+        color: $light_color;
+        justify-content: flex-end;
+
+        p { font-size: 14px; font-weight: 600; margin-right: 20px; }
+    }
+
+    .banner--second { 
+        height: 60px; 
+        background-color: $deviating-light; 
+
+        h1 { font-size: 26px; }
     }
 
     .main--right { margin-left: 280px; }
