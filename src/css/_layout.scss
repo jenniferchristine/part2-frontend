@@ -93,12 +93,11 @@ header {
     justify-content: center;
     align-items: center;
 
-    nav { margin-left: 20px;}
+    nav { margin-left: 12px;}
     ul { display: block; }
     a { color: $light_color; margin-left: 0.7em }
-    img { width: 100px; margin-left: 20px; }
+    img { width: 150px; margin: 30em 0 2em 12px; }
     .material-symbols-outlined { color: $light_color; font-size: 24px; }
-
     .li-box { @include align(flex, center, left); margin: 0.5em 0 0 0; font-size: 16px; }
 }
 
@@ -204,13 +203,36 @@ main {
         @include align(flex, center, left);
         height: 60px; 
         background-color: $deviating-light; 
-        padding: 0.5em 2em;
+        padding: 0.5em 0;
         
 
-        h1 { font-size: 26px; }
+        h1 { font-size: 26px; margin-left: 20px; }
     }
 
     .main--right { margin-left: 280px; }
+
+    .admin--holder { 
+        background-color: darken($light_color, 1%); 
+        border: $border-style $light_color; 
+        height: 100vh; 
+    }
+
+    .admin--frontpage {
+        margin: 20px 0 0 20px;
+        gap: 10em;
+
+        .big-number { 
+            font-size: 20px; 
+            font-weight: 800; 
+            color: $deviating-standout; 
+            letter-spacing: 1.5px;
+            margin-top: 1.8em; 
+            font: $font-stack}
+
+        h2 { text-align: left; font-size: 23px; }
+        p { line-height: 12px; }
+        .line { border: $border-style $light_color; margin: 50px 0px 50px -20px; }
+    }
 }
 
 footer { 
@@ -270,13 +292,4 @@ form {
         font-style: italic;
         font-size: 12px;
     }
-}
-
-.flex {
-    border-radius: 2em;
-    background-color: $light_color;
-    padding: 2em;
-    margin: 2em;
-
-    h1 { font-size: 20px; }
 }
