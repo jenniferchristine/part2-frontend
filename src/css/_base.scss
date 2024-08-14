@@ -66,3 +66,8 @@ $border-style: 1px solid;
     top: $top;
     left: $left;
 }
+
+@mixin grid($columns, $rows) {
+    grid-template-columns: $columns;
+    grid-template-rows: $rows;
+}

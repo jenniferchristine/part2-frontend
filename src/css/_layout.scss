@@ -167,17 +167,15 @@ main {
     }
 
     .block--collage {
+        @include grid(repeat(3, 1fr), repeat(3, 1fr));
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(3, 1fr);
 
         img { @include space(0, 0); width: 100%; object-fit: cover;}
     }
 
     .collage {
+        @include grid(repeat(3, 1fr), repeat(2, 1fr));
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2, 1fr); 
         position: relative; 
 
         img { width: 100%; }
@@ -207,9 +205,8 @@ main {
     }
 
     .banner--first { 
+        @include color($deviating-standout, $light_color);
         height: 20px; 
-        background-color: $deviating-standout; 
-        color: $light_color;
         justify-content: flex-end;
 
         p { font-size: 14px; font-weight: 600; margin-right: 20px; }
@@ -240,31 +237,28 @@ main {
             color: $deviating-standout; 
             letter-spacing: 1.5px;
             margin-top: 1.8em; 
-            font: $font-stack}
+            font: $font-stack }
 
-        h2 { text-align: left; font-size: 23px; }
+        h2 { @include text(23px, left); }
         p { line-height: 12px; }
         .line { border: $border-style $light_color; margin: 50px 0px 50px -20px; }
     }
 
-    #show--dish {
+    #show--dishes {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
 
-        .edit-div {
-        button { 
-            border: none;
-            border-radius: 0.2em;
-        }}
-
-        .edit-div > button:first-of-type { background-color: $confirm; }
+        .edit-div button { @include border(none, 0.2em); }
+        .material-symbols-outlined { font-weight: 300; color: $light_color; }
+        .edit-div > button:first-of-type { background-color: $confirm; margin-right: 0.5em; }
         .edit-div > button:nth-of-type(2) { background-color: $error; }
 
     }
-    #show--dish div {
+    .result-dish {
         padding: 2em;
 
-         h2 { text-align: left; }
+         h1 { text-align: left; font-size: 20px; margin-bottom: 1.2em;}
+         div { text-align: right; }
         &:nth-child(even) { background-color: darken($light_color, 1%); }
     }
 }

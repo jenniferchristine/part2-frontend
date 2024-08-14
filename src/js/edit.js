@@ -24,21 +24,21 @@ async function fetchData() {
 
 // visar data
 async function displayData() {
-    const resultDiv = document.getElementById("show--dish"); // hämtar plats
+    const resultDiv = document.getElementById("show--dishes"); // hämtar plats
 
     try {
         const data = await fetchData();
         data.forEach(item => { // loopar igenom innehåll
             const dishDiv = document.createElement("div"); // skapa div för varje innehåll
+            dishDiv.classList.add("result-dish");
+
             dishDiv.innerHTML = `
-                <h2>${item.name}</h2>
-                <p class="smaller">${item.description}</p>
-                <h3>Ingredienser:</h3>
-                <p>${item.ingredients}</p>
-                <h3>Innehåller:</h3>
-                <p>${item.contains || "Ej specificerat"}</p> <!-- Hantera undefined -->
-                <h3>Pris:</h3>
-                <p>${item.currency}</p>`;
+                <h1>${item.name}</h1>
+                <p><strong>Beskrivning: </strong>${item.description}</p>
+                <p><strong>Ingredienser: </strong>${item.ingredients}</p>
+                <p><strong>Typ av rätt: </strong>${item.category}</p>
+                <p><strong>Innehåller: </strong>${item.contains}</p>
+                <p><strong>Pris: </strong>${item.currency}</p>`;
 
             const btnDiv = document.createElement("div");
             btnDiv.classList.add("edit-div");
