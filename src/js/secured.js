@@ -1,6 +1,6 @@
 "use strict";
 
-document.addEventListener("DOMContentLoaded", () => {
+/*document.addEventListener("DOMContentLoaded", () => {
     const logoutBtn = document.getElementById("logout-btn");
 
     logoutBtn.addEventListener('click', (e) => {
@@ -39,4 +39,4 @@ async function authorizeUser() {
 function logOut() {
     localStorage.removeItem("token");
     window.location.href ="index.html"
-};
+};*/
