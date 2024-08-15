@@ -45,7 +45,6 @@ async function fetchData() {
 // visar data
 async function displayData() {
     const resultDiv = document.getElementById("show--dishes"); // hämtar plats
-
     resultDiv.innerHTML = "";
 
     try {
@@ -77,7 +76,10 @@ async function displayData() {
             editBtn.addEventListener('click', () => {
                 const overlay = document.getElementById("overlay");
                 const confirmationWrapper = document.getElementById("confirmation");
+                const addForm = document.getElementById("add-form");
+
                 confirmationWrapper.style.display = 'none'
+                addForm.style.display = 'none'
                 overlay.style.display = 'flex';
 
                 document.getElementById("name").value = item.name;
@@ -112,7 +114,10 @@ async function displayData() {
 
             deleteBtn.addEventListener('click', async () => {
                 const form = document.getElementById("update-form");
+                const addForm = document.getElementById("add-form");
+
                 form.style.display = 'none';
+                addForm.style.display = 'none'
 
                 try {
                     const confirmed = await showConfirmation("Är du säker på att du vill radera denna rätten?");
