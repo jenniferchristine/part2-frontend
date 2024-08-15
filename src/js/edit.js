@@ -9,16 +9,25 @@ document.addEventListener('DOMContentLoaded', () => {
         overlay.style.display = 'none';
     });
 
-    const addBtn = document.getElementById("add-btn");
-    addBtn.addEventListener('click', () => {
+    const backBtn = document.getElementById("back-btn");
+    backBtn.addEventListener('click', () => {
+        const overlay = document.getElementById("overlay");
+        overlay.style.display = 'none';
+    });
+
+    const addFormBtn = document.getElementById("add-to-btn");
+    addFormBtn.addEventListener('click', () => {
         const updateForm = document.getElementById("update-form");
         const confirmation = document.getElementById("confirmation");
 
         overlay.style.display = 'flex';
         updateForm.style.display = 'none';
         confirmation.style.display = 'none';
+    });
 
-        addData();
+    const addToBtn = document.getElementById("add-btn");
+    addToBtn.addEventListener('click', (e) => {
+        e.preventDefault(); addData();
     });
 
     displayData(); // anropar för att visa initial data
@@ -170,14 +179,14 @@ async function addData() {
     try {
         const response = await fetch(url, {
             method: 'POST',
-            header: {
+            headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(newDish)
         });
 
         const data = await response.json();
-        console.log("newDish | Responsdata:", data.errors);
+        console.log("Responsdata:", data.errors);
 
         if (!response.ok) {
             handleValidation(data.errors);
@@ -222,6 +231,7 @@ async function updateData(id, update) {
     }
 };
 
+// visa bekräftelse
 async function showConfirmation(message) {
     const overlay = document.getElementById("overlay");
     overlay.style.display = 'flex';
@@ -278,13 +288,13 @@ async function deleteData(id) {
     console.log("Rätten är raderad");
 
     const confirmation = document.querySelector(".banner--third");
-    confirmation.style.display = 'block';
+    confirmation.style.display = 'flex';
     
     confirmation.innerHTML = `
-    <span class="material-symbols-outlined">check</span>
     <p>Din rätt är raderad</p>`;
 };
 
+// hantera felmeddelanden
 function handleValidation(errors) {
     if (errors) {
         if (errors.name) {

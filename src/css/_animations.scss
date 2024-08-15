@@ -21,3 +21,15 @@
       background-color: $primary-color;
     }
   }
+
+  @keyframes fadeWhiteAndGreen {
+    0% {
+        background-color: lighten($confirm, 20%);
+    }
+    50% {
+        background-color: $confirm;
+    }
+    100% {
+        background-color: lighten($confirm, 10%);
+    }
+}

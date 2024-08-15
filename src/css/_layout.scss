@@ -246,7 +246,15 @@ main {
         h1 { font-size: 26px; }
     }
 
-    .banner--third { display: none; }
+    .banner--third { 
+        display: none; 
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        animation: fadeWhiteAndGreen 1s forwards;
+
+        p { margin-left: 20px; color: $light_color; font: 100% $font-stack; font-weight: 500; letter-spacing: 0.5px; }
+    }
 
     .main--right { margin-left: 280px; }
 
