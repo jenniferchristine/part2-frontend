@@ -142,7 +142,60 @@ async function displayData() {
 };
 
 async function addData() {
+    const name = document.getElementById("name-add").value;
+    const description = document.getElementById("description-add").value;
+    const category = document.getElementById("category-add").value;
+    const contains = document.getElementById("contains-add").value;
+    const ingredients = document.getElementById("ingredients-add").value;
+    const price = document.getElementById("price-add").value;
 
+    document.getElementById("name-add-error").textContent = "";
+    document.getElementById("description-add-error").textContent = "";
+    document.getElementById("category-add-error").textContent = "";
+    document.getElementById("contains-add-error").textContent = "";
+    document.getElementById("ingredients-add-error").textContent = "";
+    document.getElementById("price-add-error").textContent = "";
+
+    const newDish = {
+        name: name,
+        description: description,
+        category: category,
+        contains: contains,
+        ingredients: ingredients,
+        price: price
+    };
+
+    const url = "https://pastaplace.onrender.com/dishes";
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            header: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newDish)
+        });
+
+        const data = await response.json();
+        console.log("newDish | Responsdata:", data.errors);
+
+        if (!response.ok) {
+            handleValidation(data.errors);
+            throw new Error("Failed to add data");
+        }
+
+        document.getElementById("name-add").value = "";
+        document.getElementById("description-add").value = "";
+        document.getElementById("category-add").value = "";
+        document.getElementById("contains-add").value = "";
+        document.getElementById("ingredients-add").value = "";
+        document.getElementById("price-add").value = "";
+        
+        console.log("Data added", data);
+    
+    } catch (error) {
+        console.error("Error when adding data", error);
+    }
 };
 
 // uppdatera data
@@ -230,4 +283,27 @@ async function deleteData(id) {
     confirmation.innerHTML = `
     <span class="material-symbols-outlined">check</span>
     <p>Din rätt är raderad</p>`;
+};
+
+function handleValidation(errors) {
+    if (errors) {
+        if (errors.name) {
+            document.getElementById("name-add-error").textContent = errors.name;
+        }
+        if (errors.description) {
+            document.getElementById("description-add-error").textContent = errors.description;
+        }
+        if (errors.category) {
+            document.getElementById("category-add-error").textContent = errors.category;
+        }
+        if (errors.contains) {
+            document.getElementById("contains-add-error").textContent = errors.contains;
+        }
+        if (errors.ingredients) {
+            document.getElementById("ingredients-add-error").textContent = errors.ingredients;
+        }
+        if (errors.price) {
+            document.getElementById("price-add-error").textContent = errors.price;
+        }
+    }
 };
