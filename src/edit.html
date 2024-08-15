@@ -69,6 +69,7 @@
             </div>
             <div class="banner banner--second">
                 <h1>Dashboard</h1>
+                    <button id="add-btn" type="button">ADDERA MATRÄTT</button>
             </div>
             <div class="banner banner--third">
 
@@ -79,45 +80,85 @@
                 </div>
             </div>
 
-            <div id="overlay" class="overlay">
-                <form id="update-form">
-                    <h1>Uppdatera maträtt</h1>
-                    <div class="update-form-holder">
-                        <div>
-                            <label for="name">Namn:</label><br>
-                            <input type="text" id="name" name="name" value="" required>
-                        </div>
-                        <div>
-                            <label for="description">Beskrivning:</label><br>
-                            <textarea type="text" id="description" rows="4" cols="32" name="description" value=""
-                                required></textarea>
-                        </div>
-                        <div>
-                            <label for="category">Kategori:</label><br>
-                            <input type="text" id="category" name="category" value="" required>
-                        </div>
-                        <div>
-                            <label for="contains">Innehåller:</label><br>
-                            <input type="text" id="contains" name="contains" value="" required>
-                        </div>
-                        <div>
-                            <label for="ingredients">Ingredienser:</label><br>
-                            <textarea type="text" id="ingredients" rows="4" cols="32" name="ingredients" value=""
-                                required></textarea>
-                        </div>
-                        <div>
-                            <label for="price">Pris:</label><br>
-                            <input type="number" id="price" name="price" value="" required>
-                        </div>
-                        <div class="update-btns">
-                            <button id="update-btn" type="submit" class="material-symbols-outlined">update</button>
-                            <button id="cancel-btn" type="button" class="material-symbols-outlined">cancel</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
     </main>
+
+    <div id="overlay" class="overlay">
+        <form id="update-form">
+            <h1>Uppdatera maträtt</h1>
+            <div class="update-form-holder">
+                <div>
+                    <label for="name">Namn:</label><br>
+                    <input type="text" id="name" name="name" value="" required>
+                </div>
+                <div>
+                    <label for="description">Beskrivning:</label><br>
+                    <textarea type="text" id="description" rows="4" cols="32" name="description" value=""
+                        required></textarea>
+                </div>
+                <div>
+                    <label for="category">Kategori:</label><br>
+                    <input type="text" id="category" name="category" value="" required>
+                </div>
+                <div>
+                    <label for="contains">Innehåller:</label><br>
+                    <input type="text" id="contains" name="contains" value="" required>
+                </div>
+                <div>
+                    <label for="ingredients">Ingredienser:</label><br>
+                    <textarea type="text" id="ingredients" rows="4" cols="32" name="ingredients" value=""
+                        required></textarea>
+                </div>
+                <div>
+                    <label for="price">Pris:</label><br>
+                    <input type="number" id="price" name="price" value="" required>
+                </div>
+                <div class="update-btns">
+                    <button id="update-btn" type="submit" class="material-symbols-outlined">update</button>
+                    <button id="cancel-btn" type="button" class="material-symbols-outlined">cancel</button>
+                </div>
+            </div>
+        </form>
+
+        <div id="confirmation">
+
+            <form id="add-form">
+                <h1>Uppdatera maträtt</h1>
+                <div class="update-form-holder">
+                    <div>
+                        <label for="name">Namn:</label><br>
+                        <input type="text" id="name" name="name" value="" required>
+                    </div>
+                    <div>
+                        <label for="description">Beskrivning:</label><br>
+                        <textarea type="text" id="description" rows="4" cols="32" name="description" value=""
+                            required></textarea>
+                    </div>
+                    <div>
+                        <label for="category">Kategori:</label><br>
+                        <input type="text" id="category" name="category" value="" required>
+                    </div>
+                    <div>
+                        <label for="contains">Innehåller:</label><br>
+                        <input type="text" id="contains" name="contains" value="" required>
+                    </div>
+                    <div>
+                        <label for="ingredients">Ingredienser:</label><br>
+                        <textarea type="text" id="ingredients" rows="4" cols="32" name="ingredients" value=""
+                            required></textarea>
+                    </div>
+                    <div>
+                        <label for="price">Pris:</label><br>
+                        <input type="number" id="price" name="price" value="" required>
+                    </div>
+                    <div class="update-btns">
+                        <button id="update-btn" type="submit" class="material-symbols-outlined">update</button>
+                        <button id="cancel-btn" type="button" class="material-symbols-outlined">cancel</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
 
 </body>
 

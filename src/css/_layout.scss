@@ -37,6 +37,11 @@ body {
     
     .btn-div { display: flex; gap: 2em; }
 
+    .update-btns { text-align: right; margin: 2em 0 -0.5em 0; }
+    .update-btns button { @include border(none, 0.2em); font-size: 30px; color: $light_color; }
+    .update-btns > button:first-of-type { background-color: $confirm; margin-right: 0.2em; }
+    .update-btns > button:nth-of-type(2) { background-color: $error; }
+
     .overlay {
         @include placing(fixed, 0, 0);
         @include size(100%, 100%);
@@ -56,7 +61,18 @@ body {
         font-size: 16px;
         display: none;
         transition: opacity 0.3s ease;
-    }    
+    }
+    
+    #confirmation { width: 400px; }
+    
+    .show-confirmation {
+        background-color: $deviating-light;
+        padding: 2em; 
+        border-radius: 1em;
+    }
+    
+    #warning-message { display: flex;
+        #warning { color: $error; margin-right: 0.5em; }}
 }
 
 header {
@@ -65,23 +81,6 @@ header {
     padding: 1em;
 
     img { width: 300px; }
-}
-
-#hero {
-    @include align(flex, center, center);
-    position: relative;
-    width: 100%;
-    margin: 0 auto;
-  
-    img:first-child { @include size(100%, auto); display: block; }
-  
-    #overlay-image {
-      @include placing(absolute, 50%, 50%);
-      @include align(flex, center, center);
-      transform: translate(-50%, -50%);
-      
-      img { width: auto; height: auto; }
-    }
 }
 
 .header--fixed {
@@ -99,6 +98,23 @@ header {
     img { width: 150px; margin: 30em 0 2em 12px; }
     .material-symbols-outlined { color: $light_color; font-size: 24px; font-weight: 200; }
     .li-box { @include align(flex, center, left); margin: 0.5em 0 0 0; font-size: 16px; }
+}
+
+#hero {
+    @include align(flex, center, center);
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+  
+    img:first-child { @include size(100%, auto); display: block; }
+  
+    #overlay-image {
+      @include placing(absolute, 50%, 50%);
+      @include align(flex, center, center);
+      transform: translate(-50%, -50%);
+      
+      img { width: auto; height: auto; }
+    }
 }
 
 nav {
@@ -215,6 +231,17 @@ main {
     .banner--second { 
         height: 60px; 
         background-color: $deviating-light; 
+        justify-content: space-between;
+
+        button { 
+            margin-right: 20px; 
+            padding: 0.5em;
+            background-color: $confirm;
+            color: $light_color;
+            border: 2px solid $light_color;
+            border-radius: 0.4em;
+            font: 100% $paragraph-text;
+        }
 
         h1 { font-size: 26px; }
     }
@@ -324,14 +351,6 @@ form {
         font-size: 12px;
     }
 
-    .update-form-holder {
-        width: 400px;
-
-        .update-btns { text-align: right; margin: 2em 0 -0.5em 0; }
-        .update-btns button { @include border(none, 0.2em); font-size: 30px; color: $light_color; }
-        .update-btns > button:first-of-type { background-color: $confirm; margin-right: 0.2em; }
-        .update-btns > button:nth-of-type(2) { background-color: $error; }
-        div { margin: 1em 0; }
-
-    }
+    .update-form-holder { width: 400px;
+        div { margin: 1em 0; }}
 }
