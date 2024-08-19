@@ -311,6 +311,7 @@ async function deleteData(id) {
         confirmationMessage("Bokningen är raderad!");
     }
 
+    
     displayData();
 };
 
