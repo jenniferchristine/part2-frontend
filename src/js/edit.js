@@ -45,7 +45,7 @@ async function fetchData() {
     }
 };
 
-// visa data
+/*// visa data
 async function displayData() {
     resultDiv.innerHTML = "";
 
@@ -134,6 +134,66 @@ async function displayData() {
     } catch (error) {
         console.error("Fault occurred: ", error);
     }
+};*/
+
+// visa data
+async function displayData() {
+    resultDiv.innerHTML = ""; // rensa befintligt innehåll
+
+    try {
+        const data = await fetchData();
+        data.forEach(item => createDishElement(item));
+    } catch (error) {
+        console.error("Fault accured:", error);
+    }
+};
+
+// skapa element för rätter
+function createDishElement(item) {
+    const dishDiv = document.createElement("div");
+    dishDiv.classList.add("result-dish");
+
+    dishDiv.innerHTML = `
+    <h1>${item.name}</h1>
+    <p><strong>Beskrivning: </strong>${item.description}</p>
+    <p><strong>Ingredienser: </strong>${item.ingredients}</p>
+    <p><strong>Typ av rätt: </strong>${item.category}</p>
+    <p><strong>Innehåller: </strong>${item.contains}</p>
+    <p><strong>Pris: </strong>${item.currency}</p>`;
+
+    const btnDiv = createButtonDiv(item);
+    dishDiv.appendChild(btnDiv);
+    resultDiv.appendChild(dishDiv);
+};
+
+// skapa div för knappar
+function createButtonDiv(item) {
+    const btnDiv = document.createElement("div");
+    btnDiv.classList.add("edit-div");
+
+    const editBtn = document.createElement("button");
+    editBtn.classList.add("edit-btn");
+    const editIcon = document.createElement("span");
+    editIcon.classList.add("material-symbols-outlined");
+    editIcon.textContent = "edit";
+    editBtn.appendChild(editIcon);
+
+    editBtn.dataset.dishID = item._id;
+    editBtn.addEventListener('click', () => editDish(item));
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.classList.add("delete-btn");
+    const deleteIcon = document.createElement("span");
+    deleteIcon.classList.add("material-symbols-outlined");
+    deleteIcon.textContent = "delete";
+    deleteBtn.appendChild(deleteIcon);
+
+    deleteBtn.addEventListener('click', () => confirmDeletion(item._id));
+
+    btnDiv.appendChild(editBtn);
+    btnDiv.appendChild(deleteBtn);
+
+    return btnDiv;
 };
 
 // addera data
@@ -317,3 +377,40 @@ function closeOverlay() {
     overlay.style.display = 'none';
     window.location.reload();
 };
+
+function editDish(item) {
+    overlay.style.display = 'flex';
+    addForm.style.display = 'none';
+
+    document.getElementById("name").value = item.name;
+    document.getElementById("description").value = item.description;
+    document.getElementById("ingredients").value = item.ingredients;
+    document.getElementById("category").value = item.category;
+    document.getElementById("contains").value = item.contains;
+    document.getElementById("price").value = item.price;
+
+    updateForm.onsubmit = (e) => {
+        e.preventDefault();
+        const updatedDish = {
+            name: document.getElementById("name").value,
+            description: document.getElementById("description").value,
+            ingredients: document.getElementById("ingredients").value,
+            category: document.getElementById("category").value,
+            contains: document.getElementById("contains").value,
+            price: document.getElementById("price").value
+        };
+        updateData(item._id, updatedDish);
+    };
+}
+
+async function confirmDeletion(id) {
+    try {
+        const confirmed = await showConfirmation("Är du säker på att du vill radera denna rätten?");
+        if (confirmed) {
+            await deleteData(id);
+            displayData();
+        }
+    } catch (error) {
+        console.error("Error occurred during deletion:", error);
+    }
+}
