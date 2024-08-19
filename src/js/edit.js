@@ -13,16 +13,17 @@ document.addEventListener('DOMContentLoaded', () => {
     addForm = document.getElementById("add-form");
 
      // eventlyssnare
-    const addFormBtn = document.getElementById("add-to-btn");
+    /*const addFormBtn = document.getElementById("add-to-btn");
     addFormBtn.addEventListener('click', () => {
         overlay.style.display = 'flex';
         updateForm.style.display = 'none';
         confirmation.style.display = 'none';
-    });
+    });*/
 
+    document.getElementById("add-to-btn").addEventListener('click', () => { showOverlay('add') });
     document.getElementById("add-btn").addEventListener('click', (e) => { e.preventDefault(); addData(); });
-    document.getElementById("cancel-btn").addEventListener('click', closeOverlay);
-    document.getElementById("back-btn").addEventListener('click', closeOverlay);
+    document.getElementById("cancel-btn").addEventListener('click', () => { closeOverlay() });
+    document.getElementById("back-btn").addEventListener('click', () => { closeOverlay() });
 
     displayData(); // anropar för att visa initial data
 });
@@ -45,104 +46,13 @@ async function fetchData() {
     }
 };
 
-/*// visa data
-async function displayData() {
-    resultDiv.innerHTML = "";
-
-    try {
-        const data = await fetchData();
-        data.forEach(item => { // loopar igenom innehåll
-            const dishDiv = document.createElement("div"); // skapa div för varje innehåll
-            dishDiv.classList.add("result-dish");
-
-            dishDiv.innerHTML = `
-                <h1>${item.name}</h1>
-                <p><strong>Beskrivning: </strong>${item.description}</p>
-                <p><strong>Ingredienser: </strong>${item.ingredients}</p>
-                <p><strong>Typ av rätt: </strong>${item.category}</p>
-                <p><strong>Innehåller: </strong>${item.contains}</p>
-                <p><strong>Pris: </strong>${item.currency}</p>`;
-
-            const btnDiv = document.createElement("div");
-            btnDiv.classList.add("edit-div");
-
-            const editBtn = document.createElement("button");
-            editBtn.classList.add("edit-btn");
-            const editIcon = document.createElement("span");
-            editIcon.classList.add("material-symbols-outlined");
-            editIcon.textContent = "edit";
-            editBtn.appendChild(editIcon);
-
-            editBtn.dataset.dishID = item._id;
-
-            editBtn.addEventListener('click', () => {
-                confirmation.style.display = 'none'
-                addForm.style.display = 'none'
-                overlay.style.display = 'flex';
-
-                document.getElementById("name").value = item.name;
-                document.getElementById("description").value = item.description;
-                document.getElementById("ingredients").value = item.ingredients;
-                document.getElementById("category").value = item.category;
-                document.getElementById("contains").value = item.contains;
-                document.getElementById("price").value = item.price;
-
-                document.getElementById("update-form").onsubmit = (e) => {
-                    e.preventDefault();
-
-                    const updatedDish = {
-                        name: document.getElementById("name").value,
-                        description: document.getElementById("description").value,
-                        ingredients: document.getElementById("ingredients").value,
-                        category: document.getElementById("category").value,
-                        contains: document.getElementById("contains").value,
-                        price: document.getElementById("price").value
-                    }
-
-                    updateData(item._id, updatedDish);
-                };
-            });
-
-            const deleteBtn = document.createElement("button");
-            deleteBtn.classList.add("delete-btn");
-            const deleteIcon = document.createElement("span");
-            deleteIcon.classList.add("material-symbols-outlined");
-            deleteIcon.textContent = "delete";
-            deleteBtn.appendChild(deleteIcon);
-
-            deleteBtn.addEventListener('click', async () => {
-                updateForm.style.display = 'none';
-                addForm.style.display = 'none'
-
-                try {
-                    const confirmed = await showConfirmation("Är du säker på att du vill radera denna rätten?");
-
-                    if (confirmed) {
-                        await deleteData(item._id);
-                        resultDiv.removeChild(dishDiv);
-                    }
-                } catch (error) {
-                    console.error("Fault accured:", error);
-                }
-            });
-
-            btnDiv.appendChild(editBtn);
-            btnDiv.appendChild(deleteBtn);
-            dishDiv.appendChild(btnDiv);
-            resultDiv.appendChild(dishDiv);
-        });
-    } catch (error) {
-        console.error("Fault occurred: ", error);
-    }
-};*/
-
 // visa data
 async function displayData() {
     resultDiv.innerHTML = ""; // rensa befintligt innehåll
 
     try {
         const data = await fetchData();
-        data.forEach(item => createDishElement(item));
+        data.forEach(item => createDishElement(item)); // loopen körs genom funktionen som skapar varje item
     } catch (error) {
         console.error("Fault accured:", error);
     }
@@ -161,7 +71,7 @@ function createDishElement(item) {
     <p><strong>Innehåller: </strong>${item.contains}</p>
     <p><strong>Pris: </strong>${item.currency}</p>`;
 
-    const btnDiv = createButtonDiv(item);
+    const btnDiv = createButtonDiv(item); // skapar alla knappar för sig
     dishDiv.appendChild(btnDiv);
     resultDiv.appendChild(dishDiv);
 };
@@ -249,6 +159,7 @@ async function addData() {
         
         console.log("Data added", data);
 
+        overlay.style.display = 'none';
         confirmationMessage("Din rätt är tillagd!");
         displayData(); // uppdatera sida
     
@@ -270,6 +181,8 @@ async function updateData(id, update) {
 
         if (response.ok) {
             console.log("Update successful");
+
+            overlay.style.display = 'none';
             confirmationMessage("Din rätt uppdaterad!");
             displayData(); // uppdatera sidan
 
@@ -281,10 +194,33 @@ async function updateData(id, update) {
     }
 };
 
+function editDish(item) {
+    document.getElementById("name").value = item.name;
+    document.getElementById("description").value = item.description;
+    document.getElementById("ingredients").value = item.ingredients;
+    document.getElementById("category").value = item.category;
+    document.getElementById("contains").value = item.contains;
+    document.getElementById("price").value = item.price;
+
+    showOverlay('update');
+
+    updateForm.onsubmit = (e) => {
+        e.preventDefault();
+        const updatedDish = {
+            name: document.getElementById("name").value,
+            description: document.getElementById("description").value,
+            ingredients: document.getElementById("ingredients").value,
+            category: document.getElementById("category").value,
+            contains: document.getElementById("contains").value,
+            price: document.getElementById("price").value
+        };
+        updateData(item._id, updatedDish);
+    };
+}
+
 // visa bekräftelse
 async function showConfirmation(message) {
-    overlay.style.display = 'flex';
-
+    showOverlay('confirmation');
     window.scrollTo({ top: 0, behavior: 'smooth' }); // scrollar upp för 
 
     return new Promise((resolve, reject) => {
@@ -316,11 +252,20 @@ async function showConfirmation(message) {
 
         noBtn.addEventListener('click', () => {
             console.log("noBtn");
-            window.location.reload();
+            confirmation.innerHTML = "";
+            overlay.style.display = 'none';
 
             resolve(false);
         });
     }); 
+};
+
+// bekräftelsemeddelanden
+function confirmationMessage(message) {
+    const confirmation = document.querySelector(".banner--third");  
+    confirmation.style.display = 'flex';
+
+    confirmation.innerHTML = `<p>${message}`;
 };
 
 // radera data
@@ -338,6 +283,19 @@ async function deleteData(id) {
 
     confirmationMessage("Din rätt är raderad!");
     displayData();
+};
+
+// bekräfta radera
+async function confirmDeletion(id) {
+    try {
+        const confirmed = await showConfirmation("Är du säker på att du vill radera denna rätten?");
+        if (confirmed) {
+            await deleteData(id);
+            displayData();
+        }
+    } catch (error) {
+        console.error("Error occurred during deletion:", error);
+    }
 };
 
 // hantera felmeddelanden
@@ -364,53 +322,31 @@ function handleValidation(errors) {
     }
 };
 
-// bekräftelsemeddelanden
-function confirmationMessage(message) {
-    const confirmation = document.querySelector(".banner--third");  
-    confirmation.style.display = 'flex';
+// visa overlay
+function showOverlay(formToShow) {
+    overlay.style.display = 'flex'; // visar overlay
 
-    confirmation.innerHTML = `<p>${message}`;
+    // döljer allt innehåll för sig
+    addForm.style.display = 'none';
+    updateForm.style.display = 'none';
+    confirmation.style.display = 'none';
+
+    if (formToShow === 'add') {
+        addForm.style.display = 'block';
+    } else if (formToShow === 'update') {
+        updateForm.style.display = 'block';
+    } else if (formToShow === 'confirmation') {
+        confirmation.style.display = 'block';
+    }
 };
 
-// stäng overlay
+// dölj overlay
 function closeOverlay() {
     overlay.style.display = 'none';
-    window.location.reload();
-};
 
-function editDish(item) {
-    overlay.style.display = 'flex';
-    addForm.style.display = 'none';
-
-    document.getElementById("name").value = item.name;
-    document.getElementById("description").value = item.description;
-    document.getElementById("ingredients").value = item.ingredients;
-    document.getElementById("category").value = item.category;
-    document.getElementById("contains").value = item.contains;
-    document.getElementById("price").value = item.price;
-
-    updateForm.onsubmit = (e) => {
-        e.preventDefault();
-        const updatedDish = {
-            name: document.getElementById("name").value,
-            description: document.getElementById("description").value,
-            ingredients: document.getElementById("ingredients").value,
-            category: document.getElementById("category").value,
-            contains: document.getElementById("contains").value,
-            price: document.getElementById("price").value
-        };
-        updateData(item._id, updatedDish);
-    };
-}
-
-async function confirmDeletion(id) {
-    try {
-        const confirmed = await showConfirmation("Är du säker på att du vill radera denna rätten?");
-        if (confirmed) {
-            await deleteData(id);
-            displayData();
-        }
-    } catch (error) {
-        console.error("Error occurred during deletion:", error);
-    }
+    // rensa alla formulär
+    document.querySelectorAll("error-message").forEach(el => el.textContent = "");
+    addForm.reset();
+    updateForm.reset();
+    confirmation.innerHTML = "";
 }
