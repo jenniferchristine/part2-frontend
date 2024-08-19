@@ -12,14 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
     updateForm = document.getElementById("update-form");
     addForm = document.getElementById("add-form");
 
-     // eventlyssnare
-    /*const addFormBtn = document.getElementById("add-to-btn");
-    addFormBtn.addEventListener('click', () => {
-        overlay.style.display = 'flex';
-        updateForm.style.display = 'none';
-        confirmation.style.display = 'none';
-    });*/
-
     document.getElementById("add-to-btn").addEventListener('click', () => { showOverlay('add') });
     document.getElementById("add-btn").addEventListener('click', (e) => { e.preventDefault(); addData(); });
     document.getElementById("cancel-btn").addEventListener('click', () => { closeOverlay() });
@@ -216,7 +208,7 @@ function editDish(item) {
         };
         updateData(item._id, updatedDish);
     };
-}
+};
 
 // visa bekräftelse
 async function showConfirmation(message) {
