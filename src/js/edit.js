@@ -1,7 +1,6 @@
 "use strict";
 
-// globala variabler 
-let overlay, resultDiv, confirmation, updateForm, addForm;
+let overlay, resultDiv, confirmation, updateForm, addForm; // globala variabler 
 
 // säkerställer att koden körs
 document.addEventListener('DOMContentLoaded', () => {
@@ -13,20 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateForm = document.getElementById("update-form");
     addForm = document.getElementById("add-form");
 
-    const cancelBtn = document.getElementById("cancel-btn");
-    cancelBtn.addEventListener('click', () => {
-        overlay.style.display = 'none';
-
-        window.location.reload();
-    });
-
-    const backBtn = document.getElementById("back-btn");
-    backBtn.addEventListener('click', () => {
-        overlay.style.display = 'none';
-
-        window.location.reload();
-    });
-
+     // eventlyssnare
     const addFormBtn = document.getElementById("add-to-btn");
     addFormBtn.addEventListener('click', () => {
         overlay.style.display = 'flex';
@@ -34,15 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
         confirmation.style.display = 'none';
     });
 
-    const addToBtn = document.getElementById("add-btn");
-    addToBtn.addEventListener('click', (e) => {
-        e.preventDefault(); addData();
-    });
+    document.getElementById("add-btn").addEventListener('click', (e) => { e.preventDefault(); addData(); });
+    document.getElementById("cancel-btn").addEventListener('click', closeOverlay);
+    document.getElementById("back-btn").addEventListener('click', closeOverlay);
 
     displayData(); // anropar för att visa initial data
 });
 
-// hämtar data
+// hämta data
 async function fetchData() {
     const url = "https://pastaplace.onrender.com/dishes";
 
@@ -60,7 +45,7 @@ async function fetchData() {
     }
 };
 
-// visar data
+// visa data
 async function displayData() {
     resultDiv.innerHTML = "";
 
@@ -151,6 +136,7 @@ async function displayData() {
     }
 };
 
+// addera data
 async function addData() {
     const name = document.getElementById("name-add").value;
     const description = document.getElementById("description-add").value;
@@ -224,10 +210,9 @@ async function updateData(id, update) {
 
         if (response.ok) {
             console.log("Update successful");
-            overlay.style.display = "none";
             confirmationMessage("Din rätt uppdaterad!");
-
             displayData(); // uppdatera sidan
+
         } else {
             console.error("Error: Could not update data");
         }
@@ -319,10 +304,16 @@ function handleValidation(errors) {
     }
 };
 
-// funktion för bekräftelsemeddelanden
+// bekräftelsemeddelanden
 function confirmationMessage(message) {
     const confirmation = document.querySelector(".banner--third");  
     confirmation.style.display = 'flex';
 
     confirmation.innerHTML = `<p>${message}`;
+};
+
+// stäng overlay
+function closeOverlay() {
+    overlay.style.display = 'none';
+    window.location.reload();
 };
