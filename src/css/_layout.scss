@@ -13,7 +13,7 @@ body {
 
     h1 { @include text(44px, left); }
     h2 { @include text(22px, center); margin: 0; }
-    p { font: 100% $paragraph-text; margin-top: 8px; }
+    p { font: 100% $paragraph-text; }
 
     .button {
         @include align(flex, center, center);

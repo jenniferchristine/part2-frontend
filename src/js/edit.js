@@ -1,25 +1,34 @@
 "use strict";
 
+// globala variabler 
+let overlay, resultDiv, confirmation, updateForm, addForm;
+
 // säkerställer att koden körs
 document.addEventListener('DOMContentLoaded', () => {
+    
+    // tilldela variabler
+    overlay = document.getElementById("overlay");
+    resultDiv = document.getElementById("show--dishes");
+    confirmation = document.getElementById("confirmation");
+    updateForm = document.getElementById("update-form");
+    addForm = document.getElementById("add-form");
 
     const cancelBtn = document.getElementById("cancel-btn");
     cancelBtn.addEventListener('click', () => {
-        const overlay = document.getElementById("overlay");
         overlay.style.display = 'none';
+
+        window.location.reload();
     });
 
     const backBtn = document.getElementById("back-btn");
     backBtn.addEventListener('click', () => {
-        const overlay = document.getElementById("overlay");
         overlay.style.display = 'none';
+
+        window.location.reload();
     });
 
     const addFormBtn = document.getElementById("add-to-btn");
     addFormBtn.addEventListener('click', () => {
-        const updateForm = document.getElementById("update-form");
-        const confirmation = document.getElementById("confirmation");
-
         overlay.style.display = 'flex';
         updateForm.style.display = 'none';
         confirmation.style.display = 'none';
@@ -53,7 +62,6 @@ async function fetchData() {
 
 // visar data
 async function displayData() {
-    const resultDiv = document.getElementById("show--dishes"); // hämtar plats
     resultDiv.innerHTML = "";
 
     try {
@@ -83,11 +91,7 @@ async function displayData() {
             editBtn.dataset.dishID = item._id;
 
             editBtn.addEventListener('click', () => {
-                const overlay = document.getElementById("overlay");
-                const confirmationWrapper = document.getElementById("confirmation");
-                const addForm = document.getElementById("add-form");
-
-                confirmationWrapper.style.display = 'none'
+                confirmation.style.display = 'none'
                 addForm.style.display = 'none'
                 overlay.style.display = 'flex';
 
@@ -122,10 +126,7 @@ async function displayData() {
             deleteBtn.appendChild(deleteIcon);
 
             deleteBtn.addEventListener('click', async () => {
-                const form = document.getElementById("update-form");
-                const addForm = document.getElementById("add-form");
-
-                form.style.display = 'none';
+                updateForm.style.display = 'none';
                 addForm.style.display = 'none'
 
                 try {
@@ -201,6 +202,9 @@ async function addData() {
         document.getElementById("price-add").value = "";
         
         console.log("Data added", data);
+
+        confirmationMessage("Din rätt är tillagd!");
+        displayData(); // uppdatera sida
     
     } catch (error) {
         console.error("Error when adding data", error);
@@ -220,9 +224,10 @@ async function updateData(id, update) {
 
         if (response.ok) {
             console.log("Update successful");
-            const overlay = document.getElementById("overlay");
             overlay.style.display = "none";
+            confirmationMessage("Din rätt uppdaterad!");
 
+            displayData(); // uppdatera sidan
         } else {
             console.error("Error: Could not update data");
         }
@@ -233,11 +238,11 @@ async function updateData(id, update) {
 
 // visa bekräftelse
 async function showConfirmation(message) {
-    const overlay = document.getElementById("overlay");
     overlay.style.display = 'flex';
 
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // scrollar upp för 
+
     return new Promise((resolve, reject) => {
-        const confirmationWrapper = document.getElementById("confirmation");
         const showConfirmation = document.createElement("div");
         showConfirmation.classList.add("show-confirmation");
 
@@ -251,14 +256,14 @@ async function showConfirmation(message) {
         <button id="no" type="button" class="material-symbols-outlined">cancel</button>
         </div>`;
         
-        confirmationWrapper.appendChild(showConfirmation);
+        confirmation.appendChild(showConfirmation);
 
-        const yesBtn = confirmationWrapper.querySelector("#yes");
-        const noBtn = confirmationWrapper.querySelector("#no");
+        const yesBtn = confirmation.querySelector("#yes");
+        const noBtn = confirmation.querySelector("#no");
 
         yesBtn.addEventListener('click', () => {
             console.log("yesBtn");
-            confirmationWrapper.innerHTML = "";
+            confirmation.innerHTML = "";
             overlay.style.display = 'none';
 
             resolve(true);
@@ -266,8 +271,7 @@ async function showConfirmation(message) {
 
         noBtn.addEventListener('click', () => {
             console.log("noBtn");
-            confirmationWrapper.innerHTML = "";
-            overlay.style.display = 'none';
+            window.location.reload();
 
             resolve(false);
         });
@@ -287,11 +291,8 @@ async function deleteData(id) {
     }
     console.log("Rätten är raderad");
 
-    const confirmation = document.querySelector(".banner--third");
-    confirmation.style.display = 'flex';
-    
-    confirmation.innerHTML = `
-    <p>Din rätt är raderad</p>`;
+    confirmationMessage("Din rätt är raderad!");
+    displayData();
 };
 
 // hantera felmeddelanden
@@ -316,4 +317,12 @@ function handleValidation(errors) {
             document.getElementById("price-add-error").textContent = errors.price;
         }
     }
+};
+
+// funktion för bekräftelsemeddelanden
+function confirmationMessage(message) {
+    const confirmation = document.querySelector(".banner--third");  
+    confirmation.style.display = 'flex';
+
+    confirmation.innerHTML = `<p>${message}`;
 };
