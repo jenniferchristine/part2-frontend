@@ -89,7 +89,6 @@ function createBookingElement(item) {
     resultDiv.appendChild(bookingDiv);
 };
 
-
 function createButtonDiv(item) {
     const btnDiv = document.createElement("div");
     btnDiv.classList.add("edit-div");

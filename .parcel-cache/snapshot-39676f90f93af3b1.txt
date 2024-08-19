@@ -18,7 +18,7 @@
 93C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\svgo\plugins\mergeStyles.js133675268712183713 0
 79C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\src\images\pastaplace1.png133675349126644690 0
 72C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@babel133680537426609989 1
-70C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\booking.html133685772618026041 0
+70C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\booking.html133685775521002923 0
 102C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@parcel\config-default\test\.babelrc133675268696185230 0
 99C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\weak-lru-cache\tests\benchmark.js133675268697904730 0
 93C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\entities\lib\encode-trie.js133675268700945409 0
@@ -46,14 +46,14 @@
 106C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\lightningcss-win32-x64-msvc\package.json133675268696585112 0
 107C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@swc\helpers\_\_create_super\package.json133675268719518711 0
 111C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@swc\helpers\src\_interop_require_default.mjs133675268722114413 0
-57C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist133685772618026041 1
+57C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist133685775521002923 1
 63C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\.gitignore133675270881075357 0
 98C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\css-what\lib\commonjs\index.d.ts133675268707048461 0
 95C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\css-select\lib\general.js.map133675268710636413 0
 101C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\update-browserslist-db\package.json133675268700235488 0
 119C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@parcel\optimizer-svgo\node_modules\svgo\lib\style.js133675268712898354 0
 83C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@msgpackr-extract133680537428037440 1
-69C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\src\booking.html133685772617900188 0
+69C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\src\booking.html133685775520872253 0
 123C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\csso\node_modules\css-tree\cjs\generator\token-before.cjs133675268715477360 0
 91C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\svgo\plugins\sortAttrs.js133675268714602663 0
 86C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\json5\lib\unicode.js133675268702845075 0
@@ -141,7 +141,7 @@
 80C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\css-select\lib133680537503931958 1
 102C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\css-what\lib\commonjs\parse.d.ts.map133675268704948880 0
 113C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\caniuse-lite\data\features\channel-messaging.js133675268714972516 0
-70C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\src\js\booking.js133685773042468727 0
+70C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\src\js\booking.js133685777488693165 0
 82C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\lmdb\src\dbi.cpp133675268714437708 0
 59C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\src\js133685668657123427 1
 68C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\src\js\admin.js133680697809338839 0

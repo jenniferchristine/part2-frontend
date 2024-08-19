@@ -88,7 +88,7 @@
     <div id="overlay" class="overlay">
 
         <form id="update-form">
-            <h1>Uppdatera bokning</h1>
+            <h1>Uppdatera en befintlig bokning</h1>
             <div>
                 <label for="status">Status:</label><br>
                 <select name="status" id="status-edit">
@@ -150,8 +150,15 @@
         <div id="confirmation"></div>
 
         <form id="add-form">
-            <h1>Snart har du bokat ditt bord!</h1>
-            <h2>Det sista steget är att fylla i uppgifterna nedan</h2>
+            <h1>Skapa en ny bokning</h1>
+            <div>
+                <label for="status"></label><br>
+                <select name="status" id="status-edit">
+                    <option value="">Välj status</option>
+                    <option value="Confirmed">Confirmed (bekräftad)</option>
+                    <option value="Pending">Pending (pendlande)</option>
+                </select>
+            </div><br>
             <div>
                 <label for="name"></label><br>
                 <input type="text" name="name" id="name" placeholder="För- och efternamn">
@@ -197,9 +204,9 @@
                     cols="50"></textarea>
                 <div id="requestsError" class="error-message"></div>
             </div>
-            <div class="btn-div">
-                <button id="add-btn" class="button button--secondary" type="button">BOKA</button>
-                <button id="back-btn" class="button button--secondary" type="button">AVBRYT</button>
+            <div class="update-btns">
+                <button id="add-btn" type="submit" class="material-symbols-outlined">add</button>
+                <button id="back-btn" type="button" class="material-symbols-outlined">cancel</button>
             </div>
         </form>
 
