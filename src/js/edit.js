@@ -1,9 +1,15 @@
 "use strict";
 
-let overlay, resultDiv, confirmation, updateForm, addForm; // globala variabler 
+let overlay, resultDiv, confirmation, updateForm, addForm, token; // globala variabler 
 
 // säkerställer att koden körs
 document.addEventListener('DOMContentLoaded', () => {
+    const logoutBtn = document.getElementById("logout-btn");
+
+    logoutBtn.addEventListener('click', (e) => {
+        console.log("Token removed");
+        e.preventDefault(); logOut();
+    });
     
     // tilldela variabler
     overlay = document.getElementById("overlay");
@@ -11,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     confirmation = document.getElementById("confirmation");
     updateForm = document.getElementById("update-form");
     addForm = document.getElementById("add-form");
+    token = localStorage.getItem("token");
 
     document.getElementById("add-to-btn").addEventListener('click', () => { showOverlay('add') });
     document.getElementById("add-btn").addEventListener('click', (e) => { e.preventDefault(); addData(); });
@@ -129,7 +136,8 @@ async function addData() {
         const response = await fetch(url, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify(newDish)
         });
@@ -166,7 +174,8 @@ async function updateData(id, update) {
         const response = await fetch(`https://pastaplace.onrender.com/dishes/${id}`, {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify(update)
         });
@@ -260,23 +269,6 @@ function confirmationMessage(message) {
     confirmation.innerHTML = `<p>${message}`;
 };
 
-// radera data
-async function deleteData(id) {
-    const url = `https://pastaplace.onrender.com/dishes/${id}`;
-
-    const response = await fetch(url, {
-        method: 'DELETE'
-    });
-
-    if (!response.ok) {
-        throw new Error("Failed to delete data");
-    }
-    console.log("Rätten är raderad");
-
-    confirmationMessage("Din rätt är raderad!");
-    displayData();
-};
-
 // bekräfta radera
 async function confirmDeletion(id) {
     try {
@@ -288,6 +280,27 @@ async function confirmDeletion(id) {
     } catch (error) {
         console.error("Error occurred during deletion:", error);
     }
+};
+
+// radera data
+async function deleteData(id) {
+    const url = `https://pastaplace.onrender.com/dishes/${id}`;
+
+    const response = await fetch(url, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to delete data");
+    }
+    console.log("Rätten är raderad");
+
+    confirmationMessage("Din rätt är raderad!");
+    displayData();
 };
 
 // hantera felmeddelanden
@@ -342,3 +355,8 @@ function closeOverlay() {
     updateForm.reset();
     confirmation.innerHTML = "";
 }
+
+function logOut() {
+    localStorage.removeItem("token");
+    window.location.href ="index.html"
+};

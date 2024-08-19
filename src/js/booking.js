@@ -1,13 +1,20 @@
 "use strict";
 
-let overlay, resultDiv, confirmation, addForm, updateForm; // globala variabler
+let overlay, resultDiv, confirmation, addForm, updateForm, token; // globala variabler
 
 document.addEventListener('DOMContentLoaded', () => {
+    const logoutBtn = document.getElementById("logout-btn");
+
+    logoutBtn.addEventListener('click', (e) => {
+        e.preventDefault(); logOut();
+    });
+
     overlay = document.getElementById("overlay");
     resultDiv = document.getElementById("show--bookings");
     confirmation = document.getElementById("confirmation");
     addForm = document.getElementById("add-form");
     updateForm = document.getElementById("update-form");
+    token = localStorage.getItem("token");
 
     document.getElementById("add-btn").addEventListener('click', (e) => { e.preventDefault(); addData(); });
     document.getElementById("add-to-btn").addEventListener('click', () => { showOverlay('add') });
@@ -22,13 +29,20 @@ async function fetchData() {
     const url = "https://pastaplace.onrender.com/bookings";
 
     try {
-        const response = await fetch(url);
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
         if (!response.ok) { // felhantering
             throw new Error("Could not connect to API" + response.statusText);
         }
         const data = await response.json();
-        console.log(data);
+        console.log("You are now on protected route | Visar bokningsdata", token);
         return data; // returnerar svar från api
+
     } catch (error) {
         console.error("Could not fetch data", error);
         throw error;
@@ -168,9 +182,7 @@ async function addData() {
             },
             body: JSON.stringify(booking)
         });
-
         const data = await response.json();
-        console.log("Responsdata:", data.errors);
 
         if (!response.ok) {
             handleValidation(data.errors);
@@ -208,13 +220,14 @@ async function updateData(id, update) {
         const response = await fetch(`https://pastaplace.onrender.com/bookings/${id}`, {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify(update)
         });
 
         if (response.ok) {
-            console.log("Update successful");
+            console.log("You are now on protected route | Uppdaterar bokningsdata", token);
 
             overlay.style.display = 'none';
             confirmationMessage("Bokningen är uppdaterad!");
@@ -297,7 +310,10 @@ async function deleteData(id) {
     const url = `https://pastaplace.onrender.com/bookings/${id}`;
 
     const response = await fetch(url, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
     });
 
     if (!response.ok) {
@@ -424,4 +440,9 @@ function closeOverlay() {
     addForm.reset();
     updateForm.reset();
     confirmation.innerHTML = "";
+};
+
+function logOut() {
+    localStorage.removeItem("token");
+    window.location.href ="index.html"
 };
