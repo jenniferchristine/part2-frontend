@@ -81,13 +81,12 @@ header {
     justify-content: center;
     width: 100%;
     position: sticky;
-    background-color: $deviating-light;
+    background-color: $light_color;
     top: 0;
     box-sizing: border-box;
     z-index: 1000;
-    border-bottom: 2px solid $light_color;
 
-    div { 
+    .flex-div { 
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -124,17 +123,25 @@ header {
     img:first-child { @include size(100%, auto); display: block; }
   
     #overlay-image {
-      @include placing(absolute, 50%, 50%);
-      @include align(flex, center, center);
+      @include placing(absolute, 66%, 50%);
+      @include align(block, center, left);
       transform: translate(-50%, -50%);
+      width: 1440px; 
       
       img { width: auto; height: auto; }
-    }
+      h1 { font-family: $headline-text; font-size: 74px; color: $light_color}
+      h2 { font-size: 30px; margin-top: -1.5em; color: $deviating-color; }
+      p { 
+        font-size: 26px; 
+        background-color: rgba(235, 235, 207, 0.466); 
+        width: 56%; 
+        padding: 1em; 
+        font-family: $paragraph-text; }}
 }
 
 nav {
     ul { display: flex; list-style: none; padding: 0; }
-    li { margin-right: 30px; font-size: 20px;
+    li { font-size: 20px; 
 
         a { text-decoration: none; color: $primary-color; }
         &:last-child { margin-right: 0; }}
