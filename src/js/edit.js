@@ -168,7 +168,7 @@ async function addData() {
     }
 };
 
-// uppdatera data
+// hitta specifik maträtt att uppdatera
 async function updateData(id, update) {
     try {
         const response = await fetch(`https://pastaplace.onrender.com/dishes/${id}`, {
@@ -195,6 +195,7 @@ async function updateData(id, update) {
     }
 };
 
+// uppdatera maträtt
 function editDish(item) {
     document.getElementById("name").value = item.name;
     document.getElementById("description").value = item.description;
@@ -354,8 +355,9 @@ function closeOverlay() {
     addForm.reset();
     updateForm.reset();
     confirmation.innerHTML = "";
-}
+};
 
+// logga ut
 function logOut() {
     localStorage.removeItem("token");
     window.location.href ="index.html"

@@ -2,8 +2,6 @@
 
 // säkerställer att koden körs
 document.addEventListener("DOMContentLoaded", () => {
-    displayData();
-
     const toTopBtn = document.getElementById("topBtn"); // scrolla till toppen-knapp
 
     window.addEventListener('scroll', () => {
@@ -78,6 +76,8 @@ document.addEventListener("DOMContentLoaded", () => {
     links.forEach(link => {
         link.addEventListener('click', scrollToElement);
     });
+
+    displayData();
 });
 
 // hämtar data

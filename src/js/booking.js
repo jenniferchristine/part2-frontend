@@ -215,6 +215,7 @@ async function addData() {
     }
 };
 
+// hitta specifik och uppdatera
 async function updateData(id, update) {
     try {
         const response = await fetch(`https://pastaplace.onrender.com/bookings/${id}`, {
@@ -242,6 +243,7 @@ async function updateData(id, update) {
     }
 };
 
+// uppdatera bokning och måla ut
 function editBookings(item) {
     // fyll i formulärfälten med existerande värden
     document.getElementById("status-edit").value = item.status;
@@ -442,6 +444,8 @@ function closeOverlay() {
     confirmation.innerHTML = "";
 };
 
+
+// logga ut
 function logOut() {
     localStorage.removeItem("token");
     window.location.href ="index.html"

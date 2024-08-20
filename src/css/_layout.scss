@@ -12,15 +12,15 @@ body {
     text-align: left; font: 100% $font-stack; 
 
     h1 { @include text(44px, left); }
-    h2 { @include text(22px, center); margin: 0; }
-    p { font: 100% $paragraph-text; }
+    h2 { @include text(22px, left); margin: 0; }
+    p { font-family: $bread-text; }
 
     .button {
         @include align(flex, center, center);
-        @include border(none, 0.2em);
         @include text(25px, center); 
         cursor: pointer; 
         font-weight: 600;
+        border: none;
     }
     
     .button--primary {
@@ -76,11 +76,26 @@ body {
 }
 
 header {
-    @include align(flex, center, space-between);
-    width: 1440px;
-    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: sticky;
+    background-color: $deviating-light;
+    top: 0;
+    box-sizing: border-box;
+    z-index: 1000;
+    border-bottom: 2px solid $light_color;
 
-    img { width: 300px; }
+    div { 
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 1440px; 
+        padding: 3em 0 1.5em 0;
+    }
+
+    img { width: 250px; }
 }
 
 .header--fixed {
@@ -132,7 +147,11 @@ main {
         @include align(flex, center, center);
         background-color: $deviating-light;
         width: 100%;
+        padding: 2em;
+        box-sizing: border-box;
     }
+    
+    a { color: $deviating-color; }
 
     .light-background { 
         @include align(flex, center, center);
@@ -147,6 +166,7 @@ main {
         display: grid;
         gap: 4em;
 
+        h1 { font-family: $headline-text!important;}
         .headline { display: flex; align-items: center; grid-column: span 3; }
         img { @include size(80px, 80px); margin-right: 10px; }
 
@@ -168,6 +188,8 @@ main {
     .block--alignleft { 
         width: 1440px; 
 
+        h1 { font-family: $headline-text!important;}
+        img { width: 50px; }
         p { width: 55%; 
             font-size: 24px; 
             line-height: 35px; }}
@@ -175,6 +197,9 @@ main {
     .block--imgbox {
         width: 1440px;
         display: flex;
+
+        h1 { font-family: $headline-text!important;}
+        h2 { margin-top: -0.5em; color: $error; }
 
         div { width: 50%; margin: 0 0 0 50px; font-size: 20px;
             p { width: 90%; line-height: 30px; }}
@@ -206,7 +231,6 @@ main {
         transform: translate(-50%, -50%);
         background-color: rgba(255, 255, 255, 0.8);
         padding: 3em 7em 3em 7em;
-        border-radius: 10px;
         text-align: center;
 
         div { display: flex; gap: 2em;
@@ -341,9 +365,9 @@ footer {
     .foot-column {
         width: 200px;
 
-        p { color: $light_color; line-height: 30px;}
+        p { color: $light_color; line-height: 30px; }
         .highlighted { font-weight: 600; font-size: 20px;}
-        a { color: $light_color; }
+        a { color: $light_color;}
 
         .field { 
             @include border(2px solid rgb(129, 129, 129), 0.2em);
@@ -351,6 +375,9 @@ footer {
             background-color: $light_color; 
             margin-bottom: 1.5em;}
     }
+
+    .admin { display: flex; align-items: center; margin-top: -1em; }
+    .material-symbols-outlined { color: $light_color; margin-right: 5px; }
 }
 
 form {

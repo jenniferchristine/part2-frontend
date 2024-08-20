@@ -1,11 +1,12 @@
 "use strict";
 
+// säkerställer att koden körs
 document.addEventListener("DOMContentLoaded", () => {
-   /*const logoutBtn = document.getElementById("logout-btn");
+   const logoutBtn = document.getElementById("logout-btn");
 
     logoutBtn.addEventListener('click', (e) => {
         e.preventDefault(); logOut();
-    });*/
+    });
 
     authorizeUser();
 });
@@ -36,6 +37,8 @@ async function authorizeUser() {
     }
 }
 
+
+// logga ut
 function logOut() {
     localStorage.removeItem("token");
     window.location.href ="index.html"
