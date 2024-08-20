@@ -67,6 +67,11 @@ $border-style: 1px solid;
     text-align: $align;
 }
 
+@mixin textapp($font, $color) {
+    font-family: $font;
+    color: $color;
+}
+
 @mixin placing($position, $top, $left) {
     position: $position;
     top: $top;
@@ -76,4 +81,9 @@ $border-style: 1px solid;
 @mixin grid($columns, $rows) {
     grid-template-columns: $columns;
     grid-template-rows: $rows;
+}
+
+@mixin bgspace($bg, $space) {
+    background-color: $bg;
+    padding: $space;
 }
