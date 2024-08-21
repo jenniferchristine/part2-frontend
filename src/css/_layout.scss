@@ -15,12 +15,16 @@ body {
     h2 { @include text(22px, left); margin: 0; }
     p { font-family: $bread-text; }
 
+    a:hover { text-decoration: underline; }
+
     .button {
         @include align(flex, center, center);
         @include text(25px, center); 
         cursor: pointer; 
         font-weight: 600;
         border: none;
+
+        &:hover { background-color: lighten($deviating-color, 20%); transition: 0.2s ease; }
     }
     
     .button--primary {
@@ -38,9 +42,26 @@ body {
     .btn-div { display: flex; gap: 2em; }
 
     .update-btns { text-align: right; margin: 2em 0 -0.5em 0; }
-    .update-btns button { @include border(none, 0.2em); font-size: 30px; color: $light_color; }
-    .update-btns > button:first-of-type { background-color: $confirm; margin-right: 0.2em; }
-    .update-btns > button:nth-of-type(2) { background-color: $error; }
+
+    .update-btns button { 
+        @include border(none, 0.2em); 
+        font-size: 30px; 
+        color: $light_color; 
+    
+        &:hover { cursor: pointer; }
+    }
+    .update-btns > button:first-of-type { 
+        background-color: $confirm; 
+        margin-right: 0.2em; 
+
+        &:hover { background-color: lighten($confirm, 10%); transition: 0.2s ease; }
+    }
+
+    .update-btns > button:nth-of-type(2) { 
+        background-color: $error; 
+
+        &:hover { background-color: lighten($error, 10%); transition: 0.2s ease; }
+    }
 
     .overlay {
         @include placing(fixed, 0, 0);
@@ -100,8 +121,11 @@ body {
     @include boxspace(20px, border-box);
     @include align(block, center, center);
     background-color: $primary-color;
+    transition: width 0.3s ease;
 
-    nav { margin-left: 12px;}
+    nav { margin-left: 12px; display: block; }
+    .nav-open { display: none; }
+
     ul { display: block; }
     a { color: $light_color; margin-left: 0.7em }
 
@@ -110,6 +134,7 @@ body {
 
     img { width: 150px; margin: 30em 0 2em 12px; }
 }
+
 /*
 #hero {
     @include align(flex, center, center);
@@ -269,6 +294,12 @@ main { width: 100%;
         justify-content: space-between;
 
         h1 { font-size: 26px; }
+        a { 
+            color: $primary-color; 
+            text-decoration: none; 
+        
+            &:hover { text-decoration: underline; color: lighten($primary-color, 15%);}
+        }
     }
 
     .add-div { 
@@ -277,10 +308,13 @@ main { width: 100%;
         margin-right: 20px;
         border-radius: 0 0.2em 0.2em 0;
 
+        &:hover { background: lighten($color: #8f8f8f, $amount: 0); transition: 0.2s ease; }
+
         .material-symbols-outlined { 
             @include color($confirm, $light_color);
             font-weight: 600; 
             padding: 0.2em; 
+            cursor: pointer;
         }
         
         button {
@@ -290,6 +324,7 @@ main { width: 100%;
             font-size: 18px;
             font-weight: 600;
             letter-spacing: 0.7px;
+            cursor: pointer;
         }
     }
 
@@ -332,10 +367,19 @@ main { width: 100%;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
 
-        .edit-div button { @include border(none, 0.2em); }
+        .edit-div button { @include border(none, 0.2em); cursor: pointer; }
         .material-symbols-outlined { font-weight: 300; color: $light_color; }
-        .edit-div > button:first-of-type { background-color: $confirm; margin-right: 0.5em; }
-        .edit-div > button:nth-of-type(2) { background-color: $error; }
+
+        .edit-div > button:first-of-type { 
+            background-color: $confirm; 
+            margin-right: 0.5em; 
+        
+            &:hover { background-color: lighten($confirm, 10%); transition: 0.2s ease; }}
+
+        .edit-div > button:nth-of-type(2) { 
+            background-color: $error; 
+        
+            &:hover { background-color: lighten($error, 10%); transition: 0.2s ease; }}
 
     }
 
@@ -458,13 +502,55 @@ form {
         .insta-text { width: 90%!important; }
     }
 
+    #show--dishes, #show--bookings {
+        grid-template-columns: repeat(2, 1fr)!important;
+    }
+
     footer { padding: 3em 0 1em 2em!important;}
     .wrapper { display: block!important; }
     .foot-column { margin-bottom: 3em!important;}
-    .field, nav, .noshow { display: none!important; }
+    .field, .header--sticky > nav, .noshow { display: none!important; }
+}
+
+@media (max-width: 800px) {
+    .header--fixed {
+      width: 50px;
+      overflow: hidden; 
+      padding: 0; 
+  
+      nav { display: none; }
+  
+      .nav-open {
+        display: block!important; 
+        position: absolute!important;
+        top: 20px!important;
+        left: 7px!important;
+        background: none!important;
+        border: none!important;
+        font-size: 24px!important;
+        color: $light_color;
+        z-index: 1001!important;
+      }
+    }
+  
+    .header--fixed.nav-open {
+      width: 280px; 
+      overflow: auto; 
+      padding: 70px 5px 0 5px; 
+  
+      nav { display: block!important; }
+    }
+  
+    .main--right {
+      margin-left: 50px!important;
+    }
 }
 
 @media (max-width: 600px) {
+    .header--fixed.nav-open {
+        width: 100%; 
+      }
+
     #result--dish {
         grid-template-columns: repeat(1, 1fr)!important; 
         width: 100%!important;
@@ -472,15 +558,20 @@ form {
         .column { box-sizing: border-box!important; }
         .headline { grid-column: span 1!important; }}
 
-    .centered-overlay { box-sizing: border-box!important;}
+    #show--dishes, #show--bookings {
+        grid-template-columns: repeat(1, 1fr)!important;
+    }
+
+    .centered-overlay { box-sizing: border-box!important; }
     .block--imgbox { img { width: 100%!important; }}
-    .block { width: 100%!important; padding: 0!important;}
+    .block { width: 100%!important; padding: 0!important; }
     .block--alignleft { padding: 2em!important; }
-    #topBtn { display: none!important;}
+    #topBtn { display: none!important; }
+    .wide-add { display: none!important; }
 }
 
 @media (max-width: 300px) {
-    .header--sticky {img {width: 100%!important; }}
-    .collage {display: none!important;}
-    button { width: 100%!important;}
+    .header--sticky { img {width: 100%!important; }}
+    .collage { display: none!important; }
+    button { width: 100%!important; }
 }

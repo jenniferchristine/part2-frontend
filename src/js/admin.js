@@ -8,6 +8,13 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault(); logOut();
     });
 
+    const toggleButton = document.getElementById('toggle-header');
+    const header = document.getElementById('header-fixed');
+
+    toggleButton.addEventListener('click', function() {
+        header.classList.toggle('nav-open');
+    });
+
     authorizeUser();
 });
 
@@ -36,7 +43,6 @@ async function authorizeUser() {
         window.location.href = "index.html"
     }
 }
-
 
 // logga ut
 function logOut() {

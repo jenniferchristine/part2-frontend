@@ -5,7 +5,7 @@ let overlay, resultDiv, confirmation, updateForm, addForm, token; // globala var
 // säkerställer att koden körs
 document.addEventListener('DOMContentLoaded', () => {
     const logoutBtn = document.getElementById("logout-btn");
-
+    
     logoutBtn.addEventListener('click', (e) => {
         console.log("Token removed");
         e.preventDefault(); logOut();
@@ -23,6 +23,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("add-btn").addEventListener('click', (e) => { e.preventDefault(); addData(); });
     document.getElementById("cancel-btn").addEventListener('click', () => { closeOverlay() });
     document.getElementById("back-btn").addEventListener('click', () => { closeOverlay() });
+
+    const toggleButton = document.getElementById('toggle-header');
+    const header = document.getElementById('header-fixed');
+
+    toggleButton.addEventListener('click', function() {
+        header.classList.toggle('nav-open');
+    });
 
     displayData(); // anropar för att visa initial data
 });

@@ -21,6 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("cancel-btn").addEventListener('click', () => { closeOverlay() });
     document.getElementById("back-btn").addEventListener('click', () => { closeOverlay() });
 
+    const toggleButton = document.getElementById('toggle-header');
+    const header = document.getElementById('header-fixed');
+
+    toggleButton.addEventListener('click', function() {
+        header.classList.toggle('nav-open');
+    });
+
     displayData();
 });
 
