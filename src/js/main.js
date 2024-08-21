@@ -113,7 +113,7 @@ async function displayData() {
             <p class="smaller">${item.description}</p>
             <h3>Ingredienser:</h3>
             <p>${item.ingredients}</p>
-            <h3>Innerhåller:</h3>
+            <h3>Innehåller:</h3>
             <p>${item.contains}</p>
             <p class="right">${item.currency}</p>`
 
