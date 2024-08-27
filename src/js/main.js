@@ -2,70 +2,60 @@
 
 let overlay, bookingForm, loginForm; 
 
-// säkerställer att koden körs
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => { // säkerställer att koden körs
+
+    // variabler och knappar
     overlay = document.getElementById("overlay");
     bookingForm = document.getElementById("booking-form");
     loginForm = document.getElementById("login-form");
 
     document.getElementById("confirm-btn").addEventListener('click', (e) => { e.preventDefault(); addData(); });
-    loginForm.addEventListener('submit', (e) => { e.preventDefault(); logIn(); });
     document.getElementById("booking-btn").addEventListener('click', () => { showOverlay('booking') });
     document.getElementById("admin-btn").addEventListener('click', () => { showOverlay('login') });
     document.getElementById("cancel-btn").addEventListener('click', () => { closeOverlay() });
-    
+    loginForm.addEventListener('submit', (e) => { e.preventDefault(); logIn(); });
+
+    // variabler för länkar och navigering
     const hamburger = document.querySelector('.hamburger-menu');
     const nav = document.querySelector('nav');
     const navLinks = document.querySelectorAll('nav ul li a');
+    const toTopBtn = document.getElementById("topBtn");
 
-    hamburger.addEventListener('click', function() {
+    const links = document.querySelectorAll(".scroll-link");
+    links.forEach(link => { link.addEventListener('click', scrollToElement); }); // hämtar länkarna och lägger till hanteraren
+
+    hamburger.addEventListener('click', function() { // togglar responsiv meny
         nav.classList.toggle('active');
     });
 
-    navLinks.forEach(function(link) {
+    navLinks.forEach(function(link) { // tar bort active för meny = stängs vid klick
         link.addEventListener('click', function() {
             nav.classList.remove('active');
         });
     });
 
-    const toTopBtn = document.getElementById("topBtn"); // scrolla till toppen-knapp
-
-    window.addEventListener('scroll', () => {
+    window.addEventListener('scroll', () => { // händelsehanterare för scroll
         if (window.scrollY > 100) {
-            toTopBtn.style.display = 'block';
+            toTopBtn.style.display = 'block'; // visar knapp när scrollen är större än 100 pixlar
         } else {
             toTopBtn.style.display = 'none';
         }
     });
 
-    toTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        })
+    toTopBtn.addEventListener('click', () => { // rullar upp besökaren vid klick
+        window.scrollTo({ top: 0, behavior: 'smooth' })
     });
 
-    // smooth scroll av navigering
-    const scrollToElement = (e) => {
+    const scrollToElement = (e) => { // skickar besökaren till delen som klickats på
         e.preventDefault();
 
-        const targetSelector = e.currentTarget.getAttribute("href");
-        const targetEl = document.querySelector(targetSelector);
+        const targetSelector = e.currentTarget.getAttribute("href"); 
+        const targetEl = document.querySelector(targetSelector); // hittar elementet den ska till
 
-        if (targetEl) {
-            targetEl.scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
+        if (targetEl) { targetEl.scrollIntoView({ behavior: 'smooth' }); }
     };
 
-    const links = document.querySelectorAll(".scroll-link");
-
-    links.forEach(link => {
-        link.addEventListener('click', scrollToElement);
-    });
-
-    displayData();
+    displayData(); // visar hämtad data så fort webbplatsen besöks
 });
 
 // hämtar data
@@ -202,9 +192,9 @@ async function addData() {
 
         overlay.appendChild(messageBox);
 
-        /*setTimeout(() => {
+        setTimeout(() => {
             window.location.href = "index.html";
-        }, 5000);*/
+        }, 7000);
 
     } catch (error) {
         console.error("Error when adding data", error);
