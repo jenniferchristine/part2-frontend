@@ -15,6 +15,12 @@ document.addEventListener("DOMContentLoaded", () => { // säkerställer att kode
     document.getElementById("cancel-btn").addEventListener('click', () => { closeOverlay() });
     loginForm.addEventListener('submit', (e) => { e.preventDefault(); logIn(); });
 
+    overlay.addEventListener('click', function(e) { // stäng overlay om man klickar utanför formulär
+        if (e.target === overlay) {  // kontrollerar om klicket var på själva overlayen och inte på formuläret
+            closeOverlay();
+        }
+    });
+
     // variabler för länkar och navigering
     const hamburger = document.querySelector('.hamburger-menu');
     const nav = document.querySelector('nav');
@@ -67,7 +73,6 @@ async function fetchData() { // hämtar data
             throw new Error("Could not connect to API" + response.statusText);
         }
         const data = await response.json();
-        console.log(data);
         return data; // returnerar svar från api
     } catch (error) {
         console.error("Could not fetch data", error);

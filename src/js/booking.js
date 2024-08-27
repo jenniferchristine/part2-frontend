@@ -20,6 +20,12 @@ document.addEventListener('DOMContentLoaded', () => { // säkerställer att kode
     document.getElementById("back-btn").addEventListener('click', () => { closeOverlay() });
     logoutBtn.addEventListener('click', (e) => { e.preventDefault(); logOut(); });
 
+    overlay.addEventListener('click', function(e) { // stäng overlay om man klickar utanför formulär
+        if (e.target === overlay) {  // kontrollerar om klicket var på själva overlayen och inte på formuläret
+            closeOverlay();
+        }
+    });
+
     const toggleButton = document.getElementById('toggle-header');
     const header = document.getElementById('header-fixed');
 
@@ -45,7 +51,6 @@ async function fetchData() { // hämta data
             throw new Error("Could not connect to API" + response.statusText);
         }
         const data = await response.json();
-        console.log("You are now on protected route | Visar bokningsdata", token);
         return data; // returnerar svar från api
 
     } catch (error) {
@@ -205,8 +210,6 @@ async function addData() { // addera data
         document.getElementById("time").value = "";
         document.getElementById("requests").value = "";
 
-        console.log("Data added", data);
-
         overlay.style.display = 'none';
 
         if (data._id) { // visar vilken bokning som raderats
@@ -303,53 +306,8 @@ function editBookings(item) { // uppdatera bokning och måla ut
     };
 };
 
-function confirmationMessage(message) { // bekräftelsemeddelanden
-    const confirmation = document.querySelector(".banner--third");  
-    confirmation.style.display = 'flex';
-
-    confirmation.innerHTML = `<p>${message}`;
-};
-
-async function deleteData(id) { // radera data
-    const url = `https://pastaplace.onrender.com/bookings/${id}`;
-
-    const response = await fetch(url, {
-        method: 'DELETE',
-        headers: {
-            'Authorization': `Bearer ${token}`
-        }
-    });
-
-    if (!response.ok) {
-        throw new Error("Failed to delete data");
-    }
-    console.log("Bokningen är raderad");
-
-    if (id) {
-        confirmationMessage(`Bokning: ${id} är raderad!`);
-    } else {
-        confirmationMessage("Bokningen är raderad!");
-    }
-
-    
-    displayData();
-};
-
-async function confirmDeletion(id) { // bekräfta radera
-    try {
-        const confirmed = await showConfirmation("Är du säker på att du vill radera denna bokning?");
-        if (confirmed) {
-            await deleteData(id);
-            displayData();
-        }
-    } catch (error) {
-        console.error("Error occurred during deletion:", error);
-    }
-};
-
 async function showConfirmation(message) { // visa bekräftelse
     showOverlay('confirmation');
-    window.scrollTo({ top: 0, behavior: 'smooth' }); // scrollar upp för 
 
     return new Promise((resolve, reject) => { // skapar promise 
         const showConfirmation = document.createElement("div");
@@ -371,7 +329,6 @@ async function showConfirmation(message) { // visa bekräftelse
         const noBtn = confirmation.querySelector("#no");
 
         yesBtn.addEventListener('click', () => {
-            console.log("yesBtn");
             confirmation.innerHTML = "";
             overlay.style.display = 'none';
 
@@ -379,13 +336,52 @@ async function showConfirmation(message) { // visa bekräftelse
         });
 
         noBtn.addEventListener('click', () => {
-            console.log("noBtn");
             confirmation.innerHTML = "";
             overlay.style.display = 'none';
 
             resolve(false); // kallar på funktionen då användaren nekade åtgärd
         });
     }); 
+};
+
+function confirmationMessage(message) { // bekräftelsemeddelanden
+    const confirmation = document.querySelector(".banner--third");  
+    confirmation.style.display = 'flex';
+
+    confirmation.innerHTML = `<p>${message}`;
+};
+
+async function confirmDeletion(id) { // bekräfta radera
+    try {
+        const confirmed = await showConfirmation("Är du säker på att du vill radera denna bokning?");
+        if (confirmed) {
+            await deleteData(id);
+            displayData();
+        }
+    } catch (error) {
+        console.error("Error occurred during deletion:", error);
+    }
+};
+
+async function deleteData(id) { // radera data
+    const url = `https://pastaplace.onrender.com/bookings/${id}`;
+
+    const response = await fetch(url, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to delete data");
+    }
+
+    if (id) {
+        confirmationMessage(`Bokning: ${id} är raderad!`);
+    } else {
+        confirmationMessage("Bokningen är raderad!");
+    }
 };
 
 function handleValidation(errors) { // hantera validering

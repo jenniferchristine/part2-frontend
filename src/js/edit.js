@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => { // säkerställer att kode
     const logoutBtn = document.getElementById("logout-btn");
     
     logoutBtn.addEventListener('click', (e) => {
-        console.log("Token removed");
         e.preventDefault(); logOut();
     });
     
@@ -24,6 +23,12 @@ document.addEventListener('DOMContentLoaded', () => { // säkerställer att kode
     document.getElementById("add-btn").addEventListener('click', (e) => { e.preventDefault(); addData(); });
     document.getElementById("cancel-btn").addEventListener('click', () => { closeOverlay() });
     document.getElementById("back-btn").addEventListener('click', () => { closeOverlay() });
+
+        overlay.addEventListener('click', function(event) { // stäng overlay om man klickar utanför formulär
+        if (event.target === overlay) {  // kontrollerar om klicket var på själva overlayen och inte på formuläret
+            closeOverlay();
+        }
+    });
 
     const toggleButton = document.getElementById('toggle-header');
     const header = document.getElementById('header-fixed');
@@ -44,7 +49,6 @@ async function fetchData() { // hämta data
             throw new Error("Could not connect to API" + response.statusText);
         }
         const data = await response.json();
-        console.log(data);
         return data; // returnerar svar från api
     } catch (error) {
         console.error("Could not fetch data", error);
@@ -153,7 +157,6 @@ async function addData() { // addera data
         });
 
         const data = await response.json();
-        console.log("Responsdata:", data.errors);
 
         if (!response.ok) {
             handleValidation(data.errors);
@@ -166,8 +169,6 @@ async function addData() { // addera data
         document.getElementById("contains-add").value = "";
         document.getElementById("ingredients-add").value = "";
         document.getElementById("price-add").value = "";
-        
-        console.log("Data added", data);
 
         overlay.style.display = 'none';
         confirmationMessage("Din rätt är tillagd!");
@@ -190,8 +191,6 @@ async function updateData(id, update) { // hitta specifik maträtt att uppdatera
         });
 
         if (response.ok) {
-            console.log("Update successful");
-
             overlay.style.display = 'none';
             confirmationMessage("Din rätt uppdaterad!");
             displayData(); // uppdatera sidan
@@ -230,7 +229,6 @@ function editDish(item) { // uppdatera maträtt
 
 async function showConfirmation(message) { // visa bekräftelse
     showOverlay('confirmation');
-    window.scrollTo({ top: 0, behavior: 'smooth' }); // scrollar upp för 
 
     return new Promise((resolve, reject) => { // skapar promise
         const showConfirmation = document.createElement("div");
@@ -252,7 +250,6 @@ async function showConfirmation(message) { // visa bekräftelse
         const noBtn = confirmation.querySelector("#no");
 
         yesBtn.addEventListener('click', () => {
-            console.log("yesBtn");
             confirmation.innerHTML = "";
             overlay.style.display = 'none';
 
@@ -260,7 +257,6 @@ async function showConfirmation(message) { // visa bekräftelse
         });
 
         noBtn.addEventListener('click', () => {
-            console.log("noBtn");
             confirmation.innerHTML = "";
             overlay.style.display = 'none';
 
@@ -302,10 +298,8 @@ async function deleteData(id) { // radera data
     if (!response.ok) {
         throw new Error("Failed to delete data");
     }
-    console.log("Rätten är raderad");
 
     confirmationMessage("Din rätt är raderad!");
-    displayData();
 };
 
 function handleValidation(errors) { // hantera felmeddelanden
