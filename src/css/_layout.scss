@@ -90,6 +90,28 @@ body {
         background: rgba(0, 0, 0, 0.5);
         z-index: 1000;
     }
+
+    .message {
+        width: 400px; 
+        max-width: 95%;
+        padding: 2em; 
+        background-color: $light_color;
+        border-radius: 1em;
+        border: 5px solid $deviating-light;
+
+        p { line-height: 10px; }
+        .small { font-size: 12px; margin-top: 3em; }
+
+        div { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 0.5em; 
+            margin-bottom: 2em;
+
+            .material-symbols-outlined { color: $confirm; font-weight: 600; }
+            p { font-size: 20px; }}
+    }
     
     #topBtn {
         @include color($primary-color, $light_color);
@@ -149,8 +171,6 @@ body {
     .material-symbols-outlined { color: $light_color; font-size: 24px; font-weight: 200; }
 
     img { width: 150px; margin: 5em 0 2em 0.7px; }
-    
-    
 }
 
 #hero {

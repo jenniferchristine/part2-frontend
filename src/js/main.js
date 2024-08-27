@@ -35,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // variabler och event för knappar
     const overlay = document.getElementById('overlay');
-
     const bookingForm = document.getElementById("booking-form");
     const bookingBtn = document.getElementById('booking-btn');
     const cancelBtn = document.getElementById('cancel-btn');
@@ -56,7 +55,9 @@ document.addEventListener("DOMContentLoaded", () => {
             window.location.href = "/index.html";
         });
 
-        addBtn.addEventListener('click', () => { addData(); });
+        addBtn.addEventListener('click', () => { 
+            addData(); 
+        });
     }
 
     if (adminBtn && loginBtn) {
@@ -207,6 +208,30 @@ async function addData() {
         document.getElementById("requests").value = "";
 
         console.log("Data added", data);
+
+        const overlay = document.getElementById('overlay');
+        const bookingForm = document.getElementById("booking-form");
+
+        bookingForm.style.display = 'none';
+
+        const messageBox = document.createElement("div");
+        messageBox.classList.add("message");
+
+        messageBox.innerHTML = `
+        <div>
+        <span class="material-symbols-outlined">check</span>
+        <p>Ditt bord är bokat, ${name}!</p><br>
+        </div>
+        <p>Välkommen ${bookingDate}, kl ${time}!<p>
+        <p>En bekräftelse har skickats till ${email}.</p>
+        <p class="small">Du kommer strax att omdirigeras till startsidan...</p>
+        `;
+
+        overlay.appendChild(messageBox);
+
+        /*setTimeout(() => {
+            window.location.href = "index.html";
+        }, 5000);*/
 
     } catch (error) {
         console.error("Error when adding data", error);
