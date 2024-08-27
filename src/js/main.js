@@ -220,6 +220,10 @@ async function logIn() {
     document.getElementById("usernameError").textContent = "";
     document.getElementById("passwordError").textContent = "";
 
+    // hämta och visa laddning
+    const loadingIndicator = document.getElementById("loading-indicator");
+    loadingIndicator.style.display = 'flex';
+
     try {
         if (!username) {
             document.getElementById("usernameError").textContent = "Vänligen ange ett användarnamn";
@@ -250,6 +254,8 @@ async function logIn() {
     } catch (error) {
         console.error("Server error:", error);
         document.getElementById("usernameError").textContent = "Ett fel uppstod vid inloggningen. Vänligen försök igen senare!"
+    } finally {
+        loadingIndicator.style.display = 'none';
     }
 };
 

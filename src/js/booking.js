@@ -58,6 +58,8 @@ async function fetchData() {
 
 // visa data
 async function displayData() {
+    const loadingIndicator = document.getElementById("loading-indicator");  // hämta och visa laddning
+    loadingIndicator.style.display = 'flex';
     resultDiv.innerHTML = ""; // rensa befintligt innehåll
 
     try {
@@ -65,6 +67,8 @@ async function displayData() {
         data.forEach(item => createBookingElement(item)); // loopen körs genom funktionen som skapar varje item
     } catch (error) {
         console.error("Fault accured:", error);
+    } finally {
+        loadingIndicator.style.display = "none"; // Dölj laddningsindikatorn
     }
 };
 
