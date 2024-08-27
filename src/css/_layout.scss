@@ -89,7 +89,7 @@ body {
         border-radius: 10em;
     }
     
-    #confirmation { width: 400px; }
+    #confirmation { width: 400px; max-width: 95%; }
     .show-confirmation { @include bgspace($deviating-light, 2em); border-radius: 1em; }
     
     #warning-message { display: flex;
@@ -382,6 +382,8 @@ footer {
 }
 
 form {
+    width: 400px;
+    max-width: 95%;
     @include bgspace($deviating-light, 3em);
     border-radius: 1em;
 
@@ -408,8 +410,7 @@ form {
         font-size: 12px;
     }
 
-    .update-form-holder { width: 400px;
-        div { margin: 1em 0; }}
+    .update-form-holder > div { margin: 1em 0; }
 }
 
 @media (max-width: 1250px) {
@@ -511,10 +512,10 @@ form {
             flex-direction: column;
         }
     
-        nav ul { flex-direction: column!important; }
-        nav ul li { margin: 20px 0!important; }
-        nav ul li a { color: #fff!important; font-size: 24px!important; }
-        nav.active { display: flex!important; }
+        nav ul { flex-direction: column; }
+        nav ul li { margin: 20px 0; }
+        nav ul li a { color: #fff; font-size: 24px; }
+        nav.active { display: flex; }
     }
 }
 
@@ -530,7 +531,6 @@ form {
     .block { width: 100%!important; padding: 0!important; }
     .block--alignleft { padding: 2em!important; }
     .wide-add { display: none!important; }
-    #topBtn { display: none!important; }
     #show--dishes, #show--bookings { grid-template-columns: repeat(1, 1fr)!important; }
 
     #result--dish {
@@ -542,6 +542,6 @@ form {
 }
 
 @media (max-width: 300px) {
-    .header--sticky { img {width: 100%!important; }}
-    button { width: 100%!important; }
+    .header--sticky { img {width: 80%!important; }}
+    .edit-btn, .delete-btn { width: 100%!important; }
 }
