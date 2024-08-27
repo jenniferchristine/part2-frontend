@@ -2,8 +2,8 @@
 
 let overlay, resultDiv, confirmation, updateForm, addForm, token; // globala variabler 
 
-// säkerställer att koden körs
-document.addEventListener('DOMContentLoaded', () => {
+
+document.addEventListener('DOMContentLoaded', () => { // säkerställer att koden körs
     const logoutBtn = document.getElementById("logout-btn");
     
     logoutBtn.addEventListener('click', (e) => {
@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addForm = document.getElementById("add-form");
     token = localStorage.getItem("token");
 
+    // händelsehanterare
     document.getElementById("add-to-btn").addEventListener('click', () => { showOverlay('add') });
     document.getElementById("add-btn").addEventListener('click', (e) => { e.preventDefault(); addData(); });
     document.getElementById("cancel-btn").addEventListener('click', () => { closeOverlay() });
@@ -34,8 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     displayData(); // anropar för att visa initial data
 });
 
-// hämta data
-async function fetchData() {
+async function fetchData() { // hämta data
     const url = "https://pastaplace.onrender.com/dishes";
 
     try {
@@ -52,8 +52,7 @@ async function fetchData() {
     }
 };
 
-// visa data
-async function displayData() {
+async function displayData() { // visa data
     const loadingIndicator = document.getElementById("loading-indicator");  // hämta och visa laddning
     loadingIndicator.style.display = 'flex';
     resultDiv.innerHTML = ""; // rensa befintligt innehåll
@@ -68,8 +67,7 @@ async function displayData() {
     }
 };
 
-// skapa element för rätter
-function createDishElement(item) {
+function createDishElement(item) { // skapa element för rätter
     const dishDiv = document.createElement("div");
     dishDiv.classList.add("result-dish");
 
@@ -86,8 +84,7 @@ function createDishElement(item) {
     resultDiv.appendChild(dishDiv);
 };
 
-// skapa div för knappar
-function createButtonDiv(item) {
+function createButtonDiv(item) { // skapa div för knappar
     const btnDiv = document.createElement("div");
     btnDiv.classList.add("edit-div");
 
@@ -116,8 +113,9 @@ function createButtonDiv(item) {
     return btnDiv;
 };
 
-// addera data
-async function addData() {
+async function addData() { // addera data
+
+    // hämtar värde från inmatning
     const name = document.getElementById("name-add").value;
     const description = document.getElementById("description-add").value;
     const category = document.getElementById("category-add").value;
@@ -132,6 +130,7 @@ async function addData() {
     document.getElementById("ingredients-add-error").textContent = "";
     document.getElementById("price-add-error").textContent = "";
 
+    // skapar nytt objekt
     const newDish = {
         name: name,
         description: description,
@@ -148,7 +147,7 @@ async function addData() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${token}` // token för behörighet
             },
             body: JSON.stringify(newDish)
         });
@@ -179,8 +178,7 @@ async function addData() {
     }
 };
 
-// hitta specifik maträtt att uppdatera
-async function updateData(id, update) {
+async function updateData(id, update) { // hitta specifik maträtt att uppdatera
     try {
         const response = await fetch(`https://pastaplace.onrender.com/dishes/${id}`, {
             method: 'PUT',
@@ -206,8 +204,7 @@ async function updateData(id, update) {
     }
 };
 
-// uppdatera maträtt
-function editDish(item) {
+function editDish(item) { // uppdatera maträtt
     document.getElementById("name").value = item.name;
     document.getElementById("description").value = item.description;
     document.getElementById("ingredients").value = item.ingredients;
@@ -217,7 +214,7 @@ function editDish(item) {
 
     showOverlay('update');
 
-    updateForm.onsubmit = (e) => {
+    updateForm.onsubmit = (e) => { // uppdaterar form på submit
         e.preventDefault();
         const updatedDish = {
             name: document.getElementById("name").value,
@@ -227,16 +224,15 @@ function editDish(item) {
             contains: document.getElementById("contains").value,
             price: document.getElementById("price").value
         };
-        updateData(item._id, updatedDish);
+        updateData(item._id, updatedDish); // skickar vidare uppdatering och id
     };
 };
 
-// visa bekräftelse
-async function showConfirmation(message) {
+async function showConfirmation(message) { // visa bekräftelse
     showOverlay('confirmation');
     window.scrollTo({ top: 0, behavior: 'smooth' }); // scrollar upp för 
 
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => { // skapar promise
         const showConfirmation = document.createElement("div");
         showConfirmation.classList.add("show-confirmation");
 
@@ -260,7 +256,7 @@ async function showConfirmation(message) {
             confirmation.innerHTML = "";
             overlay.style.display = 'none';
 
-            resolve(true);
+            resolve(true); // kallar på funktion då åtgärd bekräftades
         });
 
         noBtn.addEventListener('click', () => {
@@ -268,21 +264,19 @@ async function showConfirmation(message) {
             confirmation.innerHTML = "";
             overlay.style.display = 'none';
 
-            resolve(false);
+            resolve(false); // kallar på funktion då åtgärd nekades
         });
     }); 
 };
 
-// bekräftelsemeddelanden
-function confirmationMessage(message) {
+function confirmationMessage(message) { // bekräftelsemeddelanden
     const confirmation = document.querySelector(".banner--third");  
     confirmation.style.display = 'flex';
 
     confirmation.innerHTML = `<p>${message}`;
 };
 
-// bekräfta radera
-async function confirmDeletion(id) {
+async function confirmDeletion(id) { // bekräfta radera
     try {
         const confirmed = await showConfirmation("Är du säker på att du vill radera denna rätten?");
         if (confirmed) {
@@ -294,8 +288,7 @@ async function confirmDeletion(id) {
     }
 };
 
-// radera data
-async function deleteData(id) {
+async function deleteData(id) { // radera data
     const url = `https://pastaplace.onrender.com/dishes/${id}`;
 
     const response = await fetch(url, {
@@ -315,8 +308,7 @@ async function deleteData(id) {
     displayData();
 };
 
-// hantera felmeddelanden
-function handleValidation(errors) {
+function handleValidation(errors) { // hantera felmeddelanden
     if (errors) {
         if (errors.name) {
             document.getElementById("name-add-error").textContent = errors.name;
@@ -339,8 +331,12 @@ function handleValidation(errors) {
     }
 };
 
-// visa overlay
-function showOverlay(formToShow) {
+function logOut() { // logga ut
+    localStorage.removeItem("token"); // tar bort token och gör användaren obehörig
+    window.location.href ="index.html" // skickas då till startsida
+};
+
+function showOverlay(formToShow) { // visa overlay
     overlay.style.display = 'flex'; // visar overlay
 
     // döljer allt innehåll för sig
@@ -357,8 +353,7 @@ function showOverlay(formToShow) {
     }
 };
 
-// dölj overlay
-function closeOverlay() {
+function closeOverlay() { // dölj overlay
     overlay.style.display = 'none';
 
     // rensa alla formulär
@@ -366,10 +361,4 @@ function closeOverlay() {
     addForm.reset();
     updateForm.reset();
     confirmation.innerHTML = "";
-};
-
-// logga ut
-function logOut() {
-    localStorage.removeItem("token");
-    window.location.href ="index.html"
 };

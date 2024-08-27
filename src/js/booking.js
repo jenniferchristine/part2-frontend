@@ -2,12 +2,10 @@
 
 let overlay, resultDiv, confirmation, addForm, updateForm, token; // globala variabler
 
-document.addEventListener('DOMContentLoaded', () => {
-    const logoutBtn = document.getElementById("logout-btn");
+document.addEventListener('DOMContentLoaded', () => { // säkerställer att koden körs
 
-    logoutBtn.addEventListener('click', (e) => {
-        e.preventDefault(); logOut();
-    });
+    // variabler och händelsehanterare
+    const logoutBtn = document.getElementById("logout-btn");
 
     overlay = document.getElementById("overlay");
     resultDiv = document.getElementById("show--bookings");
@@ -20,26 +18,26 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("add-to-btn").addEventListener('click', () => { showOverlay('add') });
     document.getElementById("cancel-btn").addEventListener('click', () => { closeOverlay() });
     document.getElementById("back-btn").addEventListener('click', () => { closeOverlay() });
+    logoutBtn.addEventListener('click', (e) => { e.preventDefault(); logOut(); });
 
     const toggleButton = document.getElementById('toggle-header');
     const header = document.getElementById('header-fixed');
 
     toggleButton.addEventListener('click', function() {
-        header.classList.toggle('nav-open');
+        header.classList.toggle('nav-open'); // toggle för responsiv meny
     });
 
-    displayData();
+    displayData(); // visar bokningar direkt när sidan laddas
 });
 
-// hämta data
-async function fetchData() {
+async function fetchData() { // hämta data
     const url = "https://pastaplace.onrender.com/bookings";
 
     try {
         const response = await fetch(url, {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${token}` // anger token
             }
         });
 
@@ -56,10 +54,10 @@ async function fetchData() {
     }
 };
 
-// visa data
-async function displayData() {
+async function displayData() { // visa data
     const loadingIndicator = document.getElementById("loading-indicator");  // hämta och visa laddning
     loadingIndicator.style.display = 'flex';
+
     resultDiv.innerHTML = ""; // rensa befintligt innehåll
 
     try {
@@ -68,21 +66,20 @@ async function displayData() {
     } catch (error) {
         console.error("Fault accured:", error);
     } finally {
-        loadingIndicator.style.display = "none"; // Dölj laddningsindikatorn
+        loadingIndicator.style.display = "none"; // dölj laddningsindikatorn
     }
 };
 
-// skapa element för rätter
-function createBookingElement(item) {
+function createBookingElement(item) { // skapa element för rätter
     const bookingDiv = document.createElement("div");
     bookingDiv.classList.add("result-booking");
 
     // konverterar bookingdate
-    const bookingDate = new Date(item.bookingDate);
-    const formattedDate = bookingDate.toISOString().split('T')[0]; 
-    const formattedTime = bookingDate.toISOString().split('T')[1].substring(0, 5); 
+    const bookingDate = new Date(item.bookingDate); // skapar dateobjekt
+    const formattedDate = bookingDate.toISOString().split('T')[0]; // konverterar till iso
+    const formattedTime = bookingDate.toISOString().split('T')[1].substring(0, 5); // delar med t för array med datum och en med tid
 
-    let statusClass = "";
+    let statusClass = ""; // lägger till klass för färgkodning
     switch (item.status) {
         case "Pending":
             statusClass = "status-pending";
@@ -109,12 +106,12 @@ function createBookingElement(item) {
     <p><strong>Önskemål: </strong>${item.requests}</p><br>
     <p><strong>Bokningsnummer: </strong><br>${item._id}</p>`;
 
-    const btnDiv = createButtonDiv(item); // skapar alla knappar för sig
+    const btnDiv = createButtonDiv(item); // skapar alla knappar för sig och skickar med dokument
     bookingDiv.appendChild(btnDiv);
     resultDiv.appendChild(bookingDiv);
 };
 
-function createButtonDiv(item) {
+function createButtonDiv(item) { // funktion för att skapa knappar
     const btnDiv = document.createElement("div");
     btnDiv.classList.add("edit-div");
 
@@ -143,8 +140,7 @@ function createButtonDiv(item) {
     return btnDiv;
 };
 
-// addera data
-async function addData() {
+async function addData() { // addera data
 
     //hämtar värde från alla inputs
     const name = document.getElementById("name").value;
@@ -213,7 +209,7 @@ async function addData() {
 
         overlay.style.display = 'none';
 
-        if (data._id) {
+        if (data._id) { // visar vilken bokning som raderats
             confirmationMessage(`Bokning: ${data._id} är skapad!`);
         } else {
             confirmationMessage("Bokningen är skapad!");
@@ -226,8 +222,7 @@ async function addData() {
     }
 };
 
-// hitta specifik och uppdatera
-async function updateData(id, update) {
+async function updateData(id, update) { // hitta specifik och uppdatera
     try {
         const response = await fetch(`https://pastaplace.onrender.com/bookings/${id}`, {
             method: 'PUT',
@@ -239,8 +234,6 @@ async function updateData(id, update) {
         });
 
         if (response.ok) {
-            console.log("You are now on protected route | Uppdaterar bokningsdata", token);
-
             overlay.style.display = 'none';
             confirmationMessage("Bokningen är uppdaterad!");
             displayData(); // uppdatera sidan
@@ -254,8 +247,8 @@ async function updateData(id, update) {
     }
 };
 
-// uppdatera bokning och måla ut
-function editBookings(item) {
+function editBookings(item) { // uppdatera bokning och måla ut
+
     // fyll i formulärfälten med existerande värden
     document.getElementById("status-edit").value = item.status;
     document.getElementById("name-edit").value = item.customer.name;
@@ -310,16 +303,14 @@ function editBookings(item) {
     };
 };
 
-// bekräftelsemeddelanden
-function confirmationMessage(message) {
+function confirmationMessage(message) { // bekräftelsemeddelanden
     const confirmation = document.querySelector(".banner--third");  
     confirmation.style.display = 'flex';
 
     confirmation.innerHTML = `<p>${message}`;
 };
 
-// radera data
-async function deleteData(id) {
+async function deleteData(id) { // radera data
     const url = `https://pastaplace.onrender.com/bookings/${id}`;
 
     const response = await fetch(url, {
@@ -344,8 +335,7 @@ async function deleteData(id) {
     displayData();
 };
 
-// bekräfta radera
-async function confirmDeletion(id) {
+async function confirmDeletion(id) { // bekräfta radera
     try {
         const confirmed = await showConfirmation("Är du säker på att du vill radera denna bokning?");
         if (confirmed) {
@@ -357,12 +347,11 @@ async function confirmDeletion(id) {
     }
 };
 
-// visa bekräftelse
-async function showConfirmation(message) {
+async function showConfirmation(message) { // visa bekräftelse
     showOverlay('confirmation');
     window.scrollTo({ top: 0, behavior: 'smooth' }); // scrollar upp för 
 
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => { // skapar promise 
         const showConfirmation = document.createElement("div");
         showConfirmation.classList.add("show-confirmation");
 
@@ -386,7 +375,7 @@ async function showConfirmation(message) {
             confirmation.innerHTML = "";
             overlay.style.display = 'none';
 
-            resolve(true);
+            resolve(true); // kallar på funktionen då användaren bekräftade åtgärd
         });
 
         noBtn.addEventListener('click', () => {
@@ -394,15 +383,14 @@ async function showConfirmation(message) {
             confirmation.innerHTML = "";
             overlay.style.display = 'none';
 
-            resolve(false);
+            resolve(false); // kallar på funktionen då användaren nekade åtgärd
         });
     }); 
 };
 
-// hantera validering
-function handleValidation(errors) {
-    if (errors) {
-        if (errors["customer.name"]) {
+function handleValidation(errors) { // hantera validering
+    if (errors) { // hämtar in medskickade error och dess meddelanden
+        if (errors["customer.name"]) { // skriver ut meddelande om funnet
             document.getElementById("nameError").textContent = errors["customer.name"];
         }
         if (errors["customer.phoneNumber"]) {
@@ -426,8 +414,12 @@ function handleValidation(errors) {
     }
 };
 
-// visa overlay
-function showOverlay(formToShow) {
+function logOut() { // logga ut
+    localStorage.removeItem("token"); // tar bort token och gör användaren obehörig
+    window.location.href ="index.html" // skickas då till startsida
+};
+
+function showOverlay(formToShow) { // visa overlay
     overlay.style.display = 'flex'; // visar overlay
 
     // döljer allt innehåll för sig
@@ -444,8 +436,7 @@ function showOverlay(formToShow) {
     }
 };
 
-// dölj overlay
-function closeOverlay() {
+function closeOverlay() { // dölj overlay
     overlay.style.display = 'none';
 
     // rensa alla formulär
@@ -453,11 +444,4 @@ function closeOverlay() {
     addForm.reset();
     updateForm.reset();
     confirmation.innerHTML = "";
-};
-
-
-// logga ut
-function logOut() {
-    localStorage.removeItem("token");
-    window.location.href ="index.html"
 };

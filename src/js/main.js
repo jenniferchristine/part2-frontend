@@ -1,17 +1,17 @@
 "use strict";
 
-let overlay, bookingForm, loginForm; 
+let overlay, bookingForm, loginForm; // globala variabler
 
 document.addEventListener("DOMContentLoaded", () => { // säkerställer att koden körs
 
-    // variabler och knappar
+    // variabler och händelsehanterare
     overlay = document.getElementById("overlay");
     bookingForm = document.getElementById("booking-form");
     loginForm = document.getElementById("login-form");
 
     document.getElementById("confirm-btn").addEventListener('click', (e) => { e.preventDefault(); addData(); });
     document.getElementById("booking-btn").addEventListener('click', () => { showOverlay('booking') });
-    document.getElementById("admin-btn").addEventListener('click', () => { showOverlay('login') });
+    document.getElementById("admin-btn").addEventListener('click', (e) => { e.preventDefault(); showOverlay('login') });
     document.getElementById("cancel-btn").addEventListener('click', () => { closeOverlay() });
     loginForm.addEventListener('submit', (e) => { e.preventDefault(); logIn(); });
 
@@ -58,8 +58,7 @@ document.addEventListener("DOMContentLoaded", () => { // säkerställer att kode
     displayData(); // visar hämtad data så fort webbplatsen besöks
 });
 
-// hämtar data
-async function fetchData() {
+async function fetchData() { // hämtar data
     const url = "https://pastaplace.onrender.com/dishes";
 
     try {
@@ -76,8 +75,7 @@ async function fetchData() {
     }
 };
 
-// visar data
-async function displayData() {
+async function displayData() { // visar data
     const resultDiv = document.getElementById("result--dish"); // hämtar plats
 
     try {
@@ -95,15 +93,14 @@ async function displayData() {
             <p>${item.contains}</p>
             <p class="right">${item.currency}</p>`
 
-            resultDiv.appendChild(dishDiv);
+            resultDiv.appendChild(dishDiv); // målar ut
         });
     } catch (error) {
         console.error("Fault accured: ", error);
     }
 };
 
-// addera formdata
-async function addData() {
+async function addData() { // addera data
 
     //hämtar värde från alla inputs
     const name = document.getElementById("name").value;
@@ -154,7 +151,6 @@ async function addData() {
         });
 
         const data = await response.json();
-        console.log("Responsdata:", data.errors);
 
         if (!response.ok) {
             handleValidation(data.errors);
@@ -170,13 +166,8 @@ async function addData() {
         document.getElementById("time").value = "";
         document.getElementById("requests").value = "";
 
-        console.log("Data added", data);
-
-        const overlay = document.getElementById('overlay');
-        const bookingForm = document.getElementById("booking-form");
-
+        // döljer formulär vid lyckad inmatning och visar bekräftelse
         bookingForm.style.display = 'none';
-
         const messageBox = document.createElement("div");
         messageBox.classList.add("message");
 
@@ -192,6 +183,7 @@ async function addData() {
 
         overlay.appendChild(messageBox);
 
+        // sätter en timeout för hur länge bekräftelsen ska synas
         setTimeout(() => {
             window.location.href = "index.html";
         }, 7000);
@@ -201,7 +193,9 @@ async function addData() {
     }
 };
 
-async function logIn() {
+async function logIn() { // loggar in användare
+
+    // hämtar värde från inmatning
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
@@ -212,7 +206,7 @@ async function logIn() {
     const loadingIndicator = document.getElementById("loading-indicator");
     loadingIndicator.style.display = 'flex';
 
-    try {
+    try { // felhantering
         if (!username) {
             document.getElementById("usernameError").textContent = "Vänligen ange ett användarnamn";
         }
@@ -230,7 +224,7 @@ async function logIn() {
         const data = await response.json();
 
         if (response.ok) {
-            localStorage.setItem("token", data.response.token); // lagra token
+            localStorage.setItem("token", data.response.token); // lagrar token
             window.location.href = "admin.html"; // omdirigerar till säkrad sida
         } else {
             if (data.error === "Incorrect username or password") {
@@ -247,10 +241,9 @@ async function logIn() {
     }
 };
 
-// hantera validering
-function handleValidation(errors) {
-    if (errors) {
-        if (errors["customer.name"]) {
+function handleValidation(errors) { // hantera validering
+    if (errors) { // hämtar in medskickade error och dess meddelanden
+        if (errors["customer.name"]) { // skriver ut meddelande om funnet
             document.getElementById("nameError").textContent = errors["customer.name"];
         }
         if (errors["customer.phoneNumber"]) {
@@ -274,14 +267,14 @@ function handleValidation(errors) {
     }
 };
 
-// visa overlay
-function showOverlay(formToShow) {
+function showOverlay(formToShow) { // visa overlay
     overlay.style.display = 'flex'; // visar overlay
 
     // döljer allt innehåll för sig
     bookingForm.style.display = 'none';
     loginForm.style.display = 'none';
 
+    // döljer eller visar beroende på vad som klickats
     if (formToShow === 'booking') {
         bookingForm.style.display = 'block';
     } else if (formToShow === 'login') {
@@ -289,8 +282,7 @@ function showOverlay(formToShow) {
     }
 };
 
-// dölj overlay
-function closeOverlay() {
+function closeOverlay() { // dölj overlay
     overlay.style.display = 'none';
 
     // rensa alla formulär
