@@ -13,7 +13,7 @@
 106C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\lightningcss-win32-x64-msvc\package.json133675268696585112 0
 107C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@swc\helpers\_\_create_super\package.json133675268719518711 0
 111C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@swc\helpers\src\_interop_require_default.mjs133675268722114413 0
-57C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist133692506184922474 1
+57C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist133692507474608811 1
 63C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\.gitignore133686732832392974 0
 98C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\css-what\lib\commonjs\index.d.ts133675268707048461 0
 95C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\css-select\lib\general.js.map133675268710636413 0
@@ -194,7 +194,7 @@
 94C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\svgo\plugins\inlineStyles.js133675268712038705 0
 79C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\color-convert133680537502176523 1
 83C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\error-ex\index.js133675268696490292 0
-77C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\src\css\_animations.scss133692505762378322 0
+77C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\src\css\_animations.scss133692507473845007 0
 96C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\css-what\lib\es\stringify.d.ts133675268707903266 0
 109C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@swc\helpers\_\_async_iterator\package.json133675268718251289 0
 107C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\csso\cjs\replace\property\font-weight.cjs133675268707518243 0
@@ -388,7 +388,7 @@
 86C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\escape-string-regexp133680537518708278 1
 97C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\svgo\plugins\applyTransforms.js133675268710494232 0
 88C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\csso\lib\clean\Rule.js133675268713743256 0
-80C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\index.8c1c22dc.css.map133692506184922474 0
+80C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\index.8c1c22dc.css.map133692507474598820 0
 86C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\json5\dist\index.mjs133675268706503427 0
 86C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\stable\stable.min.js133675268699490255 0
 76C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\fill-range133680537518773365 1
@@ -5957,7 +5957,7 @@
 99C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@parcel\core\lib\public\Config.js133675268711763903 0
 104C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@parcel\core\lib\public\Environment.js133675268713003401 0
 100C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@parcel\core\lib\public\Symbols.js133675268717304764 0
-76C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\index.8c1c22dc.css133692506184912481 0
+76C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\index.8c1c22dc.css133692507474588813 0
 99C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@parcel\config-default\index.json133675268699145315 0
 96C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@parcel\config-default\LICENSE133675268697834850 0
 101C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@parcel\config-default\package.json133675268699760493 0
