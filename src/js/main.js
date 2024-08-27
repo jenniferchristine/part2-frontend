@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => { // säkerställer att kode
     const links = document.querySelectorAll(".scroll-link");
     links.forEach(link => { link.addEventListener('click', scrollToElement); }); // hämtar länkarna och lägger till hanteraren
 
-    //displayData(); // visar hämtad data så fort webbplatsen besöks
+    displayData(); // visar hämtad data så fort webbplatsen besöks
 });
 
 async function fetchData() { // hämtar data
@@ -76,6 +76,8 @@ async function fetchData() { // hämtar data
 };
 
 async function displayData() { // visar data
+    const loadingIndicator = document.getElementById("loading-menu");
+    loadingIndicator.style.display = 'block';
 
     const resultDiv = document.getElementById("result--dish"); // hämtar plats
 
@@ -98,6 +100,8 @@ async function displayData() { // visar data
         });
     } catch (error) {
         console.error("Fault accured: ", error);
+    } finally {
+        loadingIndicator.style.display = 'none';
     }
 };
 

@@ -382,18 +382,12 @@ main { width: 100%;
     }
 
     #loading-menu { 
-        margin: -3em 0 2em 7em; 
+        display: none;
+        margin: -3em 0 5em 7.5em; 
         font-style: italic; 
 
-        .dots {
-            display: inline-block;
-            font-weight: bold;
-         }
-
-         .dots::after {
-            content: '';
-            animation: dots 1.5s steps(4, end) infinite;
-        }
+        .dots { display: inline-block; font-weight: bold; }
+        .dots::after { content: ''; animation: dots 1.5s steps(4, end) infinite; }
     }
 
     .status-pending { @include bgspace($pending, 0.5em 0); }
