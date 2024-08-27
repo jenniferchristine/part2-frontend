@@ -1,7 +1,19 @@
 "use strict";
 
+let overlay, bookingForm, loginForm; 
+
 // säkerställer att koden körs
 document.addEventListener("DOMContentLoaded", () => {
+    overlay = document.getElementById("overlay");
+    bookingForm = document.getElementById("booking-form");
+    loginForm = document.getElementById("login-form");
+
+    document.getElementById("confirm-btn").addEventListener('click', (e) => { e.preventDefault(); addData(); });
+    loginForm.addEventListener('submit', (e) => { e.preventDefault(); logIn(); });
+    document.getElementById("booking-btn").addEventListener('click', () => { showOverlay('booking') });
+    document.getElementById("admin-btn").addEventListener('click', () => { showOverlay('login') });
+    document.getElementById("cancel-btn").addEventListener('click', () => { closeOverlay() });
+    
     const hamburger = document.querySelector('.hamburger-menu');
     const nav = document.querySelector('nav');
     const navLinks = document.querySelectorAll('nav ul li a');
@@ -32,45 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
             behavior: 'smooth'
         })
     });
-
-    // variabler och event för knappar
-    const overlay = document.getElementById('overlay');
-    const bookingForm = document.getElementById("booking-form");
-    const bookingBtn = document.getElementById('booking-btn');
-    const cancelBtn = document.getElementById('cancel-btn');
-    const addBtn = document.getElementById("confirm-btn");
-
-    const loginForm = document.getElementById("login-form");
-    const adminBtn = document.getElementById('admin-btn');
-    const loginBtn = document.getElementById('login-btn');
-
-    if (bookingBtn && cancelBtn && addBtn) {
-        bookingBtn.addEventListener('click', () => {
-            overlay.style.display = 'flex'; // visa overlay
-            loginForm.style.display = 'none';
-        });
-
-        cancelBtn.addEventListener('click', () => {
-            overlay.style.display = 'none'; // dölj overlay
-            window.location.href = "/index.html";
-        });
-
-        addBtn.addEventListener('click', () => { 
-            addData(); 
-        });
-    }
-
-    if (adminBtn && loginBtn) {
-        adminBtn.addEventListener('click', (e) => {
-            e.preventDefault(); // förhindra att sidan scrollas upp
-            overlay.style.display = 'flex';
-            bookingForm.style.display = 'none';
-        });
-
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault(); logIn();
-        });
-    }
 
     // smooth scroll av navigering
     const scrollToElement = (e) => {
@@ -311,3 +284,27 @@ function handleValidation(errors) {
     }
 };
 
+// visa overlay
+function showOverlay(formToShow) {
+    overlay.style.display = 'flex'; // visar overlay
+
+    // döljer allt innehåll för sig
+    bookingForm.style.display = 'none';
+    loginForm.style.display = 'none';
+
+    if (formToShow === 'booking') {
+        bookingForm.style.display = 'block';
+    } else if (formToShow === 'login') {
+        loginForm.style.display = 'block';
+    }
+};
+
+// dölj overlay
+function closeOverlay() {
+    overlay.style.display = 'none';
+
+    // rensa alla formulär
+    document.querySelectorAll("error-message").forEach(el => el.textContent = "");
+    bookingForm.reset();
+    loginForm.reset();
+};
