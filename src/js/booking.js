@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => { // säkerställer att kode
     document.getElementById("back-btn").addEventListener('click', () => { closeOverlay() });
     logoutBtn.addEventListener('click', (e) => { e.preventDefault(); logOut(); });
 
-    overlay.addEventListener('click', function(e) { // stäng overlay om man klickar utanför formulär
+    overlay.addEventListener('click', function (e) { // stäng overlay om man klickar utanför formulär
         if (e.target === overlay) {  // kontrollerar om klicket var på själva overlayen och inte på formuläret
             closeOverlay();
         }
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => { // säkerställer att kode
     const toggleButton = document.getElementById('toggle-header');
     const header = document.getElementById('header-fixed');
 
-    toggleButton.addEventListener('click', function() {
+    toggleButton.addEventListener('click', function () {
         header.classList.toggle('nav-open'); // toggle för responsiv meny
     });
 
@@ -128,7 +128,7 @@ function createButtonDiv(item) { // funktion för att skapa knappar
     editBtn.appendChild(editIcon);
 
     editBtn.dataset.dishID = item._id;
-    editBtn.addEventListener('click', () => editBookings(item));
+    editBtn.addEventListener('click', () => updateData(item));
 
     const deleteBtn = document.createElement("button");
     deleteBtn.classList.add("delete-btn");
@@ -197,7 +197,7 @@ async function addData() { // addera data
         const data = await response.json();
 
         if (!response.ok) {
-            handleValidation(data.errors);
+            postValidation(data.errors);
             throw new Error("Failed to add data");
         }
 
@@ -217,7 +217,7 @@ async function addData() { // addera data
         } else {
             confirmationMessage("Bokningen är skapad!");
         }
-        
+
         displayData(); // uppdatera sida
 
     } catch (error) {
@@ -225,52 +225,25 @@ async function addData() { // addera data
     }
 };
 
-async function updateData(id, update) { // hitta specifik och uppdatera
-    try {
-        const response = await fetch(`https://pastaplace.onrender.com/bookings/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify(update)
-        });
-
-        if (response.ok) {
-            overlay.style.display = 'none';
-            confirmationMessage("Bokningen är uppdaterad!");
-            displayData(); // uppdatera sidan
-
-        } else {
-            const errorData = await response.json();
-            console.error("Error: Could not update data", errorData);
-        }
-    } catch (error) {
-        console.error("Error while updating", error);
-    }
-};
-
-function editBookings(item) { // uppdatera bokning och måla ut
-
+async function updateData(item) { // formulär- och databasuppdatering
     // fyll i formulärfälten med existerande värden
     document.getElementById("status-edit").value = item.status;
     document.getElementById("name-edit").value = item.customer.name;
     document.getElementById("phoneNumber-edit").value = item.customer.phoneNumber;
     document.getElementById("email-edit").value = item.customer.email;
     document.getElementById("guests-edit").value = item.guests;
-    
+
     const bookingDate = new Date(item.bookingDate).toISOString().split('T')[0];
-    document.getElementById("bookingDate-edit").value = bookingDate;
-    
     const bookingTime = new Date(item.bookingDate).toISOString().split('T')[1].substring(0, 5);
+
+    document.getElementById("bookingDate-edit").value = bookingDate;
     document.getElementById("time-edit").value = bookingTime;
-    
     document.getElementById("requests-edit").value = item.requests;
 
     showOverlay('update');
 
     const updateForm = document.getElementById("update-form");
-    updateForm.onsubmit = (e) => {
+    updateForm.onsubmit = async (e) => {
         e.preventDefault();
 
         // hämta uppdaterade värden från formuläret
@@ -296,15 +269,47 @@ function editBookings(item) { // uppdatera bokning och måla ut
                 phoneNumber: updatedPhoneNumber,
                 email: updatedEmail
             },
-            bookingDate: bookingDateTime.toISOString(), 
+            bookingDate: bookingDateTime.toISOString(),
             guests: updatedGuests,
             requests: updatedRequests
         };
 
-        // Anropa funktionen för att uppdatera data
-        updateData(item._id, updatedBooking);
+
+        try { // förfrågan att uppdatera
+            const response = await fetch(`https://pastaplace.onrender.com/bookings/${item._id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(updatedBooking)
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error("Server response:", errorData);
+                putValidation(errorData.errors);
+                throw new Error("Failed to add data");
+            }
+
+            // töm fält efter tillägg
+            document.getElementById("nameError-edit").textContent = "";
+            document.getElementById("phoneNumberError-edit").textContent = "";
+            document.getElementById("emailError-edit").textContent = "";
+            document.getElementById("guestsError-edit").textContent = "";
+            document.getElementById("bookingDateError-edit").textContent = "";
+            document.getElementById("timeError-edit").textContent = "";
+            document.getElementById("requestsError-edit").textContent = "";
+
+            overlay.style.display = 'none';
+            confirmationMessage("Bokningen är uppdaterad!");
+            displayData(); // uppdatera sidan
+            
+        } catch (error) {
+            console.error("Error while updating", error);
+        }
     };
-};
+}
 
 async function showConfirmation(message) { // visa bekräftelse
     showOverlay('confirmation');
@@ -322,7 +327,7 @@ async function showConfirmation(message) { // visa bekräftelse
         <button id="yes" class="material-symbols-outlined">check_circle</button>
         <button id="no" type="button" class="material-symbols-outlined">cancel</button>
         </div>`;
-        
+
         confirmation.appendChild(showConfirmation);
 
         const yesBtn = confirmation.querySelector("#yes");
@@ -341,11 +346,11 @@ async function showConfirmation(message) { // visa bekräftelse
 
             resolve(false); // kallar på funktionen då användaren nekade åtgärd
         });
-    }); 
+    });
 };
 
 function confirmationMessage(message) { // bekräftelsemeddelanden
-    const confirmation = document.querySelector(".banner--third");  
+    const confirmation = document.querySelector(".banner--third");
     confirmation.style.display = 'flex';
 
     confirmation.innerHTML = `<p>${message}`;
@@ -384,7 +389,7 @@ async function deleteData(id) { // radera data
     }
 };
 
-function handleValidation(errors) { // hantera validering
+function postValidation(errors) { // hantera validering för att addera
     if (errors) { // hämtar in medskickade error och dess meddelanden
         if (errors["customer.name"]) { // skriver ut meddelande om funnet
             document.getElementById("nameError").textContent = errors["customer.name"];
@@ -410,9 +415,35 @@ function handleValidation(errors) { // hantera validering
     }
 };
 
+function putValidation(errors) { // hantera validering för att uppdatera
+    if (errors) {
+        if (errors["customer.name"]) { // skriver ut meddelande om funnet
+            document.getElementById("nameError-edit").textContent = errors["customer.name"];
+        }
+        if (errors["customer.phoneNumber"]) {
+            document.getElementById("phoneNumberError-edit").textContent = errors["customer.phoneNumber"];
+        }
+        if (errors["customer.email"]) {
+            document.getElementById("emailError-edit").textContent = errors["customer.email"];
+        }
+        if (errors.guests) {
+            document.getElementById("guestsError-edit").textContent = errors.guests;
+        }
+        if (errors.bookingDate) {
+            document.getElementById("bookingDateError-edit").textContent = errors.bookingDate;
+        }
+        if (errors.bookingDate) {
+            document.getElementById("timeError-edit").textContent = errors.bookingDate;
+        }
+        if (errors.requests) {
+            document.getElementById("requestsError-edit").textContent = errors.requests;
+        }
+    }
+}
+
 function logOut() { // logga ut
     localStorage.removeItem("token"); // tar bort token och gör användaren obehörig
-    window.location.href ="index.html" // skickas då till startsida
+    window.location.href = "index.html" // skickas då till startsida
 };
 
 function showOverlay(formToShow) { // visa overlay
