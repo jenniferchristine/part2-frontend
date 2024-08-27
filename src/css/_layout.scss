@@ -136,33 +136,12 @@ body {
     img { width: 150px; margin: 30em 0 2em 12px; }
 }
 
-/*
 #hero {
-    @include align(flex, center, center);
-    position: relative;
     width: 100%;
-    margin: 0 auto;
-  
-    img:first-child { @include size(100%, auto); display: block; }
-  
-    #overlay-image {
-      @include placing(absolute, 66%, 50%);
-      @include align(block, center, left);
-      transform: translate(-50%, -50%);
-      width: 1440px; 
-      
-      h1 { @include textapp($headline-text, $light_color); font-size: 74px; }
-      h2 { font-size: 30px; margin-top: -1.5em; color: $deviating-color; }
 
-      p { 
-        @include bgspace(rgba(235, 235, 207, 0.466), 1em);
-        font-size: 26px; 
-        width: 56%; 
-        font-family: $paragraph-text; }}
-
-      img { @include size(auto, auto); }
+    img { width: 100%; height: auto; }
 }
-*/
+
 nav {
     ul { display: flex; list-style: none; padding: 0; }
     li { font-size: 20px; 

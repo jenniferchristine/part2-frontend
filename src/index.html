@@ -15,7 +15,7 @@
 
     <header class="header--sticky">
         <div class="flex-div">
-        <img src="images/pastaplace4.png" alt="company logotype">
+        <img src="images/logo.png" alt="company logotype">
         <nav>
             <ul>
                 <li><a href="#result--dish" class="scroll-link">Meny</a></li>
@@ -26,18 +26,11 @@
     </div>
     </header>
 
-    <!--
-    <div id="hero">
-        <img src="images/header.webp" alt="">
-        <div id="overlay-image">
-            <h1>MÄSTARE I PASTA</h1>
-            <h2>"En upplevelse likt ingen annan" - Matkritikerna</h2>
-            <p>Vi har vunnit priset för pasta i världskvalité 3 år i rad och blivit hyllade för vår färska, 
-                handgjorda pasta flera gånger om! <br><br>Vårt mål är dock inte att vinna priset, 
-            utan att bibehålla vår mat, precis som den är - lik ingen annan</p>
-        </div>
-    </div>
--->
+    <picture id="hero">
+        <source media="(min-width:801px) and (max-width:1520px)" type="image/webp" srcset="images/header_middle.webp">
+        <source media="(max-width:800px)" type="image/webp" srcset="images/header_small.webp">
+        <img src="images/header_big.webp" alt="hero image" loading="lazy">
+    </picture>
 
     <main>
         <div class="light-background">
@@ -55,10 +48,10 @@
 
         <div class="middle-background">
             <div id="booking-link" class="block block--imgbox">
-                <img src="images/imgbox2.webp" alt="">
+                <img src="images/dish1.webp" alt="image of a menu dish">
                 <div>
                     <h1>Boka ditt bord!</h1>
-                    <h2>Om det ändå fanns något att skriva</h2><br>
+                    <h2>Upplev oss på plats!</h2><br>
                     <p>
                         För att boka bord hos oss klickar du bara på knappen nedan och fyller i bokningsformuläret -
                         lätt
@@ -78,7 +71,7 @@
         <div class="light-background">
             <div id="result--dish">
                 <div class="headline">
-                    <img src="images/pasta-icon.png">
+                    <img src="images/icon.png">
                     <h1>Meny</h1>
                 </div>
 
@@ -91,19 +84,17 @@
                     <h1>Om oss</h1>
                     <h2>Vi har funnits sedan 2001</h2><br>
                     <p>
-                        För att boka bord hos oss klickar du bara på knappen nedan och fyller i bokningsformuläret -
-                        lätt
-                        som en
-                        plätt!
+                        Vi har sedan 2001 har specialiserat oss på att servera utsökta pastarätter i en varm och inbjudande atmosfär. 
+                        Vårt engagemang för kvalitet och tradition genomsyrar varje tallrik, med noggrant utvalda ingredienser och genuina smaker!
                     </p>
                     <p>
-                        Vill du prata med en mänsklig varelse? Slå oss en pling eller kom förbi resturangen!
+                        För kontakt - klicka på knappen nedan!
                     </p>
                     <button class="button button--primary">
                         KONTAKT
                     </button>
                 </div>
-                <img src="images/imgbox1.webp" alt="">
+                <img src="images/dish2.webp" alt="image of a second menu dish">
             </div>
         </div>
 
@@ -115,7 +106,7 @@
 
         <div class="wrapper">
             <div class="foot-column">
-                <img src="images/pasta1 vit.png">
+                <img src="images/logo_white.png">
                 <p>Adressgatan 23<br>
                     657 43 Stockholm</p>
             </div>
