@@ -2,6 +2,20 @@
 
 // säkerställer att koden körs
 document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.querySelector('.hamburger-menu');
+    const nav = document.querySelector('nav');
+    const navLinks = document.querySelectorAll('nav ul li a');
+
+    hamburger.addEventListener('click', function() {
+        nav.classList.toggle('active');
+    });
+
+    navLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+            nav.classList.remove('active');
+        });
+    });
+
     const toTopBtn = document.getElementById("topBtn"); // scrolla till toppen-knapp
 
     window.addEventListener('scroll', () => {
