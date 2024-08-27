@@ -21,9 +21,6 @@ document.addEventListener("DOMContentLoaded", () => { // säkerställer att kode
     const navLinks = document.querySelectorAll('nav ul li a');
     const toTopBtn = document.getElementById("topBtn");
 
-    const links = document.querySelectorAll(".scroll-link");
-    links.forEach(link => { link.addEventListener('click', scrollToElement); }); // hämtar länkarna och lägger till hanteraren
-
     hamburger.addEventListener('click', function() { // togglar responsiv meny
         nav.classList.toggle('active');
     });
@@ -55,7 +52,10 @@ document.addEventListener("DOMContentLoaded", () => { // säkerställer att kode
         if (targetEl) { targetEl.scrollIntoView({ behavior: 'smooth' }); }
     };
 
-    displayData(); // visar hämtad data så fort webbplatsen besöks
+    const links = document.querySelectorAll(".scroll-link");
+    links.forEach(link => { link.addEventListener('click', scrollToElement); }); // hämtar länkarna och lägger till hanteraren
+
+    //displayData(); // visar hämtad data så fort webbplatsen besöks
 });
 
 async function fetchData() { // hämtar data
@@ -76,6 +76,7 @@ async function fetchData() { // hämtar data
 };
 
 async function displayData() { // visar data
+
     const resultDiv = document.getElementById("result--dish"); // hämtar plats
 
     try {

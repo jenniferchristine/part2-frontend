@@ -69,7 +69,7 @@ body {
     }
 
     .loading-holder {
-        display: none;
+        display: flex;
         justify-content: center;
         align-items: center;
 
@@ -379,6 +379,21 @@ main { width: 100%;
          h1 { @include text(20px, left); margin-bottom: 1.2em; }
          div { text-align: right; }
         &:nth-child(even) { background-color: darken($light_color, 1%); }
+    }
+
+    #loading-menu { 
+        margin: -3em 0 2em 7em; 
+        font-style: italic; 
+
+        .dots {
+            display: inline-block;
+            font-weight: bold;
+         }
+
+         .dots::after {
+            content: '';
+            animation: dots 1.5s steps(4, end) infinite;
+        }
     }
 
     .status-pending { @include bgspace($pending, 0.5em 0); }
