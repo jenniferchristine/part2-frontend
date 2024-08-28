@@ -466,7 +466,7 @@ function closeOverlay() { // dölj overlay
     overlay.style.display = 'none';
 
     // rensa alla formulär
-    document.querySelectorAll("error-message").forEach(el => el.textContent = "");
+    document.querySelectorAll(".error-message").forEach(el => el.textContent = "");
     addForm.reset();
     updateForm.reset();
     confirmation.innerHTML = "";

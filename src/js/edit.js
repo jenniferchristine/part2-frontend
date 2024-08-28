@@ -246,56 +246,6 @@ async function updateData(item) {
         }
     };
 }
-/*
-async function updateData(id, update) { // hitta specifik maträtt att uppdatera
-    try {
-        const response = await fetch(`https://pastaplace.onrender.com/dishes/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify(update)
-        });
-
-        if (response.ok) {
-            overlay.style.display = 'none';
-            confirmationMessage("Din rätt uppdaterad!");
-            displayData(); // uppdatera sidan
-
-        } else {
-            console.error("Error: Could not update data");
-        }
-    } catch (error) {
-        console.error("Error while updating", error);
-    }
-};
-
-function editDish(item) { // uppdatera maträtt
-    document.getElementById("name").value = item.name;
-    document.getElementById("description").value = item.description;
-    document.getElementById("ingredients").value = item.ingredients;
-    document.getElementById("category").value = item.category;
-    document.getElementById("contains").value = item.contains;
-    document.getElementById("price").value = item.price;
-
-    showOverlay('update');
-
-    updateForm.onsubmit = (e) => { // uppdaterar form på submit
-        e.preventDefault();
-
-        const updatedDish = {
-            name: document.getElementById("name").value,
-            description: document.getElementById("description").value,
-            ingredients: document.getElementById("ingredients").value,
-            category: document.getElementById("category").value,
-            contains: document.getElementById("contains").value,
-            price: document.getElementById("price").value
-        };
-        updateData(item._id, updatedDish); // skickar vidare uppdatering och id
-    };
-};
-*/
 
 async function showConfirmation(message) { // visa bekräftelse
     showOverlay('confirmation');
@@ -444,7 +394,7 @@ function closeOverlay() { // dölj overlay
     overlay.style.display = 'none';
 
     // rensa alla formulär
-    document.querySelectorAll("error-message").forEach(el => el.textContent = "");
+    document.querySelectorAll(".error-message").forEach(el => el.textContent = "");
     addForm.reset();
     updateForm.reset();
     confirmation.innerHTML = "";
