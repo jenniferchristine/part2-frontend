@@ -145,6 +145,8 @@
         </div>
     </footer>
 
+    <a href="admin.html" style="display: none;"></a> <!-- Visa parcel att filen finns -->
+
     <div id="overlay" class="overlay">
         <form id="booking-form" onsubmit="event.preventDefault(); addData();">
             <h1>Snart har du bokat ditt bord!</h1>
@@ -210,8 +212,9 @@
                 <div id="passwordError" class="error-message"></div>
             </div>
             <div>
-                <button form="login-form" id="login-btn" class="button button--secondary" type="submit">LOGGA
-                    IN</button>
+                <button form="login-form" id="login-btn" class="button button--secondary" type="submit">
+                    <span class="material-symbols-outlined">login</span>
+                </button>
                 <a href="index.html">
                     <p>Tillbaka till startsida</p>
                 </a>

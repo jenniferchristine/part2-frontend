@@ -415,9 +415,8 @@ footer {
 }
 
 form {
-    width: 400px;
-    max-width: 95%;
-    @include bgspace($deviating-light, 3em);
+    @include bgspace($deviating-light, 1em 2em 2em);
+    @include width(400px, 95%);
     border-radius: 1em;
 
     h1 { font-size: 22px; }
@@ -427,11 +426,14 @@ form {
         margin: -0.5em 0 1em 0; 
     }
 
+    label { font-size: 15px; }
+
     textarea { 
         @include border(none, 0.3em);
         font: 100% $paragraph-text;
         font-size: 15px;
-        padding: 0.5em
+        padding: 0.5em;
+        color: $detailcolor; 
     }
 
     input { @extend textarea; width: 95%; }
@@ -574,4 +576,5 @@ form {
 @media (max-width: 300px) {
     .header--sticky { img {width: 80%!important; }}
     .edit-btn, .delete-btn { width: 100%!important; }
+    .result-booking { padding: 2em 0!important; }
 }
