@@ -82,12 +82,14 @@
 
             </div>
             <div id="loading-indicator" class="loading-holder">
-                <div class="buffer"></div>
+                <div class="buffer">
+                    <!-- Laddningscirkel -->
+                </div>
             </div>
 
             <div>
                 <div id="show--dishes">
-
+                    <!-- Maträtter skrivs ut här -->
                 </div>
             </div>
         </div>
@@ -144,66 +146,67 @@
                 </div>
 
             </div>
+        </form>
 
-    </form>
-
-    <div id="confirmation"></div>
-
-    <form id="add-form">
-        <h1>Lägg till ny maträtt</h1>
-        <div class="update-form-holder">
-
-            <div>
-                <label for="name"></label>
-                <input type="text" id="name-add" name="name" value="" placeholder="Namn på maträtt">
-                <div id="name-add-error" class="error-message"></div>
-            </div>
-
-            <div>
-                <label for="description"></label>
-                <textarea id="description-add" rows="4" cols="35" name="description"
-                    placeholder="Beskriv rätten med max 100 tecken"></textarea>
-                <div id="description-add-error" class="error-message"></div>
-            </div>
-
-            <div>
-                <label for="category"></label><br>
-                <select name="category" id="category-add">
-                    <option value="">Välj typ av rätt</option>
-                    <option value="Förrätt">Förrätt</option>
-                    <option value="Varmrätt">Varmrätt</option>
-                    <option value="Efterrätt">Efterrätt</option>
-                </select>
-                <div id="category-add-error" class="error-message"></div>
-            </div>
-
-            <div>
-                <label for="contains"></label>
-                <textarea id="contains-add" name="contains" rows="4" cols="35"
-                    placeholder="Beskriv känsligt innehåll så som t.ex. nötter eller gluten"></textarea>
-                <div id="contains-add-error" class="error-message"></div>
-            </div>
-
-            <div>
-                <label for="ingredients"></label>
-                <textarea id="ingredients-add" rows="4" cols="35" name="ingredients"
-                    placeholder="Ange rättens ingredienser"></textarea>
-                <div id="ingredients-add-error" class="error-message"></div>
-            </div>
-
-            <div>
-                <label for="price"></label><br>
-                <input type="number" id="price-add" name="price" value="" placeholder="Priset anges i kr">
-                <div id="price-add-error" class="error-message"></div>
-            </div><br>
-
-            <div class="update-btns">
-                <button id="add-btn" type="submit" class="material-symbols-outlined">add</button>
-                <button id="back-btn" type="button" class="material-symbols-outlined">cancel</button>
-            </div>
-
+        <div id="confirmation">
+            <!-- Raderingsbekräftelse -->
         </div>
-    </form>
+
+        <form id="add-form">
+            <h1>Lägg till ny maträtt</h1>
+            <div class="update-form-holder">
+
+                <div>
+                    <label for="name"></label>
+                    <input type="text" id="name-add" name="name" value="" placeholder="Namn på maträtt">
+                    <div id="name-add-error" class="error-message"></div>
+                </div>
+
+                <div>
+                    <label for="description"></label>
+                    <textarea id="description-add" rows="4" cols="35" name="description"
+                        placeholder="Beskriv rätten med max 100 tecken"></textarea>
+                    <div id="description-add-error" class="error-message"></div>
+                </div>
+
+                <div>
+                    <label for="category"></label><br>
+                    <select name="category" id="category-add">
+                        <option value="">Välj typ av rätt</option>
+                        <option value="Förrätt">Förrätt</option>
+                        <option value="Varmrätt">Varmrätt</option>
+                        <option value="Efterrätt">Efterrätt</option>
+                    </select>
+                    <div id="category-add-error" class="error-message"></div>
+                </div>
+
+                <div>
+                    <label for="contains"></label>
+                    <textarea id="contains-add" name="contains" rows="4" cols="35"
+                        placeholder="Beskriv känsligt innehåll så som t.ex. nötter eller gluten"></textarea>
+                    <div id="contains-add-error" class="error-message"></div>
+                </div>
+
+                <div>
+                    <label for="ingredients"></label>
+                    <textarea id="ingredients-add" rows="4" cols="35" name="ingredients"
+                        placeholder="Ange rättens ingredienser"></textarea>
+                    <div id="ingredients-add-error" class="error-message"></div>
+                </div>
+
+                <div>
+                    <label for="price"></label><br>
+                    <input type="number" id="price-add" name="price" value="" placeholder="Priset anges i kr">
+                    <div id="price-add-error" class="error-message"></div>
+                </div><br>
+
+                <div class="update-btns">
+                    <button id="add-btn" type="submit" class="material-symbols-outlined">add</button>
+                    <button id="back-btn" type="button" class="material-symbols-outlined">cancel</button>
+                </div>
+
+            </div>
+        </form>
     </div>
 
 </body>

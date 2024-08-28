@@ -16,89 +16,93 @@
     <header id="header-fixed" class="header--fixed">
         <button id="toggle-header" class="nav-open">☰</button>
         <nav class="nav">
-                <ul>
-                    <li class="li-box">
-                        <div class="material-symbols-outlined">edit_note</div>
-                        <a href="edit.html">Hantera meny</a>
-                    </li>
-                    <li class="li-box">
-                        <div class="material-symbols-outlined">checklist</div>
-                        <a href="booking.html">Redigera bokning</a>
-                    </li>
-                </ul>
-                <br>
-                <ul>
-                    <li class="li-box">
-                        <div class="material-symbols-outlined">edit_calendar</div>
-                        <a href="#">Schema</a>
-                    </li>
-                    <li class="li-box">
-                        <div class="material-symbols-outlined">payments</div>
-                        <a href="#">Betalningsloggar</a>
-                    </li>
-                    <li class="li-box">
-                        <div class="material-symbols-outlined">person_alert</div>
-                        <a href="#">Rapporter</a>
-                    </li>
-                </ul>
-                <br>
-                <ul>
-                    <li class="li-box">
-                        <div class="material-symbols-outlined">info</div>
-                        <a href="#">Info</a>
-                    </li>
-                    <li class="li-box">
-                        <div class="material-symbols-outlined">help</div>
-                        <a href="#">Hjälp</a>
-                    </li>
-                    <li class="li-box">
-                        <div class="material-symbols-outlined">support_agent</div>
-                        <a href="#">Kundtjänst</a>
-                    </li>
-                    <li id="logout-btn" class="li-box">
-                        <div class="material-symbols-outlined">logout</div>
-                        <a href="index.html">Logga ut</a>
-                    </li>
-                </ul>
-            <img src="images/logo_white2.png" alt="company logotype">
+            <ul>
+                <li class="li-box">
+                    <div class="material-symbols-outlined">edit_note</div>
+                    <a href="edit.html">Hantera meny</a>
+                </li>
+                <li class="li-box">
+                    <div class="material-symbols-outlined">checklist</div>
+                    <a href="booking.html">Redigera bokning</a>
+                </li>
+            </ul>
+            <br>
+            <ul>
+                <li class="li-box">
+                    <div class="material-symbols-outlined">edit_calendar</div>
+                    <a href="#">Schema</a>
+                </li>
+                <li class="li-box">
+                    <div class="material-symbols-outlined">payments</div>
+                    <a href="#">Betalningsloggar</a>
+                </li>
+                <li class="li-box">
+                    <div class="material-symbols-outlined">person_alert</div>
+                    <a href="#">Rapporter</a>
+                </li>
+            </ul>
+            <br>
+            <ul>
+                <li class="li-box">
+                    <div class="material-symbols-outlined">info</div>
+                    <a href="#">Info</a>
+                </li>
+                <li class="li-box">
+                    <div class="material-symbols-outlined">help</div>
+                    <a href="#">Hjälp</a>
+                </li>
+                <li class="li-box">
+                    <div class="material-symbols-outlined">support_agent</div>
+                    <a href="#">Kundtjänst</a>
+                </li>
+                <li id="logout-btn" class="li-box">
+                    <div class="material-symbols-outlined">logout</div>
+                    <a href="index.html">Logga ut</a>
+                </li>
+            </ul>
+            <img src="images/logo_white2.svg" alt="company logotype">
         </nav>
     </header>
 
     <main>
-
         <div class="main--right">
-
             <div class="banner banner--first">
                 <p>Inloggad som: Admin </p>
             </div>
 
             <div class="banner banner--second">
-                <a href="admin.html"><h1>Hantera bokning</h1></a>
+                <a href="admin.html">
+                    <h1>Hantera bokning</h1>
+                </a>
                 <div id="add-to-btn" class="add-div">
                     <span class="material-symbols-outlined">add</span>
                     <button class="wide-add" type="button">LÄGG TILL BOKNING</button>
                 </div>
             </div>
 
-            <div class="banner banner--third"></div>
+            <div class="banner banner--third">
+                <!-- Banner fälls ned med bekräftelsemeddelande -->
+            </div>
 
             <div id="loading-indicator" class="loading-holder">
-                <div class="buffer"></div>
+                <div class="buffer">
+                    <!-- Laddningscirkel -->
+                </div>
             </div>
 
             <div>
                 <div id="show--bookings">
-
+                    <!-- Bokningar skrivs ut -->
                 </div>
             </div>
-        </div>
 
+        </div>
     </main>
 
     <div id="overlay" class="overlay">
-
         <form id="update-form">
             <h1>Uppdatera en befintlig bokning</h1>
+
             <div>
                 <label for="status">Status:</label><br>
                 <select name="status" id="status-edit">
@@ -107,21 +111,25 @@
                     <option value="Cancelled">Cancelled (avbruten)</option>
                 </select>
             </div><br>
+
             <div>
                 <label for="name">Namn:</label><br>
                 <input type="text" name="name" id="name-edit" placeholder="För- och efternamn">
                 <div id="nameError-edit" class="error-message"></div>
             </div><br>
+
             <div>
                 <label for="phoneNumber">Telefonnummer:</label><br>
                 <input type="text" name="phoneNumber" id="phoneNumber-edit" placeholder="Telefonnummer">
                 <div id="phoneNumberError-edit" class="error-message"></div>
             </div><br>
+
             <div>
                 <label for="email">E-postadress:</label><br>
                 <input type="text" name="email" id="email-edit" placeholder="E-postadress">
                 <div id="emailError-edit" class="error-message"></div>
             </div><br>
+
             <div>
                 <label for="guests">Antal gäster</label><br>
                 <select name="guests" id="guests-edit">
@@ -135,32 +143,39 @@
                 </select>
                 <div id="guestsError-edit" class="error-message"></div>
             </div><br>
+
             <div>
                 <label for="bookingDate">Datum:</label><br>
                 <input type="date" name="bookingDate" id="bookingDate-edit">
                 <div id="bookingDateError-edit" class="error-message"></div>
             </div><br>
+
             <div>
                 <label for="time">Tid:</label><br>
                 <input type="time" name="time" id="time-edit">
                 <div id="timeError-edit" class="error-message"></div>
             </div><br>
+
             <div>
                 <label for="requests">Önskemål:</label><br>
                 <textarea name="requests" id="requests-edit" placeholder="Särskilda önskemål" rows="4"
                     cols="35"></textarea>
                 <div id="requestsError-edit" class="error-message"></div>
             </div>
+
             <div class="update-btns">
-            <button id="update-btn" type="submit" class="material-symbols-outlined">update</button>
-            <button id="cancel-btn" type="button" class="material-symbols-outlined">cancel</button>
-        </div>
+                <button id="update-btn" type="submit" class="material-symbols-outlined">update</button>
+                <button id="cancel-btn" type="button" class="material-symbols-outlined">cancel</button>
+            </div>
         </form>
 
-        <div id="confirmation"></div>
+        <div id="confirmation">
+            <!-- Raderingsbekfräftelse -->
+        </div>
 
         <form id="add-form">
             <h1>Skapa en ny bokning</h1>
+
             <div>
                 <label for="status"></label>
                 <select name="status" id="status">
@@ -169,21 +184,25 @@
                     <option value="Pending">Pending (pendlande)</option>
                 </select>
             </div><br>
+
             <div>
                 <label for="name"></label><br>
                 <input type="text" name="name" id="name" placeholder="För- och efternamn">
                 <div id="nameError" class="error-message"></div>
             </div>
+
             <div>
                 <label for="phoneNumber"></label><br>
                 <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Telefonnummer">
                 <div id="phoneNumberError" class="error-message"></div>
             </div>
+
             <div>
                 <label for="email"></label><br>
                 <input type="text" name="email" id="email" placeholder="E-postadress">
                 <div id="emailError" class="error-message"></div>
             </div>
+
             <div>
                 <label for="guests"></label><br><br>
                 <select name="guests" id="guests">
@@ -198,30 +217,31 @@
                 </select>
                 <div id="guestsError" class="error-message"></div>
             </div>
+
             <div>
                 <label for="bookingDate"></label><br>
                 <input type="date" name="bookingDate" id="bookingDate">
                 <div id="bookingDateError" class="error-message"></div>
             </div>
+
             <div>
                 <label for="time"></label><br>
                 <input type="time" name="time" id="time">
                 <div id="timeError" class="error-message"></div>
             </div>
+
             <div>
                 <label for="requests"></label><br><br>
-                <textarea name="requests" id="requests" placeholder="Särskilda önskemål" rows="4"
-                    cols="35"></textarea>
+                <textarea name="requests" id="requests" placeholder="Särskilda önskemål" rows="4" cols="35"></textarea>
                 <div id="requestsError" class="error-message"></div>
             </div>
+
             <div class="update-btns">
                 <button id="add-btn" type="submit" class="material-symbols-outlined">add</button>
                 <button id="back-btn" type="button" class="material-symbols-outlined">cancel</button>
             </div>
         </form>
-
     </div>
-
 </body>
 
 </html>
