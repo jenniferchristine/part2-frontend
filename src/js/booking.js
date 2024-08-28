@@ -67,7 +67,7 @@ async function displayData() { // visa data
 
     try {
         const data = await fetchData();
-        data.forEach(item => createBookingElement(item)); // loopen körs genom funktionen som skapar varje item
+        data.result.forEach(item => createBookingElement(item)); // loopen körs genom funktionen som skapar varje item
     } catch (error) {
         console.error("Fault accured:", error);
     } finally {
