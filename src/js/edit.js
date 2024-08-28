@@ -2,7 +2,6 @@
 
 let overlay, resultDiv, confirmation, updateForm, addForm, token; // globala variabler 
 
-
 document.addEventListener('DOMContentLoaded', () => { // säkerställer att koden körs
     const logoutBtn = document.getElementById("logout-btn");
 
@@ -164,7 +163,7 @@ async function addData() { // addera data
             throw new Error("Failed to add data");
         }
 
-        // Återställ formulärfält
+        // återställ formulärfält
         document.getElementById("name-add").value = "";
         document.getElementById("description-add").value = "";
         document.getElementById("category-add").value = "";

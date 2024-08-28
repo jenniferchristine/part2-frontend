@@ -69,6 +69,7 @@ async function fetchData() { // hämtar data
 
     try {
         const response = await fetch(url);
+
         if (!response.ok) { // felhantering
             throw new Error("Could not connect to API" + response.statusText);
         }

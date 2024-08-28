@@ -1,6 +1,5 @@
 "use strict";
 
-
 document.addEventListener("DOMContentLoaded", () => { // säkerställer att koden körs
 
     // variabler och händelsehanterare
