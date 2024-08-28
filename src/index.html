@@ -15,20 +15,20 @@
 
     <header class="header--sticky">
         <div class="flex-div">
-        <a href="index.html"><img src="images/logo.svg" alt="company logotype"></a>
-        <div class="hamburger-menu">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+            <a href="index.html"><img src="images/logo.svg" alt="company logotype"></a>
+            <div class="hamburger-menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#result--dish" class="scroll-link">Meny</a></li>
+                    <li><a href="#booking-link" class="scroll-link">Boka bord</a></li>
+                    <li><a href="#contact-link" class="scroll-link">Om oss</a></li>
+                </ul>
+            </nav>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#result--dish" class="scroll-link">Meny</a></li>
-                <li><a href="#booking-link" class="scroll-link">Boka bord</a></li>
-                <li><a href="#contact-link" class="scroll-link">Om oss</a></li>
-            </ul>
-        </nav>
-    </div>
     </header>
 
     <picture id="hero">
@@ -45,7 +45,7 @@
                     Här tar varje tugga dig på en smakresa genom Italiens soliga landskap! Vi på Pasta Place snurrar vi
                     inte
                     bara gaffeln, utan även dina sinnen med våra himmelska pastarätter. </p>
-                    <p>Kom in och låt oss förvandla din
+                <p>Kom in och låt oss förvandla din
                     middag till en fest för smaklökarna!
                 </p>
             </div>
@@ -76,15 +76,14 @@
         <div class="light-background">
             <div id="result--dish">
                 <div class="headline">
-                    <img src="images/icon.svg">
+                    <img src="images/icon.svg" alt="company icon">
                     <h1>Meny</h1>
-                    </div>
                 </div>
-                
             </div>
-            <div id="loading-menu">
-                <p>Läser in meny<span class="dots"></span></p>
-            </div>
+        </div>
+
+        <div id="loading-menu">
+            <p>Läser in meny<span class="dots"></span></p>
         </div>
 
         <div class="middle-background">
@@ -93,8 +92,10 @@
                     <h1>Om oss</h1>
                     <h2>Vi har funnits sedan 2001</h2><br>
                     <p>
-                        Vi har sedan 2001 har specialiserat oss på att servera utsökta pastarätter i en varm och inbjudande atmosfär. 
-                        Vårt engagemang för kvalitet och tradition genomsyrar varje tallrik, med noggrant utvalda ingredienser och genuina smaker!
+                        Vi har sedan 2001 har specialiserat oss på att servera utsökta pastarätter i en varm och
+                        inbjudande atmosfär.
+                        Vårt engagemang för kvalitet och tradition genomsyrar varje tallrik, med noggrant utvalda
+                        ingredienser och genuina smaker!
                     </p>
                     <p>
                         För kontakt - klicka på knappen nedan!
@@ -112,10 +113,9 @@
     </main>
 
     <footer>
-
         <div class="wrapper">
             <div class="foot-column">
-                <img src="images/logo_white.svg">
+                <img src="images/logo_white.svg" alt="company footer logotype">
                 <p>Adressgatan 23<br>
                     657 43 Stockholm</p>
             </div>
@@ -131,11 +131,11 @@
                     <p>Boka bord</p>
                 </a>
                 <div class="admin">
-                <span class="material-symbols-outlined">lock</span>
-                <a href="#" id="admin-btn">
-                    <p>Admin</p>
-                </a>
-            </div>
+                    <span class="material-symbols-outlined">lock</span>
+                    <a href="#" id="admin-btn">
+                        <p>Admin</p>
+                    </a>
+                </div>
             </div>
             <div class="foot-column">
                 <p class="highlighted">NYHETSBREV</p>
@@ -143,7 +143,6 @@
                 <p>Skriv upp dig för resturangens nyheter och erbjudanden</p>
             </div>
         </div>
-        <a href="admin.html" style="display:none"></a> <!-- DÖLJ DENNA -->
     </footer>
 
     <div id="overlay" class="overlay">
@@ -191,8 +190,7 @@
             </div>
             <div>
                 <label for="requests"></label><br><br>
-                <textarea typ="text" name="requests" id="requests" placeholder="Särskilda önskemål" rows="4"
-                    cols="35"></textarea>
+                <textarea name="requests" id="requests" placeholder="Särskilda önskemål" rows="4" cols="35"></textarea>
                 <div id="requestsError" class="error-message"></div>
             </div>
             <div class="btn-div">
@@ -212,14 +210,15 @@
                 <div id="passwordError" class="error-message"></div>
             </div>
             <div>
-                <button form="login-form" id="login-btn" class="button button--secondary" type="submit">LOGGA IN</button>
-                <a href="index.html"><p>Tillbaka till startsida</p></a>
+                <button form="login-form" id="login-btn" class="button button--secondary" type="submit">LOGGA
+                    IN</button>
+                <a href="index.html">
+                    <p>Tillbaka till startsida</p>
+                </a>
             </div>
-            
+
             <div id="loading-indicator" class="loading-holder">
                 <div class="buffer"></div>
-            </div>
-            
             </div>
         </form>
     </div>
