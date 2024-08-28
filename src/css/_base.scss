@@ -11,7 +11,6 @@ $bread-text: "Roboto", sans-serif;
 $primary-color: #464646;
 $deviating-color: #F1B92A;
 $deviating-light: #FFF9EA;
-//$deviating-light: #e8ecee;
 $deviating-standout: rgb(50, 163, 228);
 
 $error: rgb(226, 106, 106);
@@ -70,6 +69,11 @@ $border-style: 1px solid;
 @mixin textapp($font, $color) {
     font-family: $font;
     color: $color;
+}
+
+@mixin textsize($size, $weight) {
+    font-size: $size;
+    font-weight: $weight;
 }
 
 @mixin placing($position, $top, $left) {
