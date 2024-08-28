@@ -92,8 +92,8 @@ body {
         p { line-height: 10px; }
         .small { font-size: 12px; margin-top: 3em; }
 
-        div { 
-            @include align(none, center, center);
+        .headline-div { 
+            @include align(flex, center, center);
             gap: 0.5em; 
             margin-bottom: 2em;
 
@@ -436,6 +436,7 @@ form {
 
     input { @extend textarea; width: 95%; }
     select { @extend textarea; width: 50%; }
+    a { color: darken($deviating-standout, 10%); }
 
     .error-message {
         color: lighten($primary-color, 7%);

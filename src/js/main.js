@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => { // säkerställer att kode
     const links = document.querySelectorAll(".scroll-link");
     links.forEach(link => { link.addEventListener('click', scrollToElement); }); // hämtar länkarna och lägger till hanteraren
 
-    displayData(); // visar hämtad data så fort webbplatsen besöks
+   displayData(); // visar hämtad data så fort webbplatsen besöks
 });
 
 async function fetchData() { // hämtar data
@@ -182,7 +182,7 @@ async function addData() { // addera data
         messageBox.classList.add("message");
 
         messageBox.innerHTML = `
-        <div>
+        <div class="headline-div">
         <span class="material-symbols-outlined">check</span>
         <p>Ditt bord är bokat, ${name}!</p><br>
         </div>
@@ -193,7 +193,7 @@ async function addData() { // addera data
 
         overlay.appendChild(messageBox);
 
-        // sätter en timeout för hur länge bekräftelsen ska synas
+        // sätter en timeout för hur länge bekräftelsen ska synas, 7sek
         setTimeout(() => {
             window.location.href = "index.html";
         }, 7000);
