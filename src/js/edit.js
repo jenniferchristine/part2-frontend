@@ -127,6 +127,7 @@ async function addData() { // addera data
     const ingredients = document.getElementById("ingredients-add").value;
     const price = document.getElementById("price-add").value;
 
+    // Rensa eventuella felmeddelanden
     document.getElementById("name-add-error").textContent = "";
     document.getElementById("description-add-error").textContent = "";
     document.getElementById("category-add-error").textContent = "";
@@ -163,6 +164,7 @@ async function addData() { // addera data
             throw new Error("Failed to add data");
         }
 
+        // Återställ formulärfält
         document.getElementById("name-add").value = "";
         document.getElementById("description-add").value = "";
         document.getElementById("category-add").value = "";
@@ -172,7 +174,7 @@ async function addData() { // addera data
 
         overlay.style.display = 'none';
         confirmationMessage("Din rätt är tillagd!");
-        displayData(); // uppdatera sida
+        displayData();
 
     } catch (error) {
         console.error("Error when adding data", error);
