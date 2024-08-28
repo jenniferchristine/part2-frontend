@@ -60,7 +60,7 @@
                     <a href="index.html">Logga ut</a>
                 </li>
             </ul>
-            <img src="images/logo_white2.png" alt="company logotype">
+            <img src="images/logo_white2.svg" alt="company logotype">
         </nav>
     </header>
 
@@ -81,7 +81,6 @@
             <div class="banner banner--third">
 
             </div>
-
             <div id="loading-indicator" class="loading-holder">
                 <div class="buffer"></div>
             </div>
@@ -98,99 +97,113 @@
         <form id="update-form">
             <h1>Uppdatera maträtt</h1>
             <div class="update-form-holder">
+
                 <div>
                     <label for="name">Namn:</label><br>
                     <input type="text" id="name" name="name" value="">
                     <div id="name-put-error" class="error-message"></div>
                 </div>
+
                 <div>
                     <label for="description">Beskrivning:</label><br>
                     <textarea id="description" rows="4" cols="35" name="description"></textarea>
                     <div id="description-put-error" class="error-message"></div>
                 </div>
-                <div>
-                    <div>
-                        <label for="category">Kategori:</label><br>
-                        <select name="category" id="category">
-                            <option value="Förrätt">Förrätt</option>
-                            <option value="Varmrätt">Varmrätt</option>
-                            <option value="Efterrätt">Efterrätt</option>
-                        </select>
-                        <div id="category-put-error" class="error-message"></div>
-                    </div><br>
-                    <div>
-                        <label for="contains">Innehåller:</label><br>
-                        <input type="text" id="contains" name="contains" value="">
-                        <div id="contains-put-error" class="error-message"></div>
-                    </div><br>
-                    <div>
-                        <label for="ingredients">Ingredienser:</label><br>
-                        <textarea id="ingredients" rows="4" cols="35" name="ingredients"></textarea>
-                        <div id="ingredients-put-error" class="error-message"></div>
-                    </div>
-                    <div>
-                        <label for="price">Pris:</label><br>
-                        <input type="number" id="price" name="price" value="">
-                        <div id="price-put-error" class="error-message"></div>
-                    </div>
-                    <div class="update-btns">
-                        <button id="update-btn" type="submit" class="material-symbols-outlined">update</button>
-                        <button id="cancel-btn" type="button" class="material-symbols-outlined">cancel</button>
-                    </div>
-                </div>
-            </div>
-        </form>
 
-        <div id="confirmation"></div>
-
-        <form id="add-form">
-            <h1>Lägg till ny maträtt</h1>
-            <div class="update-form-holder">
                 <div>
-                    <label for="name"></label>
-                    <input type="text" id="name-add" name="name" value="" placeholder="Namn på maträtt">
-                    <div id="name-add-error" class="error-message"></div>
-                </div>
-                <div>
-                    <label for="description"></label>
-                    <textarea id="description-add" rows="4" cols="35" name="description"
-                        placeholder="Beskriv rätten med max 100 tecken"></textarea>
-                    <div id="description-add-error" class="error-message"></div>
-                </div>
-                <div>
-                    <label for="category"></label><br>
-                    <select name="category" id="category-add">
-                        <option value="">Välj typ av rätt</option>
+                    <label for="category">Kategori:</label><br>
+                    <select name="category" id="category">
                         <option value="Förrätt">Förrätt</option>
                         <option value="Varmrätt">Varmrätt</option>
                         <option value="Efterrätt">Efterrätt</option>
                     </select>
-                    <div id="category-add-error" class="error-message"></div>
-                </div>
-                <div>
-                    <label for="contains"></label>
-                    <textarea id="contains-add" name="contains" rows="4" cols="35"
-                        placeholder="Beskriv känsligt innehåll så som t.ex. nötter eller gluten"></textarea>
-                    <div id="contains-add-error" class="error-message"></div>
-                </div>
-                <div>
-                    <label for="ingredients"></label>
-                    <textarea id="ingredients-add" rows="4" cols="35" name="ingredients"
-                        placeholder="Ange rättens ingredienser"></textarea>
-                    <div id="ingredients-add-error" class="error-message"></div>
-                </div>
-                <div>
-                    <label for="price"></label><br>
-                    <input type="number" id="price-add" name="price" value="" placeholder="Priset anges i kr">
-                    <div id="price-add-error" class="error-message"></div>
+                    <div id="category-put-error" class="error-message"></div>
                 </div><br>
-                <div class="update-btns">
-                    <button id="add-btn" type="submit" class="material-symbols-outlined">add</button>
-                    <button id="back-btn" type="button" class="material-symbols-outlined">cancel</button>
-                </div>
-            </div>
-        </form>
 
+                <div>
+                    <label for="contains">Innehåller:</label><br>
+                    <input type="text" id="contains" name="contains" value="">
+                    <div id="contains-put-error" class="error-message"></div>
+                </div><br>
+
+                <div>
+                    <label for="ingredients">Ingredienser:</label><br>
+                    <textarea id="ingredients" rows="4" cols="35" name="ingredients"></textarea>
+                    <div id="ingredients-put-error" class="error-message"></div>
+                </div>
+
+                <div>
+                    <label for="price">Pris:</label><br>
+                    <input type="number" id="price" name="price" value="">
+                    <div id="price-put-error" class="error-message"></div>
+                </div>
+
+                <div class="update-btns">
+                    <button id="update-btn" type="submit" class="material-symbols-outlined">update</button>
+                    <button id="cancel-btn" type="button" class="material-symbols-outlined">cancel</button>
+                </div>
+
+            </div>
+
+    </form>
+
+    <div id="confirmation"></div>
+
+    <form id="add-form">
+        <h1>Lägg till ny maträtt</h1>
+        <div class="update-form-holder">
+
+            <div>
+                <label for="name"></label>
+                <input type="text" id="name-add" name="name" value="" placeholder="Namn på maträtt">
+                <div id="name-add-error" class="error-message"></div>
+            </div>
+
+            <div>
+                <label for="description"></label>
+                <textarea id="description-add" rows="4" cols="35" name="description"
+                    placeholder="Beskriv rätten med max 100 tecken"></textarea>
+                <div id="description-add-error" class="error-message"></div>
+            </div>
+
+            <div>
+                <label for="category"></label><br>
+                <select name="category" id="category-add">
+                    <option value="">Välj typ av rätt</option>
+                    <option value="Förrätt">Förrätt</option>
+                    <option value="Varmrätt">Varmrätt</option>
+                    <option value="Efterrätt">Efterrätt</option>
+                </select>
+                <div id="category-add-error" class="error-message"></div>
+            </div>
+
+            <div>
+                <label for="contains"></label>
+                <textarea id="contains-add" name="contains" rows="4" cols="35"
+                    placeholder="Beskriv känsligt innehåll så som t.ex. nötter eller gluten"></textarea>
+                <div id="contains-add-error" class="error-message"></div>
+            </div>
+
+            <div>
+                <label for="ingredients"></label>
+                <textarea id="ingredients-add" rows="4" cols="35" name="ingredients"
+                    placeholder="Ange rättens ingredienser"></textarea>
+                <div id="ingredients-add-error" class="error-message"></div>
+            </div>
+
+            <div>
+                <label for="price"></label><br>
+                <input type="number" id="price-add" name="price" value="" placeholder="Priset anges i kr">
+                <div id="price-add-error" class="error-message"></div>
+            </div><br>
+
+            <div class="update-btns">
+                <button id="add-btn" type="submit" class="material-symbols-outlined">add</button>
+                <button id="back-btn" type="button" class="material-symbols-outlined">cancel</button>
+            </div>
+
+        </div>
+    </form>
     </div>
 
 </body>

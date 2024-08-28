@@ -88,7 +88,8 @@ async function displayData() { // visar data
 
     try {
         const data = await fetchData();
-        data.forEach(item => { // loopar igenom innehåll
+        console.log(data);
+        data.result.forEach(item => { // loopar igenom innehåll
             const dishDiv = document.createElement("div"); // skapar div för varje innehåll
             dishDiv.classList.add("column"); // applicerar klass
 
