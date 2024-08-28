@@ -18,7 +18,7 @@
 106C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\lightningcss-win32-x64-msvc\package.json133675268696585112 0
 107C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@swc\helpers\_\_create_super\package.json133675268719518711 0
 111C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@swc\helpers\src\_interop_require_default.mjs133675268722114413 0
-57C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist133693122337881844 1
+57C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist133693123323958157 1
 63C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\.gitignore133686732832392974 0
 98C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\css-what\lib\commonjs\index.d.ts133675268707048461 0
 95C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\css-select\lib\general.js.map133675268710636413 0
@@ -88,7 +88,7 @@
 82C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\lmdb\SECURITY.md133675268717047137 0
 81C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\src\images\header_small.webp133692202603373593 0
 76C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\sass\types133680537530849845 1
-66C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\src\edit.html133693121666670603 0
+66C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\src\edit.html133693123323808950 0
 113C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\@swc\helpers\esm\_initializer_warning_helper.js133675268716772108 0
 98C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\term-size\vendor\macos\term-size133675268699415139 0
 91C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\node_modules\parcel\src\.eslintrc.json133675268700530340 0
@@ -6126,6 +6126,6 @@
 97C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\pastaplace-logo_white_flex.8664486c.png133692091119504229 0
 97C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\pastaplace-logo_white_flex.c8591922.png133686737908913991 0
 82C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\pastaplace4.f18d55ad.png133686737908913991 0
-67C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\edit.html133693121666845834 0
 68C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\index.html133693122098831593 0
 68C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\admin.html133693122272816466 0
+67C:\Users\jenif\Desktop\dt207g\projekt\part2-frontend\dist\edit.html133693123323958157 0
