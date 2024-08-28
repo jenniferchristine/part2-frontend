@@ -5,11 +5,11 @@ let overlay, resultDiv, confirmation, updateForm, addForm, token; // globala var
 
 document.addEventListener('DOMContentLoaded', () => { // säkerställer att koden körs
     const logoutBtn = document.getElementById("logout-btn");
-    
+
     logoutBtn.addEventListener('click', (e) => {
         e.preventDefault(); logOut();
     });
-    
+
     // tilldela variabler
     overlay = document.getElementById("overlay");
     resultDiv = document.getElementById("show--dishes");
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => { // säkerställer att kode
     document.getElementById("cancel-btn").addEventListener('click', () => { closeOverlay() });
     document.getElementById("back-btn").addEventListener('click', () => { closeOverlay() });
 
-        overlay.addEventListener('click', function(event) { // stäng overlay om man klickar utanför formulär
+    overlay.addEventListener('click', function (event) { // stäng overlay om man klickar utanför formulär
         if (event.target === overlay) {  // kontrollerar om klicket var på själva overlayen och inte på formuläret
             closeOverlay();
         }
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => { // säkerställer att kode
     const toggleButton = document.getElementById('toggle-header');
     const header = document.getElementById('header-fixed');
 
-    toggleButton.addEventListener('click', function() {
+    toggleButton.addEventListener('click', function () {
         header.classList.toggle('nav-open');
     });
 
@@ -100,7 +100,7 @@ function createButtonDiv(item) { // skapa div för knappar
     editBtn.appendChild(editIcon);
 
     editBtn.dataset.dishID = item._id;
-    editBtn.addEventListener('click', () => editDish(item));
+    editBtn.addEventListener('click', () => updateData(item));
 
     const deleteBtn = document.createElement("button");
     deleteBtn.classList.add("delete-btn");
@@ -159,7 +159,7 @@ async function addData() { // addera data
         const data = await response.json();
 
         if (!response.ok) {
-            handleValidation(data.errors);
+            postValidation(data.errors);
             throw new Error("Failed to add data");
         }
 
@@ -173,12 +173,80 @@ async function addData() { // addera data
         overlay.style.display = 'none';
         confirmationMessage("Din rätt är tillagd!");
         displayData(); // uppdatera sida
-    
+
     } catch (error) {
         console.error("Error when adding data", error);
     }
 };
 
+async function updateData(item) {
+    // fyller i formuläret med info från maträtt
+    document.getElementById("name").value = item.name;
+    document.getElementById("description").value = item.description;
+    document.getElementById("ingredients").value = item.ingredients;
+    document.getElementById("category").value = item.category;
+    document.getElementById("contains").value = item.contains;
+    document.getElementById("price").value = item.price;
+
+    // visa overlay för att uppdatera maträtten
+    showOverlay('update');
+
+    // hantera formulärets inskickning
+    updateForm.onsubmit = async (e) => {
+        e.preventDefault();
+
+        // hämta uppdaterade värden från formuläret
+        const updatedName = document.getElementById("name").value;
+        const updatedDescription = document.getElementById("description").value;
+        const updatedIngredients = document.getElementById("ingredients").value;
+        const updatedCategory = document.getElementById("category").value;
+        const updatedContains = document.getElementById("contains").value;
+        const updatedPrice = document.getElementById("price").value;
+
+        // skapar ett objekt med de uppdaterade värdena från formuläret
+        const updatedDish = {
+            name: updatedName,
+            description: updatedDescription,
+            ingredients: updatedIngredients,
+            category: updatedCategory,
+            contains: updatedContains,
+            price: updatedPrice
+        };
+
+        try {
+            const response = await fetch(`https://pastaplace.onrender.com/dishes/${item._id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(updatedDish)
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error("Server response:", errorData);
+                putValidation(errorData.errors);
+                throw new Error("Failed to update data");
+            }
+
+            document.getElementById("name-put-error").textContent = "";
+            document.getElementById("description-put-error").textContent = "";
+            document.getElementById("ingredients-put-error").textContent = "";
+            document.getElementById("category-put-error").textContent = "";
+            document.getElementById("contains-put-error").textContent = "";
+            document.getElementById("price-put-error").textContent = "";
+
+            overlay.style.display = 'none';
+            confirmationMessage("Maträtten är uppdaterad!");
+            displayData(); // uppdatera sidan
+
+        } catch (error) {
+            console.error("Error while updating", error);
+        }
+    };
+}
+/*
 async function updateData(id, update) { // hitta specifik maträtt att uppdatera
     try {
         const response = await fetch(`https://pastaplace.onrender.com/dishes/${id}`, {
@@ -215,6 +283,7 @@ function editDish(item) { // uppdatera maträtt
 
     updateForm.onsubmit = (e) => { // uppdaterar form på submit
         e.preventDefault();
+
         const updatedDish = {
             name: document.getElementById("name").value,
             description: document.getElementById("description").value,
@@ -226,6 +295,7 @@ function editDish(item) { // uppdatera maträtt
         updateData(item._id, updatedDish); // skickar vidare uppdatering och id
     };
 };
+*/
 
 async function showConfirmation(message) { // visa bekräftelse
     showOverlay('confirmation');
@@ -243,7 +313,7 @@ async function showConfirmation(message) { // visa bekräftelse
         <button id="yes" class="material-symbols-outlined">check_circle</button>
         <button id="no" type="button" class="material-symbols-outlined">cancel</button>
         </div>`;
-        
+
         confirmation.appendChild(showConfirmation);
 
         const yesBtn = confirmation.querySelector("#yes");
@@ -262,11 +332,11 @@ async function showConfirmation(message) { // visa bekräftelse
 
             resolve(false); // kallar på funktion då åtgärd nekades
         });
-    }); 
+    });
 };
 
 function confirmationMessage(message) { // bekräftelsemeddelanden
-    const confirmation = document.querySelector(".banner--third");  
+    const confirmation = document.querySelector(".banner--third");
     confirmation.style.display = 'flex';
 
     confirmation.innerHTML = `<p>${message}`;
@@ -302,7 +372,7 @@ async function deleteData(id) { // radera data
     confirmationMessage("Din rätt är raderad!");
 };
 
-function handleValidation(errors) { // hantera felmeddelanden
+function postValidation(errors) { // hantera felmeddelanden
     if (errors) {
         if (errors.name) {
             document.getElementById("name-add-error").textContent = errors.name;
@@ -325,9 +395,32 @@ function handleValidation(errors) { // hantera felmeddelanden
     }
 };
 
+function putValidation(errors) { // hantera felmeddelanden
+    if (errors) {
+        if (errors.name) {
+            document.getElementById("name-put-error").textContent = errors.name;
+        }
+        if (errors.description) {
+            document.getElementById("description-put-error").textContent = errors.description;
+        }
+        if (errors.category) {
+            document.getElementById("category-put-error").textContent = errors.category;
+        }
+        if (errors.contains) {
+            document.getElementById("contains-put-error").textContent = errors.contains;
+        }
+        if (errors.ingredients) {
+            document.getElementById("ingredients-put-error").textContent = errors.ingredients;
+        }
+        if (errors.price) {
+            document.getElementById("price-put-error").textContent = errors.price;
+        }
+    }
+};
+
 function logOut() { // logga ut
     localStorage.removeItem("token"); // tar bort token och gör användaren obehörig
-    window.location.href ="index.html" // skickas då till startsida
+    window.location.href = "index.html" // skickas då till startsida
 };
 
 function showOverlay(formToShow) { // visa overlay

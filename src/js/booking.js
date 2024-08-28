@@ -242,7 +242,6 @@ async function updateData(item) { // formulär- och databasuppdatering
 
     showOverlay('update');
 
-    const updateForm = document.getElementById("update-form");
     updateForm.onsubmit = async (e) => {
         e.preventDefault();
 
@@ -289,7 +288,7 @@ async function updateData(item) { // formulär- och databasuppdatering
                 const errorData = await response.json();
                 console.error("Server response:", errorData);
                 putValidation(errorData.errors);
-                throw new Error("Failed to add data");
+                throw new Error("Failed to update data");
             }
 
             // töm fält efter tillägg
