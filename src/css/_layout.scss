@@ -432,7 +432,7 @@ form {
         font: 100% $paragraph-text;
         font-size: 15px;
         padding: 0.5em;
-        color: $detailcolor; 
+        color: darken($detailcolor, 22%); 
     }
 
     input { @extend textarea; width: 95%; }
