@@ -15,7 +15,7 @@
 # Webbplats och administrationsgränssnitt
 
 >### Beskrivning av projektarbete del 2:
-> Detta är den andra delen av projektarbetet i kurs DT207G. I denna laboration har jag skapat en webbplats ([länk till publicerad webbplats](https://jeja2306-dt207g-moment4.netlify.app/)) som använder Fetch API för att logga in, autentisera och förändra data i en databas. 
+> Detta är den andra delen av projektarbetet i kurs DT207G. I denna laboration har jag skapat en webbplats ([länk till publicerad webbplats](https://pastaplace.netlify.app/)) som använder Fetch API för att logga in, autentisera och förändra data i en databas. 
 >
 >Webbplatsen är skapat åt ett fiktivt företaget vid namn Pasta Place. Detta är en resutrang som specialiserar sig på pastarätter. På deras publika webbplats kan besökare se resturangens meny och boka bord. Admin (personal) kan logga in för att då autentiseras och därmed få tillgång till skyddat innehåll (detta görs med hjälp av JWT). I detta innehåll kan personen uppdatera och radera bokningar/maträtter samt addera nyheter till menyn.
 >
