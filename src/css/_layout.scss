@@ -275,6 +275,11 @@ main {
             &:hover { text-decoration: underline; color: lighten($primary-color, 15%); }}
         }
 
+    .banner--fourth { 
+        background-color: lighten($error, 30%);
+        div { margin-left: 20px; display: flex; align-items: center; gap: 1em; }
+    }
+
     .add-div { 
         @include align(flex, center, left);
         @include color(lighten($primary-color, 20%), $light_color);
