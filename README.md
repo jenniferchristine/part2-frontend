@@ -36,12 +36,10 @@
 | GET | /admin | Skapar route som kräver autentisering |
 | POST | /login | Route för inloggning (skapar token) |
 | POST | /register | Route för registrering |
-|
 | GET | /dishes | Hämtar lagrade maträtter |
 | POST | /dishes | Lagrar maträtt (kräver autentisering) |
 | PUT | /dishes | Uppdaterar maträtt (kräver autentisering) |
 | DELETE | /dishes | Raderar maträtt (kräver autentisering) |
-|
 | GET | /bookings | Hämtar lagrade bokningar (kräver autentisering) |
 | POST | /bookings | Lagrar bokning |
 | PUT | /bookings | Uppdaterar bokning (kräver autentisering) |
